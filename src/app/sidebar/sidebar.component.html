@@ -4,17 +4,17 @@
     </div>
 
     <ul>
-        <li [routerLink]="['']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
             <span><img src="../../assets/home-icon.svg" alt=""></span>
-            <a>Home</a>
+            <a [routerLink]="['']">Home</a>
         </li>
-        <li  [routerLink]="['inventory']" [routerLinkActive]="['active']">
+        <li  [routerLinkActive]="['active']">
             <span><img src="../../assets/inventory-icon.svg" alt=""></span>
-            <a>Inventory</a>
+            <a [routerLink]="['inventory']">Inventory</a>
         </li>
-        <li [routerLink]="['endofday']" [routerLinkActive]="['active']">
+        <li [routerLinkActive]="['active']">
             <span><img src="../../assets/eod-icon.svg" alt=""></span>
-            <a>End of Day</a>
+            <a [routerLink]="['endofday']">End of Day</a>
         </li>
     </ul>
 </div>

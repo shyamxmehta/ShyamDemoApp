@@ -4,13 +4,15 @@ import { authGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { EndOfDayComponent } from './end-of-day/end-of-day.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
     
     { path: '', component: HomeComponent, title: 'Home', canActivate: [authGuard], children: 
         [
             { path: 'inventory', component: InventoryComponent, title: 'Inventory'},
-            { path: 'endofday', component: EndOfDayComponent, title: 'End of Day'}
+            { path: 'endofday', component: EndOfDayComponent, title: 'End of Day'},
+            { path: 'profile', component: ProfileComponent, title: 'My Profile'}
         ]
     },
 

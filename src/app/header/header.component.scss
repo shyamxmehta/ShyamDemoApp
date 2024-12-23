@@ -1,0 +1,58 @@
+@import '../../styles.scss';
+
+.container {
+    position: fixed;
+    top: 0;
+    right: .7rem;
+    left: calc($sidebar-width + .7rem);
+    background-color: $white;
+
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+        padding: 0 20px;
+
+        p {
+            color: #0e2d4c;
+            font-weight: 700;
+        }
+
+        .profile {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+
+            img {
+                height: 30px;
+            }
+
+            i {
+                font-size: 20px;
+            }
+
+            .dropdown {
+                position: absolute;
+                right: 0;
+                bottom: -75px;
+                width: 110px;
+                border: 1px solid $main-bg;
+                border-radius: 5px;
+                background-color: $white;
+
+                a {
+                    // margin: 10px;
+                }
+            }
+        }
+
+        .profile.close {
+            .dropdown {
+                display: none;
+            }
+        }
+    }
+}
