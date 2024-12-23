@@ -1,0 +1,21 @@
+.container {
+    position: fixed;
+    width: 160px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: var(--sidebar-bg);
+    z-index: 100;
+
+    .logo {
+        padding: 10px;
+        background-color: var(--white);
+
+        img {
+            width: 100%;
+        }
+    }
+
+    
+
+}
