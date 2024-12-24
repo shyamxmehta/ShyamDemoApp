@@ -1,0 +1,11 @@
+@import '../../styles.scss';
+
+.router-container {
+    margin: calc($header-height + .7rem) .7rem .7rem calc($sidebar-width + .7rem);
+    overflow-y: auto;
+    max-height: calc(100vh - $header-height - 1.4rem);
+}
+
+.router-container::-webkit-scrollbar {
+    display: none;
+}

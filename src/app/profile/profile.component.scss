@@ -1,0 +1,171 @@
+@import '../../styles.scss';
+
+.container {
+    margin-top: .7rem;
+
+    .wrapper {
+        display: grid;
+        gap: .7rem;
+        grid-template-columns: 225px 1fr;
+        grid-template-rows: 225px 150px 100px;
+
+        .profile-image {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            padding: 15px;
+            gap: 10px;
+            background-color: $white;
+            border-radius: 5px;
+
+            .image {
+                height: 140px;
+                border-radius: 50%;
+
+                img {
+                    height: 100%;
+                }
+            }
+
+            button {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                justify-content: center;
+                padding: 5px 18px;
+                background-color: $dark-blue-button;
+                cursor: pointer;
+
+                i {
+                    font-size: 18px;
+                }
+            }
+
+        }
+
+        .profile-info {
+            grid-area: 1 / 2 / 3 / -1;
+            padding: 10px 20px;
+            background-color: $white;
+
+            h2 {
+                font-size: 25px;
+                font-weight: 400;
+            }
+
+            p {
+                color: red;
+                font-size: 12px;
+                margin: 5px 0;
+            }
+
+            form {
+                margin-top: 15px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr;
+                height: 82%;
+                column-gap: 20px;
+                row-gap: 5px;
+
+                .form-control>label {
+                    display: block;
+                    font-size: 12px;
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                }
+
+                .form-control>input {
+                    height: 35px;
+                    width: 100%;
+                    padding: 0 8px;
+                    border-radius: 5px;
+                    border: 1px solid $main-bg;
+                }
+
+                .form-control:nth-last-child(1) {
+                    grid-column: span 2;
+
+
+                }
+            }
+        }
+
+        .profile-rights {
+            display: flex;
+            flex-direction: column;
+            padding: 8px 15px;
+            gap: 8px;
+            background-color: $white;
+            border-radius: 5px;
+
+            p {
+                font-size: 12px;
+                font-weight: 600;
+            }
+
+            .rights-box {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 10px;
+                height: 32px;
+                border: 1px solid $main-bg;
+                border-radius: 5px;
+
+                p {
+                    font-weight: 400;
+                }
+
+                .toggle-switch {
+                    position: absolute;
+                    right: 8px;
+                    display: inline-block;
+                    width: 50px;
+
+                    input {
+                        opacity: 0;
+                        width: 0;
+                        height: 0;
+                    }
+
+                    .slider {
+                        position: absolute;
+                        cursor: pointer;
+                        top: 0;
+                        bottom: 0;
+                        right: 0;
+                        left: 0;
+                        background-color: $toggle;
+                        border-radius: 34px;
+                        transition: all .4s ease;
+                    }
+
+                    .slider::before {
+                        content: "";
+                        position: absolute;
+                        height: 15px;
+                        width: 15px;
+                        top: 3px;
+                        left: 3px;
+                        background-color: #ecf0f1;
+                        border-radius: 50%;
+                        transition: all .4s ease;
+                    }
+
+
+                }
+
+                .toggle-switch > input:checked + .slider {
+                    background-color: $toggle-active;
+                }
+                
+                .toggle-switch > input:checked + .slider:before {
+                    transform: translateX(28px);
+                }
+            }
+        }
+    }
+}
