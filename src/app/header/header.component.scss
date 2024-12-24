@@ -36,23 +36,37 @@
 
             .dropdown {
                 position: absolute;
-                right: 0;
-                bottom: -75px;
-                width: 110px;
+                top: 35px;
+                left: -57px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 115px;
                 border: 1px solid $main-bg;
                 border-radius: 5px;
                 background-color: $white;
+                cursor: default;
+                
 
                 a {
-                    // margin: 10px;
+                    padding: 7px;
+                    text-decoration: none;
+                    color: $black;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    text-align: center;
+                    border-bottom: 1px solid $main-bg;
+                }
+                
+                button {
+                    margin: 10px;
+                    cursor: pointer;
                 }
             }
-        }
-
-        .profile.close {
-            .dropdown {
+            .dropdown.close {
                 display: none;
             }
+            
         }
     }
 }
