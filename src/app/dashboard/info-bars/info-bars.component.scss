@@ -1,0 +1,28 @@
+@import '../../../styles.scss';
+
+.container {
+    display: flex;
+    padding: .7rem;
+    background-color: $white;
+
+
+    .wrapper {
+        margin: auto;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .card {
+            background-color: black;
+            color: white;
+            display: flex;
+            padding: 7px;
+            border-radius: 5px;
+            
+            .info {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}

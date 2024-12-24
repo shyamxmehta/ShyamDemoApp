@@ -1,8 +1,0 @@
-<app-sidebar></app-sidebar>
-<app-header></app-header>
-<div class="router-container">
-    <router-outlet (activate)="[showPlaceholder = false]" (deactivate)="[showPlaceholder = true]"></router-outlet>
-    @if (showPlaceholder) {
-        <app-dashboard></app-dashboard>
-    }
-</div>
