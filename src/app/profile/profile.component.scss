@@ -7,7 +7,7 @@
         display: grid;
         gap: .7rem;
         grid-template-columns: 225px 1fr;
-        grid-template-rows: 225px 150px 100px;
+        grid-template-rows: 220px 150px 100px;
 
         .profile-image {
             display: flex;
@@ -123,7 +123,8 @@
                     position: absolute;
                     right: 8px;
                     display: inline-block;
-                    width: 50px;
+                    width: 44px;
+                    height: 18px;
 
                     input {
                         opacity: 0;
@@ -146,8 +147,8 @@
                     .slider::before {
                         content: "";
                         position: absolute;
-                        height: 15px;
-                        width: 15px;
+                        height: 12px;
+                        width: 12px;
                         top: 3px;
                         left: 3px;
                         background-color: #ecf0f1;
@@ -163,9 +164,60 @@
                 }
                 
                 .toggle-switch > input:checked + .slider:before {
-                    transform: translateX(28px);
+                    transform: translateX(25px);
                 }
             }
         }
+
+        .profile-warning {
+            grid-area: 3 / 2 / -1 / -1;
+            display: flex;
+
+            .box {
+                margin: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 30px;
+                height: 70px;
+                gap: 40px;
+                background-color: $warning-bg;
+                border-radius: 5px;
+
+                .image {
+                    height: 40px;
+    
+                    img {
+                        height: 100%;
+                    }
+                }
+                
+                .text {
+                    text-align: center;
+                    color: black;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .container > .wrapper {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 220px 220px 100px;
+
+
+        .profile-rights {
+            grid-area: 1 / 2 / 2 / 3;
+        }
+    
+        .profile-info {
+            grid-area: 2 / 1 / 4 / -1;
+        }
+    
+        .profile-warning {
+            grid-area: 4 / 1 / -1 / -1;
+        }
+
     }
 }
