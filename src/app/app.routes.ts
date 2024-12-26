@@ -6,6 +6,8 @@ import { EndOfDayComponent } from './end-of-day/end-of-day.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SystemComponent } from './system/system.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ViewProductsComponent } from './inventory/view-products/view-products.component';
+import { AddProductComponent } from './inventory/add-product/add-product.component';
 
 export const routes: Routes = [
 
@@ -17,13 +19,15 @@ export const routes: Routes = [
     ]},
 
     { path: 'inventory', component: SystemComponent, canActivate: [authGuard], children: [
-        { path: '', component: InventoryComponent, title: 'inventory' }
+        { path: '', component: InventoryComponent, title: 'inventory', data: { breadcrumb: 'Inventory'} },
+        { path: 'view-products', component: ViewProductsComponent, title: 'View Products', data: { breadcrumb: 'View Product' }},
+        { path: 'add-product', component: AddProductComponent, title: 'Add Product', data: { breadcrumb: 'Add Product' }}
     ]},
 
     { path: 'end-of-day', component: SystemComponent, canActivate: [authGuard], children: [
-        { path: '', component: EndOfDayComponent, title: 'End of day' }
+        { path: '', component: EndOfDayComponent, title: 'End of day', data: { breadcrumb: 'End of Day'} }
     ]},
-    
+
     { path: 'login', component: LoginComponent, title: 'Login' }
 
 ];

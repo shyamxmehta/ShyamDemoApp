@@ -1,1 +1,8 @@
-<p>breadcrumbs works!</p>
+<div class="container">
+    <div class="wrapper">
+        @for (breadcrumb of breadcrumbs; track $index) {
+            <p>Label {{ breadcrumb.label }}</p>
+            <p [routerLink]="['view-products']">URL {{ breadcrumb.url }}</p>
+        }
+    </div>
+</div>
