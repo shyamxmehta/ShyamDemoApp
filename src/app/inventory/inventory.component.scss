@@ -1,0 +1,20 @@
+@import '../../styles.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    
+    .wrapper {
+        
+        padding: .7rem;
+        background-color: $white;
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: .7rem;
+        }
+    }
+
+}
