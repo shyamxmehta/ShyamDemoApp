@@ -10,7 +10,7 @@
                 <app-drag-drop></app-drag-drop>
             </div>
             <div class="form-container">
-                <form action="">
+                <form [formGroup]="itemForm">
                     <div class="form-control">
                         <label for="description">Product Description</label>
                         <input type="text" placeholder="EXE FLOURS 2KG">
@@ -31,7 +31,7 @@
                         <label for="selling-price">Selling Price (Prefered Unit)</label>
                         <input type="number" placeholder="130.00">
                     </div>
-                    <button>Add Product</button>
+                    <button type="submit" (click)="onSubmit()">Add Product</button>
                 </form>
             </div>
         </div>
