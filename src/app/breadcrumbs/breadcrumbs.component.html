@@ -3,11 +3,12 @@
         @for (breadcrumb of breadcrumbs; track $index; let last = $last) {
             @if (!last) {
                 <a [routerLink]="[breadcrumb.url]"> {{ breadcrumb.label }}</a>
+                <div class="divider">
+                    <img src="../../assets/caret-right.svg" alt="">
+                </div>
             } @else if (last) {
                 <p>{{ breadcrumb.label }}</p>
             }
-            <!-- <p>Label {{ breadcrumb.label }}</p>
-            <p [routerLink]="['add-productproducts']">URL {{ breadcrumb.url }}</p> -->
         }
     </div>
 </div>
