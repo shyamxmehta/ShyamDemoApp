@@ -1,9 +1,102 @@
 @import '../../../styles.scss';
 
 .container {
-    display: flex;
-    flex-direction: column;
-    gap: .7rem;
 
+    .page-title {
+        margin-left: 10px;
+        font-size: 20px;
+    }
+    .page-info {
+        margin-left: 10px;
+        font-size: 12px;
+        font-weight: 300;
+    }
+
+    .wrapper {
+        margin-top: 7px;
+        padding: 1rem;
+        background-color: $white;
+        border-radius: 10px 10px 0 0;
+
+        .title {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            font-size: 20px;
+            border-top: 3px solid #f6a707;
+            background-color: #fbf5f5;
+        }
+
+        .content {
+            display: flex;
+            padding: 15px 25px;
+            gap: 30px;
+
+            .drag-drop {
+                flex: .5;
+                // min-width: 300px;
+            }
+
+            .form-container {
+                flex: 1;
+                form {
+                    width: 100%;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: 0.8fr 0.8fr 0.8fr 1fr;
+                    gap: 10px 30px;
+                    
+                    .form-control {
+                        
+                        label {
+                            display: block;
+                            font-size: 10px;
+                            color: #666666;
+                            margin-bottom: 3px;
+                        }
     
+                        input {
+                            padding: 7px;
+                            width: 100%;
+                            border: 1px solid #e0e0e0;
+                            border-radius: 3px;
+                        }
+                    }
+    
+                    .form-control:first-of-type {
+                        grid-column: span 2;
+                    }
+    
+                    input::-webkit-outer-spin-button,
+                    input::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+    
+                    input[type=number] {
+                        //for firefox
+                        //-moz-appearance: textfield;
+                        direction: rtl;
+                    }
+                    
+                    button {
+                        grid-column: span 2;
+                        border-radius: 0;
+                        margin: 8px 0;
+                        font-weight: 300;
+                        font-size: 15px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+     
+
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .content {
+        flex-direction: column;
+    }
 }

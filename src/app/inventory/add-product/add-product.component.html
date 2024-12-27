@@ -1,6 +1,39 @@
+<app-breadcrumbs></app-breadcrumbs>
 <div class="container">
-    <app-breadcrumbs></app-breadcrumbs>
+    <div class="page-title">Add Product</div>
+    <div class="page-info">Create New Product</div>
     <div class="wrapper">
-        <p>add product</p>
+        <div class="title">Add New Product - ?</div>
+        <!-- <p class="title">Add New Product - ?</p> -->
+        <div class="content">
+            <div class="drag-drop">
+                <app-drag-drop></app-drag-drop>
+            </div>
+            <div class="form-container">
+                <form action="">
+                    <div class="form-control">
+                        <label for="description">Product Description</label>
+                        <input type="text" placeholder="EXE FLOURS 2KG">
+                    </div>
+                    <div class="form-control">
+                        <label for="unit">Prefered Unit</label>
+                        <input type="text" placeholder="PCS">
+                    </div>
+                    <div class="form-control">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" placeholder="150">
+                    </div>
+                    <div class="form-control">
+                        <label for="cost">Cost (Prefered Unit)</label>
+                        <input type="number" placeholder="100.00">
+                    </div>
+                    <div class="form-control">
+                        <label for="selling-price">Selling Price (Prefered Unit)</label>
+                        <input type="number" placeholder="130.00">
+                    </div>
+                    <button>Add Product</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

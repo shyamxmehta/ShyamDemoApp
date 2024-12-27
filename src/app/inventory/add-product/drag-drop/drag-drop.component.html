@@ -1,0 +1,18 @@
+<div class="upload-box">
+    <!-- @if (itemImage) {
+        <img [src]="[itemImage]" alt="item image">
+        @if (!viewMode && !editMode){
+            <span>
+                <i class="ph-fill ph-x-circle" (click)="clearImage()"></i>
+            </span>
+        }
+    } @else{ -->
+        <div class="icon">
+            <i class="ph ph-cloud-arrow-up"></i>
+        </div>
+        <header>Drag & Drop to Upload Image</header>
+        <span>OR</span>
+        <button (click)="onBrowseForImage()">Browse</button>
+        <input type="file" accept="image/*" hidden #browseImage (change)="convertImage($event)">
+    <!-- } -->
+</div>
