@@ -1,7 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { Breadcrumb } from './breadcrumb';
+import { Component, effect, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router, RouterLink } from '@angular/router';
+import { Breadcrumb } from './breadcrumb.interface';
 import { BreadcrumbService } from './breadcrumb.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -12,13 +13,28 @@ import { BreadcrumbService } from './breadcrumb.service';
 })
 export class BreadcrumbsComponent implements OnInit {
 
+  router = inject(Router);
+  activatedRoute = inject(ActivatedRoute);
   breadcrumbs: Breadcrumb[] = [];
   breadcrumbService = inject(BreadcrumbService); 
 
+   currentRoute = inject(ActivatedRoute);
+
+  constructor() {
+    effect(() => {
+      this.breadcrumbs = this.breadcrumbService.breadcrumbs$();
+    })
+    // this.router.events.pipe(
+    //   filter(event => event instanceof NavigationEnd)
+    // ).subscribe(() => {
+    //   this.breadcrumbs = this.breadcrumbService.createBreadcrumbs(this.activatedRoute.root);
+    // });
+  }
+
   ngOnInit(): void {
-
-    this.breadcrumbs = this.breadcrumbService.breadcrumbs;
-
-    console.log(this.breadcrumbs)
+    // console.log(this.currentRoute)
+    // console.log(this.currentRoute.parent?.parent)
+    // console.log(this.currentRoute.parent?.parent?.parent)
+    // console.log(this.breadcrumbs)
   }
 }

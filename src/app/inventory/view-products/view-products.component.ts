@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BreadcrumbsComponent } from "../../breadcrumbs/breadcrumbs.component";
-import { Breadcrumb } from '../../breadcrumbs/breadcrumb';
+import { Breadcrumb } from '../../breadcrumbs/breadcrumb.interface';
 
 @Component({
   selector: 'app-view-products',

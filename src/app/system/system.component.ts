@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, effect, inject, OnInit } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { SidebarComponent } from "../sidebar/sidebar.component";
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { Breadcrumb } from '../breadcrumbs/breadcrumb.interface';
+import { BreadcrumbService } from '../breadcrumbs/breadcrumb.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-system',
@@ -12,4 +15,17 @@ import { RouterOutlet } from '@angular/router';
 })
 export class SystemComponent {
 
+  breadcrumbService = inject(BreadcrumbService);
+  breadcrumbs: Breadcrumb[] = [];
+  activatedRoute = inject(ActivatedRoute);
+  router = inject(Router);
+
+  constructor() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.breadcrumbs = this.breadcrumbService.createBreadcrumbs(this.activatedRoute.root);
+      this.breadcrumbService.breadcrumbs$.update(() => this.breadcrumbs);
+    });
+  }
 }

@@ -18,8 +18,8 @@ export const routes: Routes = [
         { path: 'profile', component: ProfileComponent, title: 'Profile' },
     ]},
 
-    { path: 'inventory', component: SystemComponent, canActivate: [authGuard], children: [
-        { path: '', component: InventoryComponent, title: 'inventory', data: { breadcrumb: 'Inventory'} },
+    { path: 'inventory', component: SystemComponent, data: { breadcrumb: 'Inventory'}, canActivate: [authGuard], children: [
+        { path: '', component: InventoryComponent, title: 'inventory' },
         { path: 'view-products', component: ViewProductsComponent, title: 'View Products', data: { breadcrumb: 'View Product' }},
         { path: 'add-product', component: AddProductComponent, title: 'Add Product', data: { breadcrumb: 'Add Product' }}
     ]},
@@ -27,6 +27,17 @@ export const routes: Routes = [
     { path: 'end-of-day', component: SystemComponent, canActivate: [authGuard], children: [
         { path: '', component: EndOfDayComponent, title: 'End of day', data: { breadcrumb: 'End of Day'} }
     ]},
+
+    // {path: '', component: SystemComponent, canActivate: [authGuard], children: [
+    //     { path: 'home', component: DashboardComponent  },
+
+    //     { path: 'inventory', component: InventoryComponent, data: { breadcrumb: 'Inventory'} },
+    //     { path: 'view-products', component: ViewProductsComponent, title: 'View Products', data: { breadcrumb: 'View Product' }},
+    //     { path: 'inventory/add-product', component: AddProductComponent, title: 'Add Product', data: { breadcrumb: 'Add Product' }},
+        
+    //     { path: 'end-of-day', component: DashboardComponent },
+
+    // ]},
 
     { path: 'login', component: LoginComponent, title: 'Login' }
 
