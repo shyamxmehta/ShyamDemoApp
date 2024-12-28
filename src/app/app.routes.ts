@@ -40,5 +40,5 @@ export const routes: Routes = [
     // ]},
 
     { path: 'login', component: LoginComponent, title: 'Login' }
-
+    
 ];

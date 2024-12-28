@@ -1,12 +1,14 @@
-<div class="upload-box">
-    <!-- @if (itemImage) {
-        <img [src]="[itemImage]" alt="item image">
+<div class="upload-box" appDropbox>
+    @if (itemImage) {
+        <div class="image">
+            <img [src]="[itemImage]" alt="item image">
+        </div>
         @if (!viewMode && !editMode){
             <span>
                 <i class="ph-fill ph-x-circle" (click)="clearImage()"></i>
             </span>
         }
-    } @else{ -->
+    } @else{
         <div class="icon">
             <i class="ph ph-cloud-arrow-up"></i>
         </div>
@@ -14,5 +16,5 @@
         <span>OR</span>
         <button (click)="onBrowseForImage()">Browse</button>
         <input type="file" accept="image/*" hidden #browseImage (change)="convertImage($event)">
-    <!-- } -->
+    }
 </div>

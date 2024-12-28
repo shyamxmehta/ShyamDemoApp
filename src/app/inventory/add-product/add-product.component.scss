@@ -13,7 +13,7 @@
     }
 
     .wrapper {
-        margin-top: 7px;
+        margin-top: 14px;
         padding: 1rem;
         background-color: $white;
         border-radius: 10px 10px 0 0;
@@ -44,7 +44,7 @@
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     grid-template-rows: 0.8fr 0.8fr 0.8fr 1fr;
-                    gap: 10px 30px;
+                    gap: 18px 30px;
                     
                     .form-control {
                         
@@ -52,7 +52,7 @@
                             display: block;
                             font-size: 10px;
                             color: #666666;
-                            margin-bottom: 3px;
+                            margin-bottom: 5px;
                         }
     
                         input {

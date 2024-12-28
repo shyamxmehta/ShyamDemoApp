@@ -31,7 +31,7 @@ export class ApiService {
 
   }
 
-  addProduct(item: any) {
+  addProduct(item: Product) {
     const url = 'http://localhost:3000/products';
     
     return this.http.post(url, item);

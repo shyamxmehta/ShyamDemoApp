@@ -1,10 +1,25 @@
 export interface Product {
-    Date?: Date | undefined,
+    Date?: string | null,
     ProductCode?: number | undefined,
     ProductDescription?: string | undefined,
-    CostPrice?: number | undefined,
-    SellingPrice?: string | undefined, 
-    Unit?: string | undefined,
-    Quantity?: number | undefined,
-    StockVal?: number | undefined 
+    CostPrice?: number,
+    SellingPrice?: string, 
+    Unit?: string | null | undefined,
+    Quantity?: number | null | undefined,
+    StockVal?: number | null | undefined,
+    Image? : string | null
+}
+
+export class ProductClass {
+    constructor(        
+        Date: Date,
+        ProductCode: number,
+        ProductDescription: string,
+        CostPrice: number,
+        SellingPrice: string, 
+        Unit: string,
+        Quantity: number,
+        StockVal: number) {
+
+    }
 }

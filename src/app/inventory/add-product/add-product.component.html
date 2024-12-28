@@ -10,28 +10,28 @@
                 <app-drag-drop></app-drag-drop>
             </div>
             <div class="form-container">
-                <form [formGroup]="itemForm">
+                <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
                     <div class="form-control">
                         <label for="description">Product Description</label>
-                        <input type="text" placeholder="EXE FLOURS 2KG">
+                        <input type="text" placeholder="EXE FLOURS 2KG" formControlName="Description">
                     </div>
                     <div class="form-control">
                         <label for="unit">Prefered Unit</label>
-                        <input type="text" placeholder="PCS">
+                        <input type="text" placeholder="PCS" formControlName="Unit">
                     </div>
                     <div class="form-control">
                         <label for="quantity">Quantity</label>
-                        <input type="number" placeholder="150">
+                        <input type="number" placeholder="150" formControlName="Quantity">
                     </div>
                     <div class="form-control">
                         <label for="cost">Cost (Prefered Unit)</label>
-                        <input type="number" placeholder="100.00">
+                        <input type="number" placeholder="100.00" formControlName="CP">
                     </div>
                     <div class="form-control">
                         <label for="selling-price">Selling Price (Prefered Unit)</label>
-                        <input type="number" placeholder="130.00">
+                        <input type="number" placeholder="130.00" formControlName="SP">
                     </div>
-                    <button type="submit" (click)="onSubmit()">Add Product</button>
+                    <button type="submit">Add Product</button>
                 </form>
             </div>
         </div>
