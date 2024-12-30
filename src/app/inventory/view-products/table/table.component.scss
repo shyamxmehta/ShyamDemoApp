@@ -1,3 +1,23 @@
 table {
     width: 100%;
+
+    tbody {
+
+        tr {
+
+            td {
+                
+                .image {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    img {
+                        align-self: center;
+                        justify-self: center;
+                        height: 60px;
+                    }
+                }
+            }
+        }
+    }
 }

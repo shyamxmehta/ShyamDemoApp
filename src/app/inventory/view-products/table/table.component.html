@@ -1,7 +1,7 @@
 <table>
     <thead>
         <tr>
-            <th>Date</th>
+            <th>Image</th>
             <th>Product Code</th>
             <th>Product Description</th>
             <th>Cost Price</th>
@@ -13,7 +13,7 @@
     <tbody>
         @for (product of products; track $index) {
             <tr>
-                <td>{{ product.Date }}</td>
+                <td><div class="image"><img [src]="[product.Image]" alt=""></div></td>
                 <td>{{ product.ProductCode }}</td>
                 <td>{{ product.ProductDescription }}</td>
                 <td>{{ product.CostPrice }}</td>

@@ -18,14 +18,15 @@ export class TableComponent {
   constructor() {
     this.itemsService.getProducts.subscribe( (products: any) => {
       this.products = products;
-      if (this.products) {
-        this.products.map(val => {
-          if(val.Date) {
-            val.Date = new Date(val.Date).toDateString();
-            console.log(val.Date);
-          }
-        })
-      }
+      // change value in array
+      // if (this.products) {
+      //   this.products.map(val => {
+      //     if(val.Date) {
+      //       val.Date = new Date(val.Date).toDateString();
+      //       console.log(val.Date);
+      //     }
+      //   })
+      // }
     });
 
   }

@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Product } from './product.interface';
 import { ApiService } from './api.service';
 
@@ -17,13 +17,15 @@ export class ItemsService {
   }
 
   getProductsFromApi() {
-    this.apiService.getProductListing()
-    .pipe()
-    .subscribe((products: any) => {
+    this.apiService.getProductListing().subscribe((products: any) => {
       for (const key in products) {
         this.products.push(products[key]);
       }
       this.getProducts.next(this.products);
     });
+  }
+
+  addProduct(product: Product) {
+
   }
 }
