@@ -24,7 +24,7 @@ export const routes: Routes = [
         { path: 'add-product', component: AddProductComponent, title: 'Add Product', data: { breadcrumb: 'Add Product' }}
     ]},
 
-    { path: 'end-of-day', component: SystemComponent, canActivate: [authGuard], children: [
+    { path: 'end-of-day', component: SystemComponent,data: { breadcrumb: 'End of Day'}, canActivate: [authGuard], children: [
         { path: '', component: EndOfDayComponent, title: 'End of day', data: { breadcrumb: 'End of Day'} }
     ]},
 
