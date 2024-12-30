@@ -6,6 +6,7 @@
     right: .7rem;
     left: calc($sidebar-width + .7rem);
     background-color: $white;
+    z-index: 100;
 
     .wrapper {
         display: flex;
@@ -20,11 +21,13 @@
         }
 
         .profile {
+            // anchor-name: --profile;
             position: relative;
             display: flex;
             align-items: center;
             gap: 8px;
             cursor: pointer;
+            background-color: $white;
 
             img {
                 height: 30px;
@@ -33,10 +36,12 @@
             i {
                 font-size: 20px;
             }
-
+            
             .dropdown {
+                // position-anchor: --profile;
+                // bottom: anchor(end);
                 position: absolute;
-                top: 35px;
+                top: 38px;
                 left: -57px;
                 display: flex;
                 flex-direction: column;
@@ -47,7 +52,7 @@
                 background-color: $white;
                 cursor: default;
                 
-
+    
                 a {
                     padding: 7px;
                     text-decoration: none;
@@ -63,10 +68,12 @@
                     cursor: pointer;
                 }
             }
+
             .dropdown.close {
                 display: none;
             }
             
         }
+
     }
 }

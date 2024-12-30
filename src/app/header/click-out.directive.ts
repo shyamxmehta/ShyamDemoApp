@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, inject } from '@angular/core';
+import { Directive, ElementRef, HostListener, inject, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appClickOut]',
@@ -6,14 +6,13 @@ import { Directive, ElementRef, HostListener, inject } from '@angular/core';
 })
 export class ClickOutDirective {
 
-  el = inject(ElementRef<HTMLDialogElement>);
+  renderer = inject(Renderer2);
+  el = inject(ElementRef);
 
   @HostListener('click', ['$event.target'])
-  onClick(targetElement: HTMLDialogElement) {
-    // if (this.el = ) {
-    // console.log(targetElement)
-    // }
+  onClick(e: any) {
+    console.log(this.el)
+    this.renderer.addClass(this.el.nativeElement, 'close')
   } 
-  constructor() { }
 
 }
