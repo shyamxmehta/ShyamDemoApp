@@ -18,7 +18,7 @@ export class ApiService {
       // UserName : 
     };
 
-    return this.http.get( url, { })
+    return this.http.get( url );
     // .pipe(
     //   catchError(err => {
     //     console.log('Api service received error');

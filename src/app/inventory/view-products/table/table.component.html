@@ -1,0 +1,26 @@
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Product Code</th>
+            <th>Product Description</th>
+            <th>Cost Price</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (product of products; track $index) {
+            <tr>
+                <td>{{ product.Date }}</td>
+                <td>{{ product.ProductCode }}</td>
+                <td>{{ product.ProductDescription }}</td>
+                <td>{{ product.CostPrice }}</td>
+                <td>{{ product.Quantity }}</td>
+                <td>{{ product.Unit }}</td>
+                <td>actions</td>
+            </tr>
+        }
+    </tbody>
+</table>

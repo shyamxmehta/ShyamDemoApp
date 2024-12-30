@@ -1,5 +1,5 @@
 export interface Product {
-    Date?: string | null,
+    Date?: string | null | Date | undefined,
     ProductCode?: number | undefined,
     ProductDescription?: string | undefined,
     CostPrice?: number,
