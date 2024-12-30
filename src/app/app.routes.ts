@@ -28,17 +28,40 @@ export const routes: Routes = [
         { path: '', component: EndOfDayComponent, title: 'End of day', data: { breadcrumb: 'End of Day'} }
     ]},
 
-    // {path: '', component: SystemComponent, canActivate: [authGuard], children: [
-    //     { path: 'home', component: DashboardComponent  },
 
-    //     { path: 'inventory', component: InventoryComponent, data: { breadcrumb: 'Inventory'} },
-    //     { path: 'view-products', component: ViewProductsComponent, title: 'View Products', data: { breadcrumb: 'View Product' }},
-    //     { path: 'inventory/add-product', component: AddProductComponent, title: 'Add Product', data: { breadcrumb: 'Add Product' }},
-        
-    //     { path: 'end-of-day', component: DashboardComponent },
+    // {path: '', component: SystemComponent, canActivate: [authGuard], children: [
+    //     { path: '', redirectTo: 'home', pathMatch: 'full' },
+
+    //     { 
+    //         path: 'home', 
+    //         loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent),
+    //         title: 'Home'
+            
+    //     },
+    //     { 
+    //         path: 'home/profile', 
+    //         loadComponent: () => import('./profile/profile.component').then(m => m.ProfileComponent),
+            
+    //     },
+
+    //     { 
+    //         path: 'inventory', 
+    //         loadComponent: () => import('./inventory/inventory.component').then(m => m.InventoryComponent),
+    //         data: { breadcrumb: 'Inventory' },
+    //         title: 'Inventory',
+    //         children: [
+    //             { 
+    //                 path: 'inventory/add-product', 
+    //                 loadComponent: () => import('./inventory/add-product/add-product.component').then(m => m.AddProductComponent),
+    //                 data: { breadcrumb: 'Add Product' },
+    //                 title: 'Add Product'
+    //             }
+    //         ]
+    //     },
 
     // ]},
 
-    { path: 'login', component: LoginComponent, title: 'Login' }
+    { path: 'login', component: LoginComponent, title: 'Login' },
+    { path: '**', redirectTo: '' }
     
 ];

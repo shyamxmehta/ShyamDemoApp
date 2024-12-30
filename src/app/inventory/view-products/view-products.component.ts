@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BreadcrumbsComponent } from "../../breadcrumbs/breadcrumbs.component";
-import { Breadcrumb } from '../../breadcrumbs/breadcrumb.interface';
+import { ItemsService } from '../../shared/items.service';
+import { ApiService } from '../../shared/api.service';
 
 @Component({
   selector: 'app-view-products',
@@ -11,4 +12,10 @@ import { Breadcrumb } from '../../breadcrumbs/breadcrumb.interface';
 })
 export class ViewProductsComponent {
 
+  itemsService = inject(ItemsService);
+  apiService = inject(ApiService);
+
+  constructor() {
+    const data = this.apiService.getProductListing().subscribe(res => console.log(res));
+  }
 }

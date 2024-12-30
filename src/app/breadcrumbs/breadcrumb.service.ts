@@ -1,6 +1,5 @@
-import { inject, Injectable, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, NavigationStart, Resolve, Router, RouterStateSnapshot } from '@angular/router';
-import { BehaviorSubject, filter, Observable, of } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Breadcrumb } from './breadcrumb.interface';
 
 @Injectable({

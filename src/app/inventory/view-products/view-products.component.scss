@@ -1,0 +1,18 @@
+@import '../../../styles.scss';
+
+.container {
+
+    .page-title {
+        margin-left: 10px;
+        font-size: 20px;
+    }
+    .page-info {
+        margin-left: 10px;
+        font-size: 12px;
+        font-weight: 300;
+    }
+
+    .wrapper{
+        background-color: $white;
+    }
+}

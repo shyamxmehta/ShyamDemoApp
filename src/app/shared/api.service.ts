@@ -10,15 +10,15 @@ export class ApiService {
   
   http = inject(HttpClient);;
 
-  getProductListing(username: string) {
+  getProductListing() {
     
   const url = 'http://localhost:3000/products';
    
     const body = {
-      UserName : username
+      // UserName : 
     };
 
-    return this.http.post( url, body)
+    return this.http.get( url, { })
     // .pipe(
     //   catchError(err => {
     //     console.log('Api service received error');

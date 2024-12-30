@@ -1,0 +1,20 @@
+.container {
+    margin-bottom: .7rem;
+
+    .wrapper {
+        display: flex;
+        gap: 20px;
+
+        .bar-chart {
+            flex: 1;
+            border: 1px solid red;
+            
+        }
+        
+        .pie-chart {
+            flex: .8;
+            border: 1px solid red;
+
+        }
+    }
+}
