@@ -13,8 +13,6 @@ import { TableComponent } from "./table/table.component";
   styleUrl: './view-products.component.scss'
 })
 export class ViewProductsComponent {
-
-
   
 
 }
