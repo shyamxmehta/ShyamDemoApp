@@ -8,10 +8,10 @@ import { ApiService } from './api.service';
 })
 export class ItemsService {
 
-  apiService = inject(ApiService);
+  private apiService = inject(ApiService);
+  private products: Product[] = [];
   getItemPhoto = signal<string>('');
-  products: Product[] = [];
-  getProducts = new BehaviorSubject<Product[] | null>(null);
+  getProducts = new BehaviorSubject<Product[]>([]);
   constructor() { 
     this.getProductsFromApi();
   }
