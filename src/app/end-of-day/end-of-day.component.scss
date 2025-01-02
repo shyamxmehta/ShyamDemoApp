@@ -115,8 +115,9 @@
         justify-content: flex-end;
         margin-top: .7rem;
         gap: 10px;
+        margin-right: 10px;
         .arrow {
-            font-size: 25px;
+            font-size: 1.25rem;
             color: #9c9c9c;
             // height: 25px;
             cursor: pointer;
@@ -128,14 +129,14 @@
 
         p {
             color: #0e2d4c;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 600;
             padding-bottom: 3px;
         }
 
 
         .arrow:hover {
-            color: #0e2d4c;
+            color: #2d56b2;
         }
     }
 }

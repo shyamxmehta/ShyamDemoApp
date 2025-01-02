@@ -18,13 +18,6 @@ export class ProductSummaryComponent implements OnInit{
 
   ngOnInit(): void {
     this.products$ = this.itemsService.getProducts;
-    this.products$.subscribe((products: Product[]) => {
-      products.map(val => {
-        if(val.Date) {
-          val.Date = new Date(val.Date).toLocaleDateString();
-          console.log(val.Date);
-        }
-      })
-    })
+    
   }
 }
