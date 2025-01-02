@@ -116,12 +116,14 @@
         margin-top: .7rem;
         gap: 10px;
         .arrow {
-            height: 25px;
+            font-size: 25px;
+            color: #9c9c9c;
+            // height: 25px;
             cursor: pointer;
 
-            img { 
-                height: 100%;
-            }
+            // img { 
+            //     height: 100%;
+            // }
         }
 
         p {
@@ -131,8 +133,9 @@
             padding-bottom: 3px;
         }
 
-        .arrow.rotate {
-            transform: rotate(180deg);
+
+        .arrow:hover {
+            color: #0e2d4c;
         }
     }
 }

@@ -93,7 +93,7 @@ export class ChartsComponent implements OnInit {
       ],
       datasets: [{
         label: 'My First Dataset',
-        data: [30, 25, 25, 15, 4.5],
+        data: [30, 25, 25, 15, 8],
         datalabels: {
           color: '#fff',
           font: {
@@ -120,6 +120,11 @@ export class ChartsComponent implements OnInit {
       plugins: {
         legend: {
           position: 'right'
+        },
+        datalabels: {
+          formatter: function(value) {
+            return value + '%'
+          }
         }
       },
       layout: {
