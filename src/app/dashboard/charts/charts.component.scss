@@ -1,5 +1,10 @@
+@import '../../../styles.scss';
+
 .container {
     margin-bottom: .7rem;
+    background-color: $white;
+    padding: 5px 1.4rem;
+    border-radius: 5px;
 
     .wrapper {
         display: flex;
@@ -7,14 +12,31 @@
 
         .bar-chart {
             flex: 1;
-            border: 1px solid red;
             
+            canvas {
+                padding: 10px 0;
+            }
         }
         
+        .title {
+            color: #042653;
+            padding: 5px 0;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #eeeeee;
+        }
+
+        .divider {
+            border: 1px solid #eeee;
+        }
+
         .pie-chart {
             flex: .8;
-            border: 1px solid red;
 
+            canvas {
+                height: 200px;
+                align-items: center;
+                justify-self: center;
+            }
         }
     }
 }
