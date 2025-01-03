@@ -22,7 +22,6 @@ export class ItemsService {
     this.apiService.getProductListing()
     .pipe((products: any) => {
       // debugger
-      const updatedProducts: any = [];
       products.forEach((p: any) => {
         for (const i in p) {
           p[i].Date = new Date(p[i].Date).toLocaleDateString();
@@ -33,7 +32,7 @@ export class ItemsService {
       console.log(this.products);
       return products;
     })
-    .subscribe((products: any) => {
+    .subscribe((_products) => {
       // console.log(products)
       // for (const key in products) {
       //   this.products.push(products[key]);
@@ -45,4 +44,5 @@ export class ItemsService {
   private addProduct(product: Product) {
 
   }
+  
 }

@@ -30,10 +30,6 @@
             
             tr {
                 border-bottom: 1px solid #c6c6c6;
-                
-                td.item-code {
-                    font-weight: 600;
-                }
 
                 td:nth-of-type(1) {
                     padding-left: 60px;
@@ -42,6 +38,7 @@
                     font-size: 14px;
                     text-align: left;
                     height: 55px;
+                    width: 260px;
                     
                     .image {
                         display: flex;

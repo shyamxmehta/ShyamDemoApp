@@ -8,7 +8,7 @@
                 <p>Search</p>
                 <div class="input">
                     <span><img src="../../../assets/search-mag-icon.svg" alt=""></span>
-                    <input type="text" placeholder="Search Product">
+                    <input type="text" placeholder="Search Product" [(ngModel)]="searchText">
                 </div>
                 <div class="date-filter">
                     <div class="from">
@@ -23,17 +23,15 @@
                 <button><img src="../../../assets/reload-icon.svg" alt=""></button>
             </div>
         </div>
-        <app-table></app-table>
+        <app-table [searchText]="searchText"></app-table>
     </div>
     <div class="pages">
         <div class="arrow">
-            <!-- <img src="../../assets/round-arrow.svg" alt=""> -->
             <i class="ph-fill ph-arrow-circle-left"></i>
         </div>
         <p>1/1</p>
         <div class="arrow">
             <i class="ph-fill ph-arrow-circle-right"></i>
-            <!-- <img src="../../assets/round-arrow.svg" alt=""> -->
         </div>
     </div>
 </div>
