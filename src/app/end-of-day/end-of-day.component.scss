@@ -109,34 +109,5 @@
         }
     }
 
-    .pages {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        margin-top: .7rem;
-        gap: 10px;
-        margin-right: 10px;
-        .arrow {
-            font-size: 1.25rem;
-            color: #9c9c9c;
-            // height: 25px;
-            cursor: pointer;
 
-            // img { 
-            //     height: 100%;
-            // }
-        }
-
-        p {
-            color: #0e2d4c;
-            font-size: 1rem;
-            font-weight: 600;
-            padding-bottom: 3px;
-        }
-
-
-        .arrow:hover {
-            color: #2d56b2;
-        }
-    }
 }
