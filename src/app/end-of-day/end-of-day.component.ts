@@ -7,7 +7,7 @@ import { PaginationComponent } from "../shared/pagination/pagination.component";
 @Component({
   selector: 'app-end-of-day',
   standalone: true,
-  imports: [BreadcrumbsComponent, TableComponent, FormsModule, PaginationComponent],
+  imports: [BreadcrumbsComponent, TableComponent, FormsModule],
   templateUrl: './end-of-day.component.html',
   styleUrl: './end-of-day.component.scss'
 })

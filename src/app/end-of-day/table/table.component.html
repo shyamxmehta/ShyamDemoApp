@@ -1,3 +1,4 @@
+@if (products$ | async; as products) {
 <div class="table-container">
     <table>
         <thead>
@@ -13,7 +14,6 @@
             </tr>
         </thead>
         <tbody>
-            @if (products$ | async; as products) {
                 @for (product of products | search: searchText; track $index) {
                     <tr>
                         <td>{{ product.Date }}</td>
@@ -25,7 +25,8 @@
                         <td>{{ product.Quantity }}</td>
                     </tr>
                 }
-            }
         </tbody>
     </table>
 </div>
+<app-pagination></app-pagination>
+}

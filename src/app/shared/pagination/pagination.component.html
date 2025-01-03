@@ -1,8 +1,13 @@
+<div class="page">
+    @for (page of pages; track $index) {
+        {{page}}
+    }
+</div>
 <div class="pages">
     <div class="arrow">
         <i class="ph-fill ph-arrow-circle-left"></i>
     </div>
-    <p>1/1</p>
+    <p>{{currentPage}}/{{totalPages}}</p>
     <div class="arrow">
         <i class="ph-fill ph-arrow-circle-right"></i>
     </div>

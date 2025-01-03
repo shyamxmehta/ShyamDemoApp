@@ -4,17 +4,12 @@
     justify-content: flex-end;
     margin-top: .7rem;
     gap: 10px;
-    margin-right: 10px;
+    margin-right: .7rem;
     
     .arrow {
         font-size: 1.25rem;
         color: #9c9c9c;
-        // height: 25px;
         cursor: pointer;
-    
-        // img { 
-        //     height: 100%;
-        // }
     }
     
     p {
@@ -24,8 +19,8 @@
         padding-bottom: 3px;
     }
     
-    
     .arrow:hover {
         color: #2d56b2;
     }
+    
 }

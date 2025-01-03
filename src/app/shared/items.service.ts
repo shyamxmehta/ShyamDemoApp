@@ -33,10 +33,6 @@ export class ItemsService {
       return products;
     })
     .subscribe((_products) => {
-      // console.log(products)
-      // for (const key in products) {
-      //   this.products.push(products[key]);
-      // }
       this.getProducts.next(this.products);
     });
   }
