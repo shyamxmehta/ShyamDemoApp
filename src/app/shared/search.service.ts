@@ -18,7 +18,7 @@ export class SearchService {
     this.getAllProducts();
   }
 
-  getAllProducts() {
+  private getAllProducts() {
     this.itemsService.getProducts.subscribe(products => {
       this.allProducts = products;
       this.getProducts.next(this.allProducts);
@@ -37,6 +37,18 @@ export class SearchService {
       return item.toLowerCase().includes(search);
     })
     this.getProducts.next(this.searchedProducts);
+  }
+
+  filterProductsByDate(fromDate: string, toDate: string) {
+    // debugger
+    this.allProducts.forEach(a => {
+      const date = new Date();
+      console.log(date);
+    })
+    this.searchedProducts = this.allProducts.filter(product =>{
+      
+    })
+    console.log(this.searchedProducts)
   }
 
 }

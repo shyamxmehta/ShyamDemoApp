@@ -12,7 +12,7 @@ import { SearchService } from '../../shared/search.service';
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
-export class TableComponent implements OnInit{
+export class TableComponent {
 
   searchService = inject(SearchService);
   allProducts: Product[] = [];
@@ -30,10 +30,6 @@ export class TableComponent implements OnInit{
       this.totalPages = Math.ceil(this.totalItems / this.pageSize);
       this.loadPage();
     })
-  }
-
-  ngOnInit(): void {
-    // this.loadPage();
   }
 
   loadPage() {

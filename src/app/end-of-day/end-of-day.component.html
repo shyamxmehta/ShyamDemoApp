@@ -13,14 +13,14 @@
                 <div class="date-filter">
                     <div class="from">
                         <label for="from">From</label>
-                        <input type="date">
+                        <input type="date" #fromDate>
                     </div>
                     <div class="to">
                         <label for="to">To</label>
-                        <input type="date">
+                        <input type="date" #toDate>
                     </div>
                 </div>
-                <button><img src="../../../assets/reload-icon.svg" alt=""></button>
+                <button><img src="../../../assets/reload-icon.svg" alt="" (click)="filterByDate(fromDate.value, toDate.value)"></button>
             </div>
         </div>
         <app-table></app-table>
