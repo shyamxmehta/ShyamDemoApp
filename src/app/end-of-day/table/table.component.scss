@@ -71,3 +71,36 @@
         }
     }
 }
+.pages {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: .7rem;
+    gap: 10px;
+    margin-right: .7rem;
+    
+    button {
+        all: unset;
+        background-color: none;
+        font-size: 1.25rem;
+        color: #9c9c9c;
+        cursor: pointer;
+    }
+    
+    p {
+        color: #0e2d4c;
+        font-size: 1rem;
+        font-weight: 600;
+        padding-bottom: 3px;
+    }
+    
+    button:hover {
+        color: #2d56b2;
+    }
+
+    button:disabled:hover {
+        cursor: not-allowed;
+        color: #9c9c9c;
+    }
+    
+}

@@ -1,4 +1,4 @@
-@if (products$ | async; as products) {
+@if (paginatedData$ | async; as products) {
 <div class="table-container">
     <table>
         <thead>
@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-                @for (product of products | search: searchText; track $index) {
+                @for (product of products; track $index) {
                     <tr>
                         <td>{{ product.Date }}</td>
                         <td style="font-weight: 600;">{{ product.ProductCode }}</td>
@@ -28,5 +28,18 @@
         </tbody>
     </table>
 </div>
-<app-pagination></app-pagination>
+<div class="pages">
+    <button (click)="previousPage()" [disabled]="page == 1">
+        <i class="ph-fill ph-arrow-circle-left"></i>
+    </button>
+    <p>{{ page }}/{{ totalPages }}</p>
+    <button (click)="nextPage()" [disabled]="page === totalPages">
+        <i class="ph-fill ph-arrow-circle-right"></i>
+    </button>
+</div>
+}
+@else {
+<ng-template>
+    <p>Loading...</p>
+</ng-template>
 }
