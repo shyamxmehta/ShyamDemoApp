@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BreadcrumbsComponent } from "../breadcrumbs/breadcrumbs.component";
 import { TableComponent } from "./table/table.component";
 import { FormsModule } from '@angular/forms';
-import { PaginationComponent } from "../shared/pagination/pagination.component";
+import { SearchService } from '../shared/search.service';
 
 @Component({
   selector: 'app-end-of-day',
@@ -13,5 +13,9 @@ import { PaginationComponent } from "../shared/pagination/pagination.component";
 })
 export class EndOfDayComponent {
 
-  searchText: string = '';
+  searchService = inject(SearchService);
+  
+  searchProduct(search: string) {
+    this.searchService.searchProducts(search);
+  }
 }

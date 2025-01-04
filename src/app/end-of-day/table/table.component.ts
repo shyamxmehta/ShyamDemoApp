@@ -1,11 +1,9 @@
-import { Component, inject, Input, OnInit, Output } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ItemsService } from '../../shared/items.service';
 import { Product } from '../../shared/product.interface';
 import { Observable, of } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
-import { SearchPipe } from '../../shared/pipes/search.pipe';
-import { PaginationComponent } from "../../shared/pagination/pagination.component";
-import { PaginationService } from '../../shared/pagination.service';
+import { SearchService } from '../../shared/search.service';
 
 @Component({
   selector: 'app-table',
@@ -16,31 +14,33 @@ import { PaginationService } from '../../shared/pagination.service';
 })
 export class TableComponent implements OnInit{
 
-  itemsService = inject(ItemsService);
-  allData: Product[] = [];
+  searchService = inject(SearchService);
+  allProducts: Product[] = [];
   paginatedData$ = new Observable<Product[]>();
 
   page = 1;
   pageSize = 5;
-  totalItems = 10;
+  totalItems!: number;
   totalPages!: number;
 
   constructor() {
-    this.itemsService.getProducts.subscribe(products => {
-      this.allData = products;
-      this.totalPages = Math.ceil(this.totalItems / this.pageSize)
+    this.searchService.getProducts.subscribe(products => {
+      this.allProducts = products;
+      this.totalItems = this.allProducts.length;
+      this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+      this.loadPage();
     })
   }
 
   ngOnInit(): void {
-    this.loadPage();
+    // this.loadPage();
   }
 
   loadPage() {
     // debugger
     const startIndex = (this.page - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
-    const paginatedData = this.allData.slice(startIndex, endIndex);
+    const paginatedData = this.allProducts.slice(startIndex, endIndex);
     this.paginatedData$ = of(paginatedData);
   }
 
@@ -59,4 +59,6 @@ export class TableComponent implements OnInit{
       this.loadPage();
     }
   }
+
+
 }

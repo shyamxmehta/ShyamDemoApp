@@ -8,7 +8,7 @@
                 <p>Search</p>
                 <div class="input">
                     <span><img src="../../../assets/search-mag-icon.svg" alt=""></span>
-                    <input type="text" placeholder="Search Product" [(ngModel)]="searchText">
+                    <input type="text" placeholder="Search Product" (keyup)="searchProduct(search.value)" #search>
                 </div>
                 <div class="date-filter">
                     <div class="from">
