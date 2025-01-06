@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class ViewProductsComponent {
   
+  itemsService = inject(ItemsService);
   searchText: string = '';
-
+  getProducts() {
+  }
 }

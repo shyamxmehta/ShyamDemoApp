@@ -1,18 +1,24 @@
 <app-breadcrumbs></app-breadcrumbs>
 <div class="container">
-    <div class="page-title">View Product</div>
-    <div class="page-info">View, Edit, Delete</div>
-    <div class="wrapper">
-        <div class="search-container">
-            <div class="search-bar">
-                <p>Search</p>
-                <div class="input">
-                    <span><img src="../../../assets/search-mag-icon.svg" alt=""></span>
-                    <input type="text" placeholder="Search Product" [(ngModel)]="searchText">
-                </div>
-                <button><img src="../../../assets/reload-icon.svg" alt=""></button>
-            </div>
+  <div class="page-title">View Product</div>
+  <div class="page-info">View, Edit, Delete</div>
+  <div class="wrapper">
+    <div class="search-container">
+      <div class="search-bar">
+        <p>Search</p>
+        <div class="input">
+          <span><img src="../../../assets/search-mag-icon.svg" alt="" /></span>
+          <input
+            type="text"
+            placeholder="Search Product"
+            [(ngModel)]="searchText"
+          />
         </div>
-        <app-table [searchText]="searchText"></app-table>
+        <button (click)="getProducts()">
+          <img src="../../../assets/reload-icon.svg" alt="" />
+        </button>
+      </div>
     </div>
+    <app-table [searchText]="searchText"></app-table>
+  </div>
 </div>

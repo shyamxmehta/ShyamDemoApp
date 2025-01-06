@@ -22,12 +22,12 @@ export class AddProductComponent {
   itemForm = this.fb.group({
     Date: ['2024/01/06', Validators.required],
     ProductCode: [410190, Validators.required],
-    ProductDescription: ['Flour Wheat Exe', Validators.required],
-    CostPrice: [1500.00, Validators.required],
-    SellingPrice: [1, Validators.required], 
-    Unit: ['PCS', Validators.required],
-    Quantity: [1, Validators.required],
-    StockVal: [7500000, Validators.required],
+    ProductDescription: ['', Validators.required],
+    CostPrice: [Validators.required],
+    SellingPrice: [Validators.required], 
+    Unit: ['', Validators.required],
+    Quantity: [Validators.required],
+    StockVal: [Validators.required],
     Image: ['', Validators.required]
   });
 

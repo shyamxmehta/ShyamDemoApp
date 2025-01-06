@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable, OnInit, signal } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { Product } from './product.interface';
 import { ApiService } from './api.service';
@@ -6,7 +6,7 @@ import { ApiService } from './api.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ItemsService {
+export class ItemsService implements OnInit{
 
   private apiService = inject(ApiService);
   private products: Product[] = [];
@@ -18,8 +18,11 @@ export class ItemsService {
     this.getProductsFromApi();
   }
 
+  ngOnInit(): void {
+    this.getProductsFromApi();
+  }
   private getProductsFromApi() {
-    this.products = []; // empty aray b4 api call
+    this.products = []; // empty aray b4 api call always
     this.apiService.getProductListing()
     .pipe((products: any) => {
       // debugger

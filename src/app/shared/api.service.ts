@@ -11,8 +11,7 @@ export class ApiService {
   http = inject(HttpClient);;
 
   getProductListing() {
-    
-  const url = 'http://localhost:3000/products';
+    const url = 'http://localhost:3000/products';
    
     const body = {
       // UserName : 
@@ -34,7 +33,7 @@ export class ApiService {
   addProduct(item: Product) {
     const url = 'http://localhost:3000/products';
     
-    return this.http.patch(url, item);
+    return this.http.post(url, item);
     
   }
 

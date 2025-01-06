@@ -12,24 +12,24 @@
             <div class="form-container">
                 <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
                     <div class="form-control">
-                        <label for="description">Product Description</label>
-                        <input type="text" placeholder="EXE FLOURS 2KG" formControlName="Description">
+                        <label for="ProductDescription">Product Description</label>
+                        <input type="text" placeholder="EXE FLOURS 2KG" formControlName="ProductDescription">
                     </div>
                     <div class="form-control">
-                        <label for="unit">Prefered Unit</label>
+                        <label for="Unit">Prefered Unit</label>
                         <input type="text" placeholder="PCS" formControlName="Unit">
                     </div>
                     <div class="form-control">
-                        <label for="quantity">Quantity</label>
+                        <label for="Quantity">Quantity</label>
                         <input type="number" placeholder="150" formControlName="Quantity">
                     </div>
                     <div class="form-control">
-                        <label for="cost">Cost (Prefered Unit)</label>
-                        <input type="number" placeholder="100.00" formControlName="CP">
+                        <label for="CostPrice">Cost (Prefered Unit)</label>
+                        <input type="number" placeholder="100.00" formControlName="CostPrice">
                     </div>
                     <div class="form-control">
-                        <label for="selling-price">Selling Price (Prefered Unit)</label>
-                        <input type="number" placeholder="130.00" formControlName="SP">
+                        <label for="selling-SellingPrice">Selling Price (Prefered Unit)</label>
+                        <input type="number" placeholder="130.00" formControlName="SellingPrice">
                     </div>
                     <button type="submit">Add Product</button>
                 </form>
