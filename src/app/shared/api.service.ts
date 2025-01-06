@@ -53,10 +53,11 @@ export class ApiService {
 
   // }
 
-  deleteItem(id: number) {
+  deleteItem(id: string) {
 
     const url = 'http://localhost:3000/products';
-    // return this.http.delete(url, 'id');
+    const itemUrl = url+ '/' + id
+    return this.http.delete(itemUrl);
 
   }
   

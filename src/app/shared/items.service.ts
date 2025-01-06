@@ -2,6 +2,7 @@ import { inject, Injectable, OnInit, signal } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { Product } from './product.interface';
 import { ApiService } from './api.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -51,8 +52,16 @@ export class ItemsService {
 
   }
 
-  deleteProduct(id: number) {
-    // this.apiService.deleteItem(id).subscribe();
+  deleteProduct(id: string) {
+    this.apiService.deleteItem(id).subscribe({
+      next: (value) => {this.getProductsFromApi()},
+      error(err) {
+        console.log(err);
+      },
+      complete() {
+        console.log('deleted item' + id);
+      },
+    });
   }
   
 }

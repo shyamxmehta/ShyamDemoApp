@@ -38,7 +38,9 @@ export class TableComponent implements OnInit{
     // console.log(item)
   }
 
-  delete(id: number) {
+  delete(id: string) {
     this.itemsService.deleteProduct(id);
   }
+
+  
 }
