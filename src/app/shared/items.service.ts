@@ -19,6 +19,7 @@ export class ItemsService {
   }
 
   private getProductsFromApi() {
+    this.products = []; // empty aray b4 api call
     this.apiService.getProductListing()
     .pipe((products: any) => {
       // debugger

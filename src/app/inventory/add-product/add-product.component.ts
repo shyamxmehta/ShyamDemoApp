@@ -20,11 +20,11 @@ export class AddProductComponent {
   itemsService = inject(ItemsService);
 
   itemForm = this.fb.group({
-    Date: ['', Validators.required],
-    Code: [410190, Validators.required],
-    Description: ['Flour Wheat Exe', Validators.required],
-    CP: [1500.00, Validators.required],
-    SP: [1, Validators.required], 
+    Date: ['2024/01/06', Validators.required],
+    ProductCode: [410190, Validators.required],
+    ProductDescription: ['Flour Wheat Exe', Validators.required],
+    CostPrice: [1500.00, Validators.required],
+    SellingPrice: [1, Validators.required], 
     Unit: ['PCS', Validators.required],
     Quantity: [1, Validators.required],
     StockVal: [7500000, Validators.required],
@@ -43,11 +43,11 @@ export class AddProductComponent {
     console.log(num)
 
     this.itemForm.patchValue({
-      Date: new Date(Date.now()).toString(),
+    //   Date: new Date(Date.now()).toString(),
       Image: this.itemsService.getItemPhoto()
     })
 
-    const itemData = this.itemForm.value;
+    const itemData: Product = this.itemForm.value;
 
     const item: Product = itemData;
     console.log(item);
