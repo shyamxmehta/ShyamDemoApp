@@ -28,7 +28,7 @@ export class ItemsService implements OnInit{
       products.forEach((p: any) => {
         console.log(p);
         for (const i in p) {
-          p[i].Date = new Date(p[i].Date).toLocaleDateString();
+          // p[i].Date = new Date(p[i].Date).toLocaleDateString();
           this.products.push(p[i]);
           this.products.push(p[i]);
         }

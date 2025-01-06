@@ -39,7 +39,7 @@
             <tbody>
                 @for (product of products$ | async | search: searchText; track $index) {
                     <tr>
-                        <td>{{ product.Date }}</td>
+                        <td>{{ product.Date | date: 'dd/MM/YYYY' }}</td>
                         <td>{{ product.ProductCode }}</td>
                         <td>{{ product.ProductDescription }}</td>
                         <td>{{ product.CostPrice | number }}</td>

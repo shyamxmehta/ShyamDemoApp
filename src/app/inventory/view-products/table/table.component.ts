@@ -3,7 +3,7 @@ import { Product } from '../../../shared/product.interface';
 import { ApiService } from '../../../shared/api.service';
 import { ItemsService } from '../../../shared/items.service';
 import { SearchPipe } from '../../../shared/pipes/search.pipe';
-import { DecimalPipe } from '@angular/common';
+import { DecimalPipe, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-table',
@@ -19,9 +19,13 @@ export class TableComponent {
 
   @Input() searchText: string = '';
   constructor() {
-    this.itemsService.getProducts.subscribe( (products: any) => {
-      this.products = products;
+    this.itemsService.getProducts.subscribe({
+      next: (products) => this.products = products
     });
 
+  }
+
+  edit(item: Product) {
+    // console.log(item)
   }
 }

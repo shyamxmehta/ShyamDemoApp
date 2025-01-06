@@ -15,14 +15,14 @@
         <tbody>
             @for (product of products | search: searchText; track $index) {
                 <tr>
-                    <td><div class="image"><img [src]="[product.Image]" alt=""></div></td>
+                    <td><div class="image"><img [src]="[product.Image]" alt="" priority></div></td>
                     <td>{{ product.ProductCode }}</td>
                     <td>{{ product.ProductDescription }}</td>
                     <td>{{ product.CostPrice | number }}</td>
                     <td>{{ product.Quantity | number }}</td>
                     <td>{{ product.Unit }}</td>
                     <td><div class="action-icons">
-                        <img src="../../../../assets/edit-icon.svg" alt="">
+                        <img src="../../../../assets/edit-icon.svg" alt="" (click)="edit(product)">
                         <img src="../../../../assets/trash-icon.svg" alt="">
                     </div></td>
                 </tr>
