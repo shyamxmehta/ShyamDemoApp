@@ -1,5 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ItemsService } from '../../shared/items.service';
 import { Product } from '../../shared/product.interface';
 import { Observable, of } from 'rxjs';
 import { AsyncPipe, DatePipe, DecimalPipe } from '@angular/common';

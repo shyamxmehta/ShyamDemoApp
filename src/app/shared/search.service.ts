@@ -40,13 +40,17 @@ export class SearchService {
   }
 
   filterProductsByDate(fromDate: string, toDate: string) {
-    // debugger
+    debugger
+    console.log(toDate);
+    
     this.allProducts.forEach(a => {
-      const date = new Date();
-      console.log(date);
+      const date = new Date(a.Date!).toLocaleDateString();
+      console.log(a.Date);
     })
     this.searchedProducts = this.allProducts.filter(product =>{
-      
+      if (fromDate >= product.Date! || product.Date! <= toDate) {
+        console.log(product)
+      }
     })
     console.log(this.searchedProducts)
   }
