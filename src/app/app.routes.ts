@@ -8,60 +8,101 @@ import { SystemComponent } from './system/system.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ViewProductsComponent } from './inventory/view-products/view-products.component';
 import { AddProductComponent } from './inventory/add-product/add-product.component';
+import { ProductListComponent } from './inventory/view-products/list/product-list.component';
+import { ViewSingleProductComponent } from './inventory/view-products/view-single-product/view-single-product.component';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-    { path: '', redirectTo: 'home', pathMatch: 'full'},
+  {
+    path: 'home',
+    component: SystemComponent,
+    canActivate: [authGuard],
+    children: [
+      { path: '', component: DashboardComponent, title: 'home' },
+      { path: 'profile', component: ProfileComponent, title: 'Profile' },
+    ],
+  },
 
-    { path: 'home', component: SystemComponent, canActivate: [authGuard], children: [
-        { path: '', component: DashboardComponent, title: 'home' },
-        { path: 'profile', component: ProfileComponent, title: 'Profile' },
-    ]},
+  {
+    path: 'inventory',
+    component: SystemComponent,
+    data: { breadcrumb: 'Inventory' },
+    canActivate: [authGuard],
+    children: [
+      { path: '', component: InventoryComponent, title: 'inventory' },
+      {
+        path: 'view-products',
+        component: ViewProductsComponent,
+        title: 'View Products',
+        data: { breadcrumb: 'View Product List' },
+        children: [
+            { path: '', component: ProductListComponent },
+            { path: ':id', component: ViewSingleProductComponent }
+        ]
+      },
+      {
+        path: 'view-products/:id',
+        component: AddProductComponent,
+        title: 'View Product',
+        data: { breadcrumb: 'View Product List', id: '' },
+      },
+      {
+        path: 'add-product',
+        component: AddProductComponent,
+        title: 'Add Product',
+        data: { breadcrumb: 'Add Product' },
+      },
+    ],
+  },
 
-    { path: 'inventory', component: SystemComponent, data: { breadcrumb: 'Inventory'}, canActivate: [authGuard], children: [
-        { path: '', component: InventoryComponent, title: 'inventory' },
-        { path: 'view-products', component: ViewProductsComponent, title: 'View Products', data: { breadcrumb: 'View Product' }},
-        { path: 'add-product', component: AddProductComponent, title: 'Add Product', data: { breadcrumb: 'Add Product' }}
-    ]},
+  {
+    path: 'end-of-day',
+    component: SystemComponent,
+    data: { breadcrumb: 'End of Day' },
+    canActivate: [authGuard],
+    children: [
+      {
+        path: '',
+        component: EndOfDayComponent,
+        title: 'End of day',
+        data: { breadcrumb: 'End of Day' },
+      },
+    ],
+  },
 
-    { path: 'end-of-day', component: SystemComponent,data: { breadcrumb: 'End of Day'}, canActivate: [authGuard], children: [
-        { path: '', component: EndOfDayComponent, title: 'End of day', data: { breadcrumb: 'End of Day'} }
-    ]},
+  // {path: '', component: SystemComponent, canActivate: [authGuard], children: [
+  //     { path: '', redirectTo: 'home', pathMatch: 'full' },
 
+  //     {
+  //         path: 'home',
+  //         loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent),
+  //         title: 'Home'
 
-    // {path: '', component: SystemComponent, canActivate: [authGuard], children: [
-    //     { path: '', redirectTo: 'home', pathMatch: 'full' },
+  //     },
+  //     {
+  //         path: 'home/profile',
+  //         loadComponent: () => import('./profile/profile.component').then(m => m.ProfileComponent),
 
-    //     { 
-    //         path: 'home', 
-    //         loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent),
-    //         title: 'Home'
-            
-    //     },
-    //     { 
-    //         path: 'home/profile', 
-    //         loadComponent: () => import('./profile/profile.component').then(m => m.ProfileComponent),
-            
-    //     },
+  //     },
 
-    //     { 
-    //         path: 'inventory', 
-    //         loadComponent: () => import('./inventory/inventory.component').then(m => m.InventoryComponent),
-    //         data: { breadcrumb: 'Inventory' },
-    //         title: 'Inventory',
-    //         children: [
-    //             { 
-    //                 path: 'inventory/add-product', 
-    //                 loadComponent: () => import('./inventory/add-product/add-product.component').then(m => m.AddProductComponent),
-    //                 data: { breadcrumb: 'Add Product' },
-    //                 title: 'Add Product'
-    //             }
-    //         ]
-    //     },
+  //     {
+  //         path: 'inventory',
+  //         loadComponent: () => import('./inventory/inventory.component').then(m => m.InventoryComponent),
+  //         data: { breadcrumb: 'Inventory' },
+  //         title: 'Inventory',
+  //         children: [
+  //             {
+  //                 path: 'inventory/add-product',
+  //                 loadComponent: () => import('./inventory/add-product/add-product.component').then(m => m.AddProductComponent),
+  //                 data: { breadcrumb: 'Add Product' },
+  //                 title: 'Add Product'
+  //             }
+  //         ]
+  //     },
 
-    // ]},
+  // ]},
 
-    { path: 'login', component: LoginComponent, title: 'Login' },
-    { path: '**', redirectTo: '' }
-    
+  { path: 'login', component: LoginComponent, title: 'Login' },
+  { path: '**', redirectTo: '' },
 ];

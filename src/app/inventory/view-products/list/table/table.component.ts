@@ -1,9 +1,10 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { Product } from '../../../shared/product.interface';
-import { ApiService } from '../../../shared/api.service';
-import { ItemsService } from '../../../shared/items.service';
-import { SearchPipe } from '../../../shared/pipes/search.pipe';
+import { Product } from '../../../../shared/product.interface';
+import { ApiService } from '../../../../shared/api.service';
+import { ItemsService } from '../../../../shared/items.service';
+import { SearchPipe } from '../../../../shared/pipes/search.pipe';
 import { DecimalPipe, NgOptimizedImage } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -16,6 +17,7 @@ export class TableComponent implements OnInit{
 
   itemsService = inject(ItemsService);
   products: Product[] = [];
+  router = inject(Router);
 
   @Input() searchText: string = '';
   constructor() {
@@ -35,7 +37,8 @@ export class TableComponent implements OnInit{
     
   }
   edit(item: Product) {
-    // console.log(item)
+    this.router.navigate(['/inventory/view-products', item.id])
+    console.log(item.id);
   }
 
   delete(id: string) {

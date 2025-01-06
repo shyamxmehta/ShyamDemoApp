@@ -1,11 +1,11 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, effect, inject, OnInit } from '@angular/core';
 import { BreadcrumbsComponent } from "../../breadcrumbs/breadcrumbs.component";
 import { DragDropComponent } from "./drag-drop/drag-drop.component";
 import { FormBuilder, ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../../shared/api.service';
 import { Product, ProductClass } from '../../shared/product.interface';
 import { ItemsService } from '../../shared/items.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -14,12 +14,13 @@ import { Router } from '@angular/router';
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.scss'
 })
-export class AddProductComponent {
+export class AddProductComponent implements OnInit{
 
   fb = inject(FormBuilder);
   apiService = inject(ApiService);
   itemsService = inject(ItemsService);
   router = inject(Router);
+  activatedRoute = inject(ActivatedRoute);
 
   itemForm = this.fb.group({
     Date: ['2024/01/06', Validators.required],
@@ -33,6 +34,11 @@ export class AddProductComponent {
     Image: ['', Validators.required]
   });
 
+
+  ngOnInit(): void {
+    const id = this.activatedRoute;
+    console.log(id)
+  }
 
   onSubmit() {
 
@@ -67,6 +73,7 @@ export class AddProductComponent {
     //   console.log(res)
     // })
   }
+
 
 
 }

@@ -13,7 +13,6 @@ export class BreadcrumbService {
 
 
   createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: Breadcrumb[] = []): Breadcrumb[] {
-    // debugger;
     const children: ActivatedRoute[] = route.children;
 
     if (children.length === 0) {

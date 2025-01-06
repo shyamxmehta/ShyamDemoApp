@@ -8,6 +8,7 @@ export type Product = {
     Quantity?: number | null;
     StockVal?: number | null;
     Image?: string | null;
+    id?: string
 }
 // export interface Product {
 //     Date?: string | null | Date | undefined,
