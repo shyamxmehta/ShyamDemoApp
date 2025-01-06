@@ -24,7 +24,7 @@ export class ChartsComponent implements OnInit {
       this.products = products;
       if (this.products.length > 0) {
         this.products.map(o => {
-          const label = o.ProductDescription?.split(' ',2);
+          const label = o.ProductDescription?.split(' ', 2);
           console.log(label);
           this.labelData.push(label);
           this.realData.push(o.CostPrice);

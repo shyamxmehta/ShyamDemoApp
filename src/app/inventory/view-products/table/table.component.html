@@ -23,7 +23,7 @@
                     <td>{{ product.Unit }}</td>
                     <td><div class="action-icons">
                         <img src="../../../../assets/edit-icon.svg" alt="" (click)="edit(product)">
-                        <img src="../../../../assets/trash-icon.svg" alt="">
+                        <img src="../../../../assets/trash-icon.svg" alt="" (click)="delete(product.id)">
                     </div></td>
                 </tr>
             }

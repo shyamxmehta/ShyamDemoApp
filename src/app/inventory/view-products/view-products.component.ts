@@ -1,8 +1,6 @@
-import { Component, inject, Output } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BreadcrumbsComponent } from "../../breadcrumbs/breadcrumbs.component";
 import { ItemsService } from '../../shared/items.service';
-import { ApiService } from '../../shared/api.service';
-import { Product } from '../../shared/product.interface';
 import { TableComponent } from "./table/table.component";
 import { FormsModule } from '@angular/forms';
 
@@ -13,10 +11,13 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './view-products.component.html',
   styleUrl: './view-products.component.scss'
 })
-export class ViewProductsComponent {
+export class ViewProductsComponent implements OnInit {
   
   itemsService = inject(ItemsService);
   searchText: string = '';
-  getProducts() {
+
+  ngOnInit(): void {
+    // this.itemsService
   }
+
 }

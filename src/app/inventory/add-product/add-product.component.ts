@@ -5,6 +5,7 @@ import { FormBuilder, ReactiveFormsModule, UntypedFormBuilder, Validators } from
 import { ApiService } from '../../shared/api.service';
 import { Product, ProductClass } from '../../shared/product.interface';
 import { ItemsService } from '../../shared/items.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -18,6 +19,7 @@ export class AddProductComponent {
   fb = inject(FormBuilder);
   apiService = inject(ApiService);
   itemsService = inject(ItemsService);
+  router = inject(Router);
 
   itemForm = this.fb.group({
     Date: ['2024/01/06', Validators.required],
@@ -52,11 +54,12 @@ export class AddProductComponent {
     const item: Product = itemData;
     console.log(item);
 
-
     
     // const itemData: Product = this.itemForm.value;
     // console.log(itemData);
     this.apiService.addProduct(item).subscribe(res => {
+      this.itemsService.getProductsFromApi();
+      this.router.navigate(['/inventory/view-products']);
       console.log(res);
     });
 

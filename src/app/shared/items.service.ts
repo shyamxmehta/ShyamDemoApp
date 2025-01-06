@@ -6,7 +6,7 @@ import { ApiService } from './api.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ItemsService implements OnInit{
+export class ItemsService {
 
   private apiService = inject(ApiService);
   private products: Product[] = [];
@@ -18,10 +18,7 @@ export class ItemsService implements OnInit{
     this.getProductsFromApi();
   }
 
-  ngOnInit(): void {
-    this.getProductsFromApi();
-  }
-  private getProductsFromApi() {
+  getProductsFromApi() {
     this.products = []; // empty aray b4 api call always
     this.apiService.getProductListing()
     .pipe((products: any) => {
@@ -50,8 +47,12 @@ export class ItemsService implements OnInit{
     // });
   }
 
-  private addProduct(product: Product) {
+  addProduct(product: Product) {
 
+  }
+
+  deleteProduct(id: number) {
+    // this.apiService.deleteItem(id).subscribe();
   }
   
 }

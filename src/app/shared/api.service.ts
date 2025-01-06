@@ -45,11 +45,18 @@ export class ApiService {
 
   }
 
-  deleteItem(item: {UserName: string, ItemCode: number}) {
+  // deleteItem(item: {UserName: string, ItemCode: number}) {
     
-    const url = 'https://www.aspiresoft.co.ke/Wt/APIs.aspx/deleteitem';
+  //   const url = 'https://www.aspiresoft.co.ke/Wt/APIs.aspx/deleteitem';
 
-    return this.http.post(url, item);
+  //   return this.http.post(url, item);
+
+  // }
+
+  deleteItem(id: number) {
+
+    const url = 'http://localhost:3000/products';
+    // return this.http.delete(url, 'id');
 
   }
   
