@@ -42,11 +42,11 @@
                         <td>{{ product.Date }}</td>
                         <td>{{ product.ProductCode }}</td>
                         <td>{{ product.ProductDescription }}</td>
-                        <td>{{ product.CostPrice }}</td>
-                        <td>{{ product.SellingPrice }}</td>
+                        <td>{{ product.CostPrice | number }}</td>
+                        <td>{{ product.SellingPrice | number }}</td>
                         <td>{{ product.Unit }}</td>
-                        <td>{{ product.Quantity }}</td>
-                        <td>{{ product.StockVal }}</td>
+                        <td>{{ product.Quantity | number }}</td>
+                        <td>{{ product.StockVal | number: '1.2-2' }}</td>
                     </tr>
                 }
             </tbody>

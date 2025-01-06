@@ -3,11 +3,12 @@ import { Product } from '../../../shared/product.interface';
 import { ApiService } from '../../../shared/api.service';
 import { ItemsService } from '../../../shared/items.service';
 import { SearchPipe } from '../../../shared/pipes/search.pipe';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [SearchPipe],
+  imports: [SearchPipe, DecimalPipe],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })

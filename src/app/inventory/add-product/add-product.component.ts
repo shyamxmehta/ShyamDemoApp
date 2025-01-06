@@ -27,7 +27,7 @@ export class AddProductComponent {
     SellingPrice: [Validators.required], 
     Unit: ['', Validators.required],
     Quantity: [Validators.required],
-    StockVal: [Validators.required],
+    StockVal: [1,Validators.required],
     Image: ['', Validators.required]
   });
 

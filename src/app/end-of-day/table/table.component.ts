@@ -2,13 +2,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ItemsService } from '../../shared/items.service';
 import { Product } from '../../shared/product.interface';
 import { Observable, of } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DecimalPipe } from '@angular/common';
 import { SearchService } from '../../shared/search.service';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, DecimalPipe],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })

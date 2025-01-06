@@ -25,8 +25,8 @@ export class ItemsService implements OnInit{
     this.products = []; // empty aray b4 api call always
     this.apiService.getProductListing()
     .pipe((products: any) => {
-      // debugger
       products.forEach((p: any) => {
+        console.log(p);
         for (const i in p) {
           p[i].Date = new Date(p[i].Date).toLocaleDateString();
           this.products.push(p[i]);
@@ -36,9 +36,18 @@ export class ItemsService implements OnInit{
       console.log(this.products);
       return products;
     })
-    .subscribe((_products) => {
-      this.getProducts.next(this.products);
-    });
+    .subscribe({
+      next: (products) => {
+        console.log(products);
+        this.getProducts.next(this.products);
+      },
+      error: (err) => {console.log(err)},
+      complete: () => {console.log('complete')}
+    })
+    // .subscribe((_products) => {
+      
+    //   this.getProducts.next(this.products);
+    // });
   }
 
   private addProduct(product: Product) {

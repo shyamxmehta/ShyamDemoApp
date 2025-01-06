@@ -18,8 +18,8 @@
                     <td><div class="image"><img [src]="[product.Image]" alt=""></div></td>
                     <td>{{ product.ProductCode }}</td>
                     <td>{{ product.ProductDescription }}</td>
-                    <td>{{ product.CostPrice }}</td>
-                    <td>{{ product.Quantity }}</td>
+                    <td>{{ product.CostPrice | number }}</td>
+                    <td>{{ product.Quantity | number }}</td>
                     <td>{{ product.Unit }}</td>
                     <td><div class="action-icons">
                         <img src="../../../../assets/edit-icon.svg" alt="">

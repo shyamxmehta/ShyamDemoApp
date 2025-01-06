@@ -19,10 +19,10 @@
                         <td>{{ product.Date }}</td>
                         <td style="font-weight: 600;">{{ product.ProductCode }}</td>
                         <td>{{ product.ProductDescription }}</td>
-                        <td>{{ product.CostPrice }}</td>
-                        <td>{{ product.SellingPrice }}</td>
+                        <td>{{ product.CostPrice | number }}</td>
+                        <td>{{ product.SellingPrice | number }}</td>
                         <td>{{ product.Unit }}</td>
-                        <td>{{ product.Quantity }}</td>
+                        <td>{{ product.Quantity | number }}</td>
                     </tr>
                 }
         </tbody>
