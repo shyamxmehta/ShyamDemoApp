@@ -3,6 +3,7 @@ import Chart, { ChartConfiguration, ChartData, ChartOptions } from 'chart.js/aut
 import { ItemsService } from '../../shared/items.service';
 import { Product } from '../../shared/product.interface';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 @Component({
   selector: 'app-charts',
   standalone: true,
@@ -17,12 +18,15 @@ export class ChartsComponent implements OnInit {
   labelData: any = [];
   realData: any = [];
 
+
   ngOnInit(): void {
     this.itemsService.getProducts.subscribe(products => {
       this.products = products;
       if (this.products.length > 0) {
         this.products.map(o => {
-          this.labelData.push(o.ProductDescription);
+          const label = o.ProductDescription?.split(' ',2);
+          console.log(label);
+          this.labelData.push(label);
           this.realData.push(o.CostPrice);
         })
         this.realData.sort((a: any,b: any) => {
@@ -33,6 +37,8 @@ export class ChartsComponent implements OnInit {
         this.renderBarChart(this.labelData, this.realData);
       }
     });
+    const [a] = this.labelData;
+    console.log(a);
     this.renderPieChart();
   }
 
@@ -45,7 +51,7 @@ export class ChartsComponent implements OnInit {
           {
             data: realData,
             backgroundColor: '#2c4e80',
-            barThickness: 20,
+            barThickness: 25,
             borderRadius: 3,
             label: 's'
           }

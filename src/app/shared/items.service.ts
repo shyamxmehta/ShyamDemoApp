@@ -42,7 +42,7 @@ export class ItemsService implements OnInit{
         this.getProducts.next(this.products);
       },
       error: (err) => {console.log(err)},
-      complete: () => {console.log('complete')}
+      complete: () => {console.log('complete ItemsService Get')}
     })
     // .subscribe((_products) => {
       
