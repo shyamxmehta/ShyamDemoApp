@@ -1,11 +1,9 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { Product } from '../../../../shared/product.interface';
-import { ApiService } from '../../../../shared/api.service';
 import { ItemsService } from '../../../../shared/items.service';
 import { SearchPipe } from '../../../../shared/pipes/search.pipe';
 import { DecimalPipe, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
-import { ProductService } from '../../../product.service';
 
 @Component({
   selector: 'app-table',
@@ -17,7 +15,6 @@ import { ProductService } from '../../../product.service';
 export class TableComponent {
 
   itemsService = inject(ItemsService);
-  productService = inject(ProductService);
   products: Product[] = [];
   router = inject(Router);
   
@@ -37,11 +34,8 @@ export class TableComponent {
   }
 
   edit(item: Product) {
-    
     const urlString = this.router.url + '/' + item.id;
-    // this.router.navigateByUrl(urlString, { state: { data: data} })
-    this.productService.setCurrentProduct(item);
-    this.router.navigate([urlString], { state: { data: item } })
+    this.router.navigateByUrl(urlString, { state: { data: item} })
     console.log(item.id);
   }
 

@@ -31,17 +31,21 @@ export class BreadcrumbService {
           //to get product data from routerstate (dynamic component)
           const state = child.paramMap.pipe(map(() => window.history.state));
 
-          state.subscribe((s) => {
-            for (const key in s) {
-              if (key == 'data') {
-                const product: Product = s[key];
-                breadcrumbs.push({
-                  label: product.ProductDescription!,
-                  url: url,
-                });
+          state.subscribe({
+            next: (value) => {
+              for (const key in value) {
+                if (key == 'data') {
+                  const product: Product = value[key];
+                  breadcrumbs.push({
+                    label: product.ProductDescription!,
+                    url: url,
+                  });
+                }
               }
-            }
+            },
+            error: (err) => console.log(err)
           });
+          
         } else
           breadcrumbs.push({
             label: child.snapshot.data['breadcrumb'],

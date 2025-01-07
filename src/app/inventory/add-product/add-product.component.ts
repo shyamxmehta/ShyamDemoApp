@@ -76,7 +76,7 @@ export class AddProductComponent implements OnInit{
     const item: Product = itemData;
     console.log(item);
 
-    this.apiService.addProduct(item).subscribe(res => {
+    this.itemsService.addProduct(item).subscribe(res => {
       this.itemsService.getProductsFromApi();
       this.router.navigate(['/inventory/view-products']);
       console.log(res);

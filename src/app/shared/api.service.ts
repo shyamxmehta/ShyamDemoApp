@@ -4,20 +4,20 @@ import { catchError, throwError } from 'rxjs';
 import { Product } from './product.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-  
-  http = inject(HttpClient);;
+  private http = inject(HttpClient);
+  private url = 'http://localhost:3000/products';
 
   getProductListing() {
-    const url = 'http://localhost:3000/products';
-   
-    const body = {
-      // UserName : 
-    };
+    // const url = 'http://localhost:3000/products';
 
-    return this.http.get( url );
+    // const body = {
+    //   // UserName :
+    // };
+
+    return this.http.get(this.url);
     // .pipe(
     //   catchError(err => {
     //     console.log('Api service received error');
@@ -27,26 +27,26 @@ export class ApiService {
     //     })
     //   })
     // );
-
   }
 
   addProduct(item: Product) {
-    const url = 'http://localhost:3000/products';
-    
-    return this.http.post(url, item);
-    
+    return this.http.post(this.url, item);
   }
 
+  // updateItem(item: Product) {
+
+  //   const url = 'https://www.aspiresoft.co.ke/Wt/APIs.aspx/edititem';
+
+  //   return this.http.post(url, item);
+
+  // }
   updateItem(item: Product) {
-    
-    const url = 'https://www.aspiresoft.co.ke/Wt/APIs.aspx/edititem';
-
-    return this.http.post(url, item);
-
+    const itemUrl = this.url + '/' + item.id;
+    return this.http.patch(itemUrl, item);
   }
 
   // deleteItem(item: {UserName: string, ItemCode: number}) {
-    
+
   //   const url = 'https://www.aspiresoft.co.ke/Wt/APIs.aspx/deleteitem';
 
   //   return this.http.post(url, item);
@@ -54,12 +54,10 @@ export class ApiService {
   // }
 
   deleteItem(id: string) {
+    const itemUrl = this.url + '/' + id;
 
-    const url = 'http://localhost:3000/products';
-    const itemUrl = url+ '/' + id
     return this.http.delete(itemUrl);
-
   }
-  
-  constructor() { }
+
+  constructor() {}
 }

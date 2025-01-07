@@ -5,7 +5,7 @@
         <img [src]="[currentProduct.Image]" alt="product image" />
       </div>
       <div class="form-container">
-        <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="itemForm" (ngSubmit)="onUpdate()">
           <div class="form-control">
             <label for="ProductDescription">Product Description</label>
             <input
