@@ -42,12 +42,6 @@ export const routes: Routes = [
         ]
       },
       {
-        path: 'view-products/:id',
-        component: AddProductComponent,
-        title: 'View Product',
-        data: { breadcrumb: 'View Product List', id: '' },
-      },
-      {
         path: 'add-product',
         component: AddProductComponent,
         title: 'Add Product',

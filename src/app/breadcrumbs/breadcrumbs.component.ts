@@ -11,30 +11,15 @@ import { filter } from 'rxjs';
   templateUrl: './breadcrumbs.component.html',
   styleUrl: './breadcrumbs.component.scss'
 })
-export class BreadcrumbsComponent implements OnInit {
+export class BreadcrumbsComponent {
 
-  router = inject(Router);
-  activatedRoute = inject(ActivatedRoute);
   breadcrumbs: Breadcrumb[] = [];
   breadcrumbService = inject(BreadcrumbService); 
-
-   currentRoute = inject(ActivatedRoute);
 
   constructor() {
     effect(() => {
       this.breadcrumbs = this.breadcrumbService.breadcrumbs$();
     })
-    // this.router.events.pipe(
-    //   filter(event => event instanceof NavigationEnd)
-    // ).subscribe(() => {
-    //   this.breadcrumbs = this.breadcrumbService.createBreadcrumbs(this.activatedRoute.root);
-    // });
   }
 
-  ngOnInit(): void {
-    // console.log(this.currentRoute)
-    // console.log(this.currentRoute.parent?.parent)
-    // console.log(this.currentRoute.parent?.parent?.parent)
-    // console.log(this.breadcrumbs)
-  }
 }

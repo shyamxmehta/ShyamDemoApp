@@ -23,7 +23,7 @@ export class AddProductComponent implements OnInit{
   activatedRoute = inject(ActivatedRoute);
 
   itemForm = this.fb.group({
-    Date: ['2024/01/06', Validators.required],
+    Date: [new Date(Date.now()).toLocaleDateString(), Validators.required],
     ProductCode: [410190, Validators.required],
     ProductDescription: ['', Validators.required],
     CostPrice: [Validators.required],

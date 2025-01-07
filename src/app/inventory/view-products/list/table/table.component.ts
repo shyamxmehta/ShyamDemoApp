@@ -5,6 +5,7 @@ import { ItemsService } from '../../../../shared/items.service';
 import { SearchPipe } from '../../../../shared/pipes/search.pipe';
 import { DecimalPipe, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
+import { ProductService } from '../../../product.service';
 
 @Component({
   selector: 'app-table',
@@ -13,11 +14,13 @@ import { Router } from '@angular/router';
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
-export class TableComponent implements OnInit{
+export class TableComponent {
 
   itemsService = inject(ItemsService);
+  productService = inject(ProductService);
   products: Product[] = [];
   router = inject(Router);
+  
 
   @Input() searchText: string = '';
   constructor() {
@@ -33,11 +36,12 @@ export class TableComponent implements OnInit{
 
   }
 
-  ngOnInit(): void {
-    
-  }
   edit(item: Product) {
-    this.router.navigate(['/inventory/view-products', item.id])
+    
+    const urlString = this.router.url + '/' + item.id;
+    // this.router.navigateByUrl(urlString, { state: { data: data} })
+    this.productService.setCurrentProduct(item);
+    this.router.navigate([urlString], { state: { data: item } })
     console.log(item.id);
   }
 

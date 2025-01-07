@@ -130,7 +130,7 @@ export class ChartsComponent implements OnInit {
     };
 
     const options: ChartOptions = {
-      //remove pie chart border
+      //remove pie chart internal border
       elements: {
         arc: {
           borderWidth: 0
