@@ -63,7 +63,7 @@ export class ChartsComponent implements OnInit {
             backgroundColor: '#2c4e80',
             barThickness: 25,
             borderRadius: 3,
-            label: 's'
+            label: 'Cost'
           }
         ]
       },
