@@ -24,7 +24,7 @@ export class AddProductComponent implements OnInit{
 
   itemForm = this.fb.group({
     Date: [new Date(Date.now()).toLocaleDateString(), Validators.required],
-    ProductCode: [410190, Validators.required],
+    ProductCode: [0, Validators.required],
     ProductDescription: ['', Validators.required],
     CostPrice: [Validators.required],
     SellingPrice: [Validators.required], 
@@ -36,13 +36,29 @@ export class AddProductComponent implements OnInit{
 
 
   ngOnInit(): void {
-    const id = this.activatedRoute;
-    console.log(id)
+  }
+
+  getProductCode() {
+    // get current productList
+    const productList = this.itemsService.getProducts.getValue();
+    // sort in productCode desc order
+    productList.sort((a, b) => {
+      if (a.ProductCode! > b.ProductCode!) {
+        return -1
+      } else return 1
+    })
+    // pick top item
+    const lastItem = productList.slice(0,1);
+    let newCode: number = 0;
+    // get code and add 1
+    for (const key in lastItem) {
+      newCode = lastItem[key].ProductCode!;
+    }
+    newCode++
+    return newCode;
   }
 
   onSubmit() {
-
- 
     //conversion of date
     let date: Date = new Date(Date.now());
     const dateStr: string = date.toString();
@@ -51,7 +67,7 @@ export class AddProductComponent implements OnInit{
     console.log(num)
 
     this.itemForm.patchValue({
-    //   Date: new Date(Date.now()).toString(),
+      ProductCode: this.getProductCode(),
       Image: this.itemsService.getItemPhoto()
     })
 
@@ -60,18 +76,12 @@ export class AddProductComponent implements OnInit{
     const item: Product = itemData;
     console.log(item);
 
-    
-    // const itemData: Product = this.itemForm.value;
-    // console.log(itemData);
     this.apiService.addProduct(item).subscribe(res => {
       this.itemsService.getProductsFromApi();
       this.router.navigate(['/inventory/view-products']);
       console.log(res);
     });
 
-    // this.apiService.addProduct(itemData).subscribe((res) => {
-    //   console.log(res)
-    // })
   }
 
 
