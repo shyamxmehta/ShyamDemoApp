@@ -1,1 +1,41 @@
-<p>view-single-product works!</p>
+<div class="wrapper">
+    <div class="title">Edit Product - {{ currentProduct.ProductCode }}</div>
+    <div class="content">
+      <div class="product-image">
+        <img [src]="[currentProduct.Image]" alt="product image" />
+      </div>
+      <div class="form-container">
+        <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+          <div class="form-control">
+            <label for="ProductDescription">Product Description</label>
+            <input
+              type="text"
+              placeholder="EXE FLOURS 2KG"
+              formControlName="ProductDescription"
+            />
+          </div>
+          <div class="form-control">
+            <label for="Unit">Prefered Unit</label>
+            <input type="text" placeholder="PCS" formControlName="Unit" />
+          </div>
+          <div class="form-control">
+            <label for="Quantity">Quantity</label>
+            <input type="number" placeholder="150" formControlName="Quantity" />
+          </div>
+          <div class="form-control">
+            <label for="CostPrice">Cost (Prefered Unit)</label>
+            <input type="number" placeholder="100.00" formControlName="CostPrice" />
+          </div>
+          <div class="form-control">
+            <label for="selling-SellingPrice">Selling Price (Prefered Unit)</label>
+            <input
+              type="number"
+              placeholder="130.00"
+              formControlName="SellingPrice"
+            />
+          </div>
+          <button type="submit">Update</button>
+        </form>
+      </div>
+    </div>
+</div>
