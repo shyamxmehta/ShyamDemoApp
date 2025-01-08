@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { BreadcrumbsComponent } from "../breadcrumbs/breadcrumbs.component";
 import { TableComponent } from "./table/table.component";
 import { FormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './end-of-day.component.html',
   styleUrl: './end-of-day.component.scss'
 })
-export class EndOfDayComponent {
+export class EndOfDayComponent implements OnDestroy{
 
   searchService = inject(SearchService);
   setDate = {
@@ -27,7 +27,6 @@ export class EndOfDayComponent {
   }
 
   filterByDate() {
-
     const fromDate = this.formatDateToLocale(this.setDate.start);
     const toDate = this.formatDateToLocale(this.setDate.end);
     
@@ -41,5 +40,7 @@ export class EndOfDayComponent {
       return newDate;
     } else return date;
   }
-
+  ngOnDestroy(): void {
+    this.searchService.clearFilter();
+  }
 }

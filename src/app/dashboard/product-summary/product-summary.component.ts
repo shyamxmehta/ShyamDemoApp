@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ItemsService } from '../../shared/items.service';
 import { Observable } from 'rxjs';
 import { Product } from '../../shared/product.interface';
@@ -14,7 +14,7 @@ import { SearchService } from '../../shared/search.service';
   templateUrl: './product-summary.component.html',
   styleUrl: './product-summary.component.scss'
 })
-export class ProductSummaryComponent implements OnInit{
+export class ProductSummaryComponent implements OnInit, OnDestroy{
 
   itemsService = inject(ItemsService);
   searchService = inject(SearchService);
@@ -44,5 +44,9 @@ export class ProductSummaryComponent implements OnInit{
       const newDate = dateArr[2] + '/' + dateArr[1] + '/' + dateArr[0]
       return newDate;
     } else return date;
+  }
+
+  ngOnDestroy(): void {
+    this.searchService.clearFilter();
   }
 }

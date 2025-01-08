@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { ItemsService } from './items.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 import { Product } from './product.interface';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class SearchService {
   private allProducts: Product[] = [];
   private searchedProducts: Product[] = [];
   private dateFilteredProducts: Product[] = [];
-  getProducts = new BehaviorSubject<Product[] | null>(this.allProducts);
+  getProducts = new BehaviorSubject<Product[] | null>(null);
 
   constructor() {
     this.getAllProducts();
@@ -22,6 +22,9 @@ export class SearchService {
       this.allProducts = products;
       this.getProducts.next(this.allProducts);
     });
+  }
+  clearFilter() {
+    this.getAllProducts();
   }
 
   searchProducts(search: string) {
@@ -46,8 +49,8 @@ export class SearchService {
       return product.Date! >= fromDate && product.Date! <= toDate;
     });
 
-    if (this.dateFilteredProducts.length != 0) {
-      this.getProducts.next(this.dateFilteredProducts);
-    } else this.getProducts.next(null);
+    this.getProducts.next(this.dateFilteredProducts);
+    // if (this.dateFilteredProducts.length != 0) {
+    // } else this.getProducts.next(null);
   }
 }

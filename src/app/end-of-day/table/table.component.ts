@@ -14,8 +14,8 @@ import { SearchService } from '../../shared/search.service';
 export class TableComponent {
 
   searchService = inject(SearchService);
-  allProducts: Product[] | null = [];
-  paginatedData$ = new Observable<Product[]>();
+  products:  Product[] | undefined;
+  filteredData$ = new Observable<Product[] | null>();
 
   page = 1;
   pageSize = 5;
@@ -23,11 +23,18 @@ export class TableComponent {
   totalPages!: number;
 
   constructor() {
-    this.searchService.getProducts.subscribe(products => {
-      this.allProducts = products;
-      this.totalItems = this.allProducts!.length;
-      this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-      this.loadPage();
+    this.filteredData$ = this.searchService.getProducts;
+    this.searchService.getProducts.subscribe({
+      next: (products: Product[] | null) => {
+        if (products) {
+          this.products = products;
+          this.totalItems = products.length;
+          this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+          this.loadPage();
+        } else {
+          this.products = [];
+        }
+      }
     })
   }
 
@@ -35,8 +42,11 @@ export class TableComponent {
     // debugger
     const startIndex = (this.page - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
-    const paginatedData = this.allProducts!.slice(startIndex, endIndex);
-    this.paginatedData$ = of(paginatedData);
+    let paginatedData: Product[] = []
+    if (this.products) {
+      paginatedData = this.products.slice(startIndex, endIndex);
+    }
+    this.filteredData$ = of(paginatedData);
   }
 
   nextPage() {
@@ -54,6 +64,12 @@ export class TableComponent {
       this.loadPage();
     }
   }
-
+  // not used
+  // goToPage(pageNumber: number) {
+  //   if (pageNumber >= 1 && pageNumber <= Math.ceil(this.totalItems / this.pageSize)) {
+  //     this.page = pageNumber;
+  //     this.loadPage();
+  //   }
+  // }
 
 }
