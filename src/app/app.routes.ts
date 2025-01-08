@@ -1,15 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
-import { InventoryComponent } from './inventory/inventory.component';
-import { EndOfDayComponent } from './end-of-day/end-of-day.component';
-import { ProfileComponent } from './profile/profile.component';
 import { SystemComponent } from './system/system.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ViewProductsComponent } from './inventory/view-products/view-products.component';
-import { AddProductComponent } from './inventory/add-product/add-product.component';
-import { ProductListComponent } from './inventory/view-products/list/product-list.component';
-import { ViewSingleProductComponent } from './inventory/view-products/view-single-product/view-single-product.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,8 +11,20 @@ export const routes: Routes = [
     component: SystemComponent,
     canActivate: [authGuard],
     children: [
-      { path: '', component: DashboardComponent, title: 'home' },
-      { path: 'profile', component: ProfileComponent, title: 'Profile' },
+      {
+        path: '',
+        loadComponent: () =>
+          import('./dashboard/dashboard.component').then(
+            (m) => m.DashboardComponent
+          ),
+        title: 'home',
+      },
+      {
+        path: 'profile',
+        loadComponent: () =>
+          import('./profile/profile.component').then((m) => m.ProfileComponent),
+        title: 'Profile',
+      },
     ],
   },
 
@@ -30,20 +34,45 @@ export const routes: Routes = [
     data: { breadcrumb: 'Inventory' },
     canActivate: [authGuard],
     children: [
-      { path: '', component: InventoryComponent, title: 'inventory' },
+      {
+        path: '',
+        loadComponent: () =>
+          import('./inventory/inventory.component').then(
+            (m) => m.InventoryComponent
+          ),
+        title: 'inventory',
+      },
       {
         path: 'view-products',
-        component: ViewProductsComponent,
+        loadComponent: () =>
+          import('./inventory/view-products/view-products.component').then(
+            (m) => m.ViewProductsComponent
+          ),
         title: 'View Products',
         data: { breadcrumb: 'View Product List' },
         children: [
-            { path: '', component: ProductListComponent },
-            { path: ':id', component: ViewSingleProductComponent }
-        ]
+          {
+            path: '',
+            loadComponent: () =>
+              import(
+                './inventory/view-products/list/product-list.component'
+              ).then((m) => m.ProductListComponent),
+          },
+          {
+            path: ':id',
+            loadComponent: () =>
+              import(
+                './inventory/view-products/view-single-product/view-single-product.component'
+              ).then((m) => m.ViewSingleProductComponent),
+          },
+        ],
       },
       {
         path: 'add-product',
-        component: AddProductComponent,
+        loadComponent: () =>
+          import(
+            './inventory/add-product/add-product.component'
+          ).then((m) => m.AddProductComponent),
         title: 'Add Product',
         data: { breadcrumb: 'Add Product' },
       },
@@ -58,7 +87,10 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: EndOfDayComponent,
+        loadComponent: () =>
+          import(
+            './end-of-day/end-of-day.component'
+          ).then((m) => m.EndOfDayComponent),
         title: 'End of day',
         data: { breadcrumb: 'End of Day' },
       },

@@ -41,6 +41,8 @@ export class SearchService {
 
   filterProductsByDate(fromDate: string, toDate: string) {
     // debugger
+
+    
     console.log(toDate);
     
     this.allProducts.forEach(a => {

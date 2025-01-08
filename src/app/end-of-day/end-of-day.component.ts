@@ -3,7 +3,6 @@ import { BreadcrumbsComponent } from "../breadcrumbs/breadcrumbs.component";
 import { TableComponent } from "./table/table.component";
 import { FormsModule } from '@angular/forms';
 import { SearchService } from '../shared/search.service';
-import { from } from 'rxjs';
 
 @Component({
   selector: 'app-end-of-day',

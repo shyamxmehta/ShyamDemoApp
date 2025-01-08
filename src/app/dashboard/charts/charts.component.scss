@@ -32,10 +32,16 @@
         .pie-chart {
             flex: .8;
 
-            canvas {
-                height: 200px;
-                align-items: center;
-                justify-self: center;
+            .pie-chart-wrapper {
+                display: flex;
+                height: 350px;
+                canvas {
+                    margin: auto;
+                    height: 225px;
+                    align-items: center;
+                    justify-self: center;
+                }
+
             }
         }
     }
