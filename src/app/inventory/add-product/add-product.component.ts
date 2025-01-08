@@ -1,12 +1,12 @@
-import { Component, effect, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BreadcrumbsComponent } from "../../breadcrumbs/breadcrumbs.component";
 import { DragDropComponent } from "./drag-drop/drag-drop.component";
-import { FormBuilder, ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiService } from '../../shared/api.service';
-import { Product, ProductClass } from '../../shared/product.interface';
+import { Product } from '../../shared/product.interface';
 import { ItemsService } from '../../shared/items.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-add-product',
   standalone: true,
@@ -21,6 +21,7 @@ export class AddProductComponent implements OnInit{
   itemsService = inject(ItemsService);
   router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
+
 
   itemForm = this.fb.group({
     Date: [new Date(Date.now()).toLocaleDateString('en-CA'), Validators.required],
@@ -65,23 +66,29 @@ export class AddProductComponent implements OnInit{
     // console.log(dateStr)
     // let num: Date = new Date(Date.parse(dateStr));
     // console.log(num)
-
-    this.itemForm.patchValue({
-      Date: this.formatDateToLocale(this.itemForm.value.Date!),
-      ProductCode: this.getProductCode(),
-      Image: this.itemsService.getItemPhoto()
+    Swal.fire({
+      title: 'Error!',
+      text: 'Do you want to continue',
+      icon: 'error',
+      confirmButtonText: 'Cool'
     })
 
-    const itemData: Product = this.itemForm.value;
+    // this.itemForm.patchValue({
+    //   Date: this.formatDateToLocale(this.itemForm.value.Date!),
+    //   ProductCode: this.getProductCode(),
+    //   Image: this.itemsService.getItemPhoto()
+    // })
 
-    const item: Product = itemData;
-    console.log(item);
+    // const itemData: Product = this.itemForm.value;
 
-    this.itemsService.addProduct(item).subscribe(res => {
-      this.itemsService.getProductsFromApi();
-      this.router.navigate(['/inventory/view-products']);
-      console.log(res);
-    });
+    // const item: Product = itemData;
+    // console.log(item);
+
+    // this.itemsService.addProduct(item).subscribe(res => {
+    //   this.itemsService.getProductsFromApi();
+    //   this.router.navigate(['/inventory/view-products']);
+    //   console.log(res);
+    // });
 
   }
 
