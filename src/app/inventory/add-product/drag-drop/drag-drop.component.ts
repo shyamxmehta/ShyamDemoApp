@@ -29,21 +29,21 @@ export class DragDropComponent {
   clearImage() {
     this.itemImage = '';
   }
-  convertImage(event: Event) {
+  convertImage(event: any) {
     // debugger
     console.log(event);
-    // const file = event.target.files[0];
-    // const reader = new FileReader();
 
-    // reader.onload = (event: Event) => {
-    //   this.itemImage = reader.result!.toString();
-    //   console.log(this.itemImage);
-    //   this.base64 = this.itemImage?.split(',')[1];
-    //   console.log(this.base64)
-    //   this.itemForm.get('Photo').patchValue(this.base64);
-    // };
+    const file = event.target.files[0];
+    const reader = new FileReader();
 
-    // reader.readAsDataURL(file);
+    reader.onload = (event: Event) => {
+        this.itemImage = reader.result!.toString();
+        this.itemsService.getItemPhoto.update(() => this.itemImage)
+
+      // this.itemForm.get('Photo').patchValue(this.base64);
+    };
+
+    reader.readAsDataURL(file);
   }
 
 

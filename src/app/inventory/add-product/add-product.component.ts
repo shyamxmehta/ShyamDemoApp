@@ -108,7 +108,7 @@ export class AddProductComponent implements OnInit, OnDestroy{
   formatDateToLocale(date: string) {
     const dateArr = date.split('-');
     if (dateArr[2]) {
-      const newDate = dateArr[2] + '/' + dateArr[1] + '/' + dateArr[0]
+      const newDate = dateArr[2] + '/' + dateArr[1] + '/' + dateArr[0];
       return newDate;
     } else return date;
   }
