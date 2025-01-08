@@ -8,7 +8,7 @@ export class AuthService {
 
   router = inject(Router);
 
-  isLoggedIn = signal(true);
+  isLoggedIn = signal(false);
 
   constructor() { }
   
