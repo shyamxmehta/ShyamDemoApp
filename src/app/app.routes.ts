@@ -17,7 +17,7 @@ export const routes: Routes = [
           import('./dashboard/dashboard.component').then(
             (m) => m.DashboardComponent
           ),
-        title: 'home',
+        title: 'Home',
       },
       {
         path: 'profile',

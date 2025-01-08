@@ -11,7 +11,7 @@ export const authGuard: CanActivateFn = (route, state) => {
     //check through router snapshot if user has rights for given route
     return true;
   } else {
-    router.navigate(['login']);
+    router.navigate(['/login']);
     return false;
   }
 };
