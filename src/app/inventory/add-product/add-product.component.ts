@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { BreadcrumbsComponent } from "../../breadcrumbs/breadcrumbs.component";
 import { DragDropComponent } from "./drag-drop/drag-drop.component";
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -6,7 +6,7 @@ import { ApiService } from '../../shared/api.service';
 import { Product } from '../../shared/product.interface';
 import { ItemsService } from '../../shared/items.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-product',
   standalone: true,
@@ -14,7 +14,7 @@ import Swal from 'sweetalert2'
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.scss'
 })
-export class AddProductComponent implements OnInit{
+export class AddProductComponent implements OnInit, OnDestroy{
 
   fb = inject(FormBuilder);
   apiService = inject(ApiService);
@@ -58,37 +58,50 @@ export class AddProductComponent implements OnInit{
     newCode++
     return newCode;
   }
-
-  onSubmit() {
-    // //conversion of date
-    // let date: Date = new Date(Date.now());
-    // const dateStr: string = date.toString();
-    // console.log(dateStr)
-    // let num: Date = new Date(Date.parse(dateStr));
-    // console.log(num)
+  
+  onSubmit() {    
+    this.itemForm.patchValue({
+      Date: this.formatDateToLocale(this.itemForm.value.Date!),
+      ProductCode: this.getProductCode(),
+      Image: this.itemsService.getItemPhoto()
+    });
+    
+    if (!this.itemForm.valid) {
+      Swal.fire({
+        icon: "error",
+        title: "Invalid",
+        text: "Kindly fill all required fields",
+        confirmButtonColor: "#198754",
+      });
+      return;
+    };
+     
     Swal.fire({
-      title: 'Error!',
-      text: 'Do you want to continue',
-      icon: 'error',
-      confirmButtonText: 'Cool'
+      title: "Add Item?",
+      text: "Are you sure you want to add this item?",
+      showCancelButton: true,
+      confirmButtonColor: "#198754",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, add it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const itemData: Product = this.itemForm.value;
+        const item: Product = itemData;
+        this.itemsService.addProduct(item).subscribe(res => {
+          this.itemsService.getProductsFromApi();
+          this.router.navigate(['/inventory/view-products']);
+        });
+        
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500
+        });
+
+      }
     })
-
-    // this.itemForm.patchValue({
-    //   Date: this.formatDateToLocale(this.itemForm.value.Date!),
-    //   ProductCode: this.getProductCode(),
-    //   Image: this.itemsService.getItemPhoto()
-    // })
-
-    // const itemData: Product = this.itemForm.value;
-
-    // const item: Product = itemData;
-    // console.log(item);
-
-    // this.itemsService.addProduct(item).subscribe(res => {
-    //   this.itemsService.getProductsFromApi();
-    //   this.router.navigate(['/inventory/view-products']);
-    //   console.log(res);
-    // });
 
   }
 
@@ -98,6 +111,10 @@ export class AddProductComponent implements OnInit{
       const newDate = dateArr[2] + '/' + dateArr[1] + '/' + dateArr[0]
       return newDate;
     } else return date;
+  }
+
+  ngOnDestroy(): void {
+    this.itemsService.getItemPhoto.update(() => '')
   }
 
 }
