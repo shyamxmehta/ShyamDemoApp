@@ -23,7 +23,7 @@ export class AddProductComponent implements OnInit{
   activatedRoute = inject(ActivatedRoute);
 
   itemForm = this.fb.group({
-    Date: [new Date(Date.now()).toLocaleDateString(), Validators.required],
+    Date: [new Date(Date.now()).toLocaleDateString('en-CA'), Validators.required],
     ProductCode: [0, Validators.required],
     ProductDescription: ['', Validators.required],
     CostPrice: [Validators.required],
@@ -59,14 +59,15 @@ export class AddProductComponent implements OnInit{
   }
 
   onSubmit() {
-    //conversion of date
-    let date: Date = new Date(Date.now());
-    const dateStr: string = date.toString();
-    console.log(dateStr)
-    let num: Date = new Date(Date.parse(dateStr));
-    console.log(num)
+    // //conversion of date
+    // let date: Date = new Date(Date.now());
+    // const dateStr: string = date.toString();
+    // console.log(dateStr)
+    // let num: Date = new Date(Date.parse(dateStr));
+    // console.log(num)
 
     this.itemForm.patchValue({
+      Date: this.formatDateToLocale(this.itemForm.value.Date!),
       ProductCode: this.getProductCode(),
       Image: this.itemsService.getItemPhoto()
     })
@@ -84,6 +85,12 @@ export class AddProductComponent implements OnInit{
 
   }
 
-
+  formatDateToLocale(date: string) {
+    const dateArr = date.split('-');
+    if (dateArr[2]) {
+      const newDate = dateArr[2] + '/' + dateArr[1] + '/' + dateArr[0]
+      return newDate;
+    } else return date;
+  }
 
 }

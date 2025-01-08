@@ -1,28 +1,49 @@
 <app-breadcrumbs></app-breadcrumbs>
 <div class="container">
-    <div class="page-title">End of Day</div>
-    <div class="page-info">View Product Summary</div>
-    <div class="wrapper">
-        <div class="search-container">
-            <div class="search-bar">
-                <p>Search</p>
-                <div class="input">
-                    <span><img src="../../../assets/search-mag-icon.svg" alt=""></span>
-                    <input type="text" placeholder="Search Product" (keyup)="searchProduct(search.value)" #search>
-                </div>
-                <div class="date-filter">
-                    <div class="from">
-                        <label for="from">From</label>
-                        <input type="date" #fromDate>
-                    </div>
-                    <div class="to">
-                        <label for="to">To</label>
-                        <input type="date" #toDate>
-                    </div>
-                </div>
-                <button><img src="../../../assets/reload-icon.svg" alt="" (click)="filterByDate(fromDate.value, toDate.value)"></button>
-            </div>
+  <div class="page-title">End of Day</div>
+  <div class="page-info">View Product Summary</div>
+  <div class="wrapper">
+    <div class="search-container">
+      <div class="search-bar">
+        <p>Search</p>
+        <div class="input">
+          <span><img src="../../../assets/search-mag-icon.svg" alt="" /></span>
+          <input
+            type="text"
+            placeholder="Search Product"
+            (keyup)="searchProduct(search.value)"
+            #search
+          />
         </div>
-        <app-table></app-table>
+        <div class="date-filter">
+          <div class="from">
+            <label for="from">From</label>
+            <input
+              [ngModel]="setDate.start"
+              (ngModelChange)="setDate.start = $event"
+              type="date"
+              name="opening.start"
+            />
+          </div>
+          <div class="to">
+            <label for="to">To</label>
+            <input
+              [ngModel]="setDate.end | date : 'yyyy-MM-dd'"
+              (ngModelChange)="setDate.end = $event"
+              type="date"
+              name="opening.start"
+            />
+          </div>
+        </div>
+        <button>
+          <img
+            src="../../../assets/reload-icon.svg"
+            alt=""
+            (click)="filterByDate()"
+          />
+        </button>
+      </div>
     </div>
+    <app-table></app-table>
+  </div>
 </div>

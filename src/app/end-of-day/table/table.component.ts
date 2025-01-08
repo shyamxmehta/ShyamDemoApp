@@ -7,14 +7,14 @@ import { SearchService } from '../../shared/search.service';
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [AsyncPipe, DecimalPipe, DatePipe],
+  imports: [AsyncPipe, DecimalPipe],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
 export class TableComponent {
 
   searchService = inject(SearchService);
-  allProducts: Product[] = [];
+  allProducts: Product[] | null = [];
   paginatedData$ = new Observable<Product[]>();
 
   page = 1;
@@ -25,7 +25,7 @@ export class TableComponent {
   constructor() {
     this.searchService.getProducts.subscribe(products => {
       this.allProducts = products;
-      this.totalItems = this.allProducts.length;
+      this.totalItems = this.allProducts!.length;
       this.totalPages = Math.ceil(this.totalItems / this.pageSize);
       this.loadPage();
     })
@@ -35,7 +35,7 @@ export class TableComponent {
     // debugger
     const startIndex = (this.page - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
-    const paginatedData = this.allProducts.slice(startIndex, endIndex);
+    const paginatedData = this.allProducts!.slice(startIndex, endIndex);
     this.paginatedData$ = of(paginatedData);
   }
 

@@ -13,9 +13,13 @@
         .bar-chart {
             flex: 1;
             
+            .bar-chart-wrapper {
+                display: flex;
+                height: 350px;
             canvas {
                 padding: 10px 0;
             }
+        }
         }
         
         .title {
