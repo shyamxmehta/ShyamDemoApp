@@ -90,20 +90,30 @@ export class ViewSingleProductComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         if (result.isConfirmed) {
-          this.itemsService.updateProduct(updatedProduct).subscribe({
-            next: (value) => {
-              this.itemsService.getProductsFromApi();
-              Swal.fire({
-                title: 'Updated!',
-                text: 'Your item has been updated.',
-                icon: 'success',
-                timer: 1500,
-                confirmButtonColor: '#3f93f1',
-              });
-
-              this.router.navigate(['/inventory/view-products']);
-            },
+          this.itemsService.updateProduct(updatedProduct);
+          Swal.fire({
+            title: 'Updated!',
+            text: 'Your item has been updated.',
+            icon: 'success',
+            timer: 1500,
+            confirmButtonColor: '#3f93f1',
           });
+
+          this.router.navigate(['/inventory/view-products']);
+          // this.itemsService.updateProduct(updatedProduct).subscribe({
+          //   next: (value) => {
+          //     this.itemsService.getProductsFromApi();
+          //     Swal.fire({
+          //       title: 'Updated!',
+          //       text: 'Your item has been updated.',
+          //       icon: 'success',
+          //       timer: 1500,
+          //       confirmButtonColor: '#3f93f1',
+          //     });
+
+          //     this.router.navigate(['/inventory/view-products']);
+          //   },
+          // });
         }
       }
     });

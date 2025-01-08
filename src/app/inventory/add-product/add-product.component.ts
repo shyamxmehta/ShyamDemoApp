@@ -87,10 +87,11 @@ export class AddProductComponent implements OnInit, OnDestroy{
       if (result.isConfirmed) {
         const itemData: Product = this.itemForm.value;
         const item: Product = itemData;
-        this.itemsService.addProduct(item).subscribe(res => {
-          this.itemsService.getProductsFromApi();
-          this.router.navigate(['/inventory/view-products']);
-        });
+        // this.itemsService.addProduct(item).subscribe(res => {
+        //   this.itemsService.getProductsFromApi();
+        //   this.router.navigate(['/inventory/view-products']);
+        // });
+        this.itemsService.addProduct(item);
         
         Swal.fire({
           position: "top-end",
@@ -99,7 +100,8 @@ export class AddProductComponent implements OnInit, OnDestroy{
           showConfirmButton: false,
           timer: 1500
         });
-
+        
+        this.router.navigate(['/inventory/view-products']);
       }
     })
 
