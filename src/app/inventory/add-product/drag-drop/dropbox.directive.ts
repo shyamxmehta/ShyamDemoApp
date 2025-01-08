@@ -51,7 +51,6 @@ export class DropboxDirective {
       fileReader.onload = () => {
         this.imageBase64 = fileReader.result;
         const imgBase64 = this.imageBase64!.toString()
-        console.log(imgBase64);
         this.itemsService.getItemPhoto.update(() => imgBase64)
       }
     } else {

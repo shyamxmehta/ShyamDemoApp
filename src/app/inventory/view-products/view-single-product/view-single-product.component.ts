@@ -49,7 +49,6 @@ export class ViewSingleProductComponent implements OnInit {
       error: (err) => console.log(err)
     });
 
-    console.log(this.currentProduct)
     this.itemForm.patchValue({
       Date: this.currentProduct.Date,
       ProductCode: this.currentProduct.ProductCode,
@@ -73,7 +72,6 @@ export class ViewSingleProductComponent implements OnInit {
         this.router.navigate(['/inventory/view-products'])
       }
     })
-    console.log(updatedProduct)
   }
 
 }

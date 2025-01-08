@@ -36,7 +36,6 @@ export class TableComponent {
   edit(item: Product) {
     const urlString = this.router.url + '/' + item.id;
     this.router.navigateByUrl(urlString, { state: { data: item} })
-    console.log(item.id);
   }
 
   delete(id: string) {

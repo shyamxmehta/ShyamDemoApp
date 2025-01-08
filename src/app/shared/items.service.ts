@@ -24,19 +24,16 @@ export class ItemsService {
       .getProductListing()
       .pipe((products: any) => {
         products.forEach((p: any) => {
-          console.log(p);
           for (const i in p) {
             // p[i].Date = new Date(p[i].Date).toLocaleDateString();
             this.products.push(p[i]);
             this.products.push(p[i]);
           }
         });
-        console.log(this.products);
         return products;
       })
       .subscribe({
         next: (products) => {
-          console.log(products);
           this.getProducts.next(this.products);
         },
         error: (err) => {
