@@ -2,7 +2,7 @@ import { Product } from "./product.interface";
 
 export const Products: Product[] = [
     {
-      "Date": "06/01/2025",
+      "Date": "06/12/2024",
       "ProductCode": 410190,
       "ProductDescription": "Flour Wheat Exe",
       "CostPrice": 2000,
