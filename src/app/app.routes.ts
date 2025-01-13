@@ -70,9 +70,9 @@ export const routes: Routes = [
       {
         path: 'add-product',
         loadComponent: () =>
-          import(
-            './inventory/add-product/add-product.component'
-          ).then((m) => m.AddProductComponent),
+          import('./inventory/add-product/add-product.component').then(
+            (m) => m.AddProductComponent
+          ),
         title: 'Add Product',
         data: { breadcrumb: 'Add Product' },
       },
@@ -88,9 +88,9 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () =>
-          import(
-            './end-of-day/end-of-day.component'
-          ).then((m) => m.EndOfDayComponent),
+          import('./end-of-day/end-of-day.component').then(
+            (m) => m.EndOfDayComponent
+          ),
         title: 'End of day',
         data: { breadcrumb: 'End of Day' },
       },

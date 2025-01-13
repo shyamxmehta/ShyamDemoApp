@@ -16,8 +16,17 @@ export class ItemsService {
   getProducts = new BehaviorSubject<Product[]>(this.products);
 
   constructor() {
-    this.products = Products;
-    this.getProducts.next(this.products)
+    const products = Products;
+    this.products = products.map((product) => {
+      product.Date = this.formatToLocaleString(product.Date!);
+      return product;
+    });
+    console.log(this.products);
+    // this.products.forEach((product) => {
+    //   const newDate = this.formatStringToDate(product.Date!);
+    //   product.Date = newDate
+    // });
+    this.getProducts.next(this.products);
     // this.getProductsFromApi();
   }
 
@@ -30,23 +39,29 @@ export class ItemsService {
     this.getProducts.next(this.products);
   }
 
-  deleteProduct(id: string){
-    const index = this.products.findIndex(m => m.id === id);
+  deleteProduct(id: string) {
+    const index = this.products.findIndex((m) => m.id === id);
     this.products.splice(index, 1);
     this.getProducts.next(this.products);
   }
 
   updateProduct(product: Product) {
-    debugger
-    const newProducts = this.products.map(prod => {
-      if (prod.ProductCode == product.ProductCode){
+    const newProducts = this.products.map((prod) => {
+      if (prod.ProductCode == product.ProductCode) {
         return product;
       } else return prod;
-    })
+    });
     this.products = newProducts;
     this.getProducts.next(this.products);
   }
 
+  private formatToLocaleString(date: string) {
+    const dateArr = date.split('-');
+    if (dateArr[2]) {
+      const newDate = dateArr[2] + '/' + dateArr[1] + '/' + dateArr[0];
+      return newDate;
+    } else return date;
+  }
   // getProductsFromApi() {
   //   this.products = []; // empty aray b4 api call always
   //   this.apiService

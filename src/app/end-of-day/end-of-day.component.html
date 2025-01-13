@@ -21,6 +21,7 @@
             <input
               [ngModel]="setDate.start"
               (ngModelChange)="setDate.start = $event"
+              (change)="filterByDate()"
               type="date"
               name="opening.start"
             />
@@ -28,19 +29,16 @@
           <div class="to">
             <label for="to">To</label>
             <input
-              [ngModel]="setDate.end | date : 'yyyy-MM-dd'"
+              [ngModel]="setDate.end"
               (ngModelChange)="setDate.end = $event"
+              (change)="filterByDate()"
               type="date"
               name="opening.start"
             />
           </div>
         </div>
         <button>
-          <img
-            src="assets/reload-icon.svg"
-            alt=""
-            (click)="filterByDate()"
-          />
+          <img src="assets/reload-icon.svg" alt="" (click)="filterByDate()" />
         </button>
       </div>
     </div>

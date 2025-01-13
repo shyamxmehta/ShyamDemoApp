@@ -8,7 +8,7 @@ import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-end-of-day',
   standalone: true,
-  imports: [BreadcrumbsComponent, TableComponent, FormsModule, DatePipe],
+  imports: [BreadcrumbsComponent, TableComponent, FormsModule],
   templateUrl: './end-of-day.component.html',
   styleUrl: './end-of-day.component.scss',
 })
@@ -35,19 +35,21 @@ export class EndOfDayComponent implements OnInit, OnDestroy {
   }
 
   filterByDate() {
-    const fromDate = this.formatDateToLocale(this.setDate.start);
-    const toDate = this.formatDateToLocale(this.setDate.end);
-
-    this.searchService.filterProductsByDate(fromDate, toDate);
+    const startDate = new Date(Date.parse(this.setDate.start));
+    const endDate = new Date(Date.parse(this.setDate.end));
+    // const fromDate = this.formatDateToString(this.setDate.start);
+    // const toDate = this.formatDateToString(this.setDate.end);
+    this.searchService.filterProductsByDate(startDate, endDate);
   }
 
-  formatDateToLocale(date: string) {
+  formatDateToString(date: string) {
     const dateArr = date.split('-');
     if (dateArr[2]) {
       const newDate = dateArr[2] + '/' + dateArr[1] + '/' + dateArr[0];
       return newDate;
     } else return date;
   }
+
   ngOnDestroy(): void {
     this.searchService.clearFilter();
   }

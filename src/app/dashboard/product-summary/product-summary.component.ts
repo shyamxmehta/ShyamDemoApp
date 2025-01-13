@@ -40,7 +40,7 @@ export class ProductSummaryComponent implements OnInit, OnDestroy {
     const fromDate = this.formatDateToLocale(this.setDate.start);
     const toDate = this.formatDateToLocale(this.setDate.end);
 
-    this.searchService.filterProductsByDate(fromDate, toDate);
+    // this.searchService.filterProductsByDate(fromDate, toDate);
   }
 
   formatDateToLocale(date: string) {
