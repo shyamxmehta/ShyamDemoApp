@@ -47,12 +47,9 @@ export class SearchService {
 
   filterProductsByDate(filterFrom: Date, filterTo: Date) {
     this.dateFilteredProducts = this.allProducts.filter((product: Product) => {
-      console.log(product.Date);
       const prodDate = new Date(Date.parse(product.Date!));
-      console.log(prodDate);
-      // return product ? prodDate >= filterFrom && prodDate <= filterTo : null;
+      return product ? prodDate >= filterFrom && prodDate <= filterTo : null;
     });
-    console.log(this.dateFilteredProducts);
     this.getProducts.next(this.dateFilteredProducts);
     // if (this.dateFilteredProducts.length != 0) {
     // } else this.getProducts.next(null);

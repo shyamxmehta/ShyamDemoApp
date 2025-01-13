@@ -21,6 +21,7 @@ export class ItemsService {
       product.Date = this.formatToLocaleString(product.Date!);
       return product;
     });
+    console.log(this.products);
     this.getProducts.next(this.products);
     // this.getProductsFromApi();
   }

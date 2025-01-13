@@ -19,7 +19,7 @@
           <div class="from">
             <label for="from">From</label>
             <input
-              [ngModel]="setDate.start"
+              [ngModel]="setDate.start | date : 'yyyy-MM-dd'"
               (ngModelChange)="setDate.start = $event"
               (change)="filterByDate()"
               type="date"
@@ -29,7 +29,7 @@
           <div class="to">
             <label for="to">To</label>
             <input
-              [ngModel]="setDate.end"
+              [ngModel]="setDate.end | date : 'yyyy-MM-dd'"
               (ngModelChange)="setDate.end = $event"
               (change)="filterByDate()"
               type="date"
