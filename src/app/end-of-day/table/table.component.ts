@@ -28,7 +28,8 @@ export class TableComponent {
         if (products) {
           this.products = products;
           this.totalItems = products.length;
-          this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+          const pages = Math.ceil(this.totalItems / this.pageSize);
+          pages == 0 ? (this.totalPages = 1) : (this.totalPages = pages);
           this.loadPage();
         } else {
           this.products = [];

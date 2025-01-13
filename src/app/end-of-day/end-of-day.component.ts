@@ -39,7 +39,6 @@ export class EndOfDayComponent implements OnInit, OnDestroy {
     const endDate = new Date(Date.parse(this.setDate.end));
     startDate.setHours(0);
     endDate.setHours(0);
-    console.log(startDate, endDate);
     this.searchService.filterProductsByDate(startDate, endDate);
   }
 
