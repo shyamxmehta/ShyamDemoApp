@@ -16,7 +16,7 @@
     <tbody>
       @for (product of products; track $index) {
       <tr>
-        <td>{{ product.Date }}</td>
+        <td>{{ product.Date | date : "dd/MM/yyyy" }}</td>
         <td style="font-weight: 600">{{ product.ProductCode }}</td>
         <td>{{ product.ProductDescription }}</td>
         <td>{{ product.CostPrice | number }}</td>

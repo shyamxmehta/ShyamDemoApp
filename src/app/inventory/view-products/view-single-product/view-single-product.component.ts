@@ -8,7 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ItemsService } from '../../../shared/items.service';
+import { ItemsService } from '../../../shared/products.service';
 import Swal from 'sweetalert2';
 
 @Component({

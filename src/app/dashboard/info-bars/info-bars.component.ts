@@ -1,14 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { ItemsService } from '../../shared/items.service';
+import { ItemsService } from '../../shared/products.service';
 
 @Component({
   selector: 'app-info-bars',
   standalone: true,
   imports: [],
   templateUrl: './info-bars.component.html',
-  styleUrl: './info-bars.component.scss'
+  styleUrl: './info-bars.component.scss',
 })
 export class InfoBarsComponent {
-
   itemsService = inject(ItemsService);
 }

@@ -21,11 +21,6 @@ export class ItemsService {
       product.Date = this.formatToLocaleString(product.Date!);
       return product;
     });
-    console.log(this.products);
-    // this.products.forEach((product) => {
-    //   const newDate = this.formatStringToDate(product.Date!);
-    //   product.Date = newDate
-    // });
     this.getProducts.next(this.products);
     // this.getProductsFromApi();
   }

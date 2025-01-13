@@ -15,7 +15,7 @@ export const Products: Product[] = [
     id: '1',
   },
   {
-    Date: '06/01/2025',
+    Date: '06-01-2025',
     ProductCode: 410120,
     ProductDescription: 'Kabras Sugar 2Kg',
     CostPrice: 1250,
@@ -28,7 +28,7 @@ export const Products: Product[] = [
     id: '2',
   },
   {
-    Date: '06/01/2025',
+    Date: '06-01-2025',
     ProductCode: 410146,
     ProductDescription: 'Blue Band 250g',
     CostPrice: 1500,
@@ -41,7 +41,7 @@ export const Products: Product[] = [
     id: '3',
   },
   {
-    Date: '06/01/2025',
+    Date: '06-01-2025',
     ProductCode: 410130,
     ProductDescription: 'Kasuku Cooking Fat',
     CostPrice: 1000,
@@ -54,7 +54,7 @@ export const Products: Product[] = [
     id: '4',
   },
   {
-    Date: '06/01/2025',
+    Date: '06-01-2025',
     ProductCode: 410121,
     ProductDescription: 'Kensalt 250g',
     CostPrice: 300,

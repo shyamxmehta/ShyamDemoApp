@@ -1,6 +1,6 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { Product } from '../../../../shared/product.interface';
-import { ItemsService } from '../../../../shared/items.service';
+import { ItemsService } from '../../../../shared/products.service';
 import { SearchPipe } from '../../../../shared/pipes/search.pipe';
 import { DecimalPipe, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';

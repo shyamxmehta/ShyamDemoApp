@@ -1,43 +1,42 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { BreadcrumbsComponent } from "../../breadcrumbs/breadcrumbs.component";
-import { DragDropComponent } from "./drag-drop/drag-drop.component";
+import { BreadcrumbsComponent } from '../../breadcrumbs/breadcrumbs.component';
+import { DragDropComponent } from './drag-drop/drag-drop.component';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiService } from '../../shared/api.service';
 import { Product } from '../../shared/product.interface';
-import { ItemsService } from '../../shared/items.service';
+import { ItemsService } from '../../shared/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-product',
   standalone: true,
-  imports: [ BreadcrumbsComponent, DragDropComponent, ReactiveFormsModule ],
+  imports: [BreadcrumbsComponent, DragDropComponent, ReactiveFormsModule],
   templateUrl: './add-product.component.html',
-  styleUrl: './add-product.component.scss'
+  styleUrl: './add-product.component.scss',
 })
-export class AddProductComponent implements OnInit, OnDestroy{
-
+export class AddProductComponent implements OnInit, OnDestroy {
   fb = inject(FormBuilder);
   apiService = inject(ApiService);
   itemsService = inject(ItemsService);
   router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
 
-
   itemForm = this.fb.group({
-    Date: [new Date(Date.now()).toLocaleDateString('en-CA'), Validators.required],
+    Date: [
+      new Date(Date.now()).toLocaleDateString('en-CA'),
+      Validators.required,
+    ],
     ProductCode: [0, Validators.required],
     ProductDescription: ['', Validators.required],
     CostPrice: [Validators.required],
-    SellingPrice: [Validators.required], 
+    SellingPrice: [Validators.required],
     Unit: ['', Validators.required],
     Quantity: [Validators.required],
-    StockVal: [1,Validators.required],
-    Image: ['', Validators.required]
+    StockVal: [1, Validators.required],
+    Image: ['', Validators.required],
   });
 
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   getProductCode() {
     // get current productList
@@ -45,44 +44,44 @@ export class AddProductComponent implements OnInit, OnDestroy{
     // sort in productCode desc order
     productList.sort((a, b) => {
       if (a.ProductCode! > b.ProductCode!) {
-        return -1
-      } else return 1
-    })
+        return -1;
+      } else return 1;
+    });
     // pick top item
-    const lastItem = productList.slice(0,1);
+    const lastItem = productList.slice(0, 1);
     let newCode: number = 0;
     // get code and add 1
     for (const key in lastItem) {
       newCode = lastItem[key].ProductCode!;
     }
-    newCode++
+    newCode++;
     return newCode;
   }
-  
-  onSubmit() {    
+
+  onSubmit() {
     this.itemForm.patchValue({
       Date: this.formatDateToLocale(this.itemForm.value.Date!),
       ProductCode: this.getProductCode(),
-      Image: this.itemsService.getItemPhoto()
+      Image: this.itemsService.getItemPhoto(),
     });
-    
+
     if (!this.itemForm.valid) {
       Swal.fire({
-        icon: "error",
-        title: "Invalid",
-        text: "Kindly fill all required fields",
-        confirmButtonColor: "#198754",
+        icon: 'error',
+        title: 'Invalid',
+        text: 'Kindly fill all required fields',
+        confirmButtonColor: '#198754',
       });
       return;
-    };
-     
+    }
+
     Swal.fire({
-      title: "Add Item?",
-      text: "Are you sure you want to add this item?",
+      title: 'Add Item?',
+      text: 'Are you sure you want to add this item?',
       showCancelButton: true,
-      confirmButtonColor: "#198754",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, add it!"
+      confirmButtonColor: '#198754',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, add it!',
     }).then((result) => {
       if (result.isConfirmed) {
         const itemData: Product = this.itemForm.value;
@@ -92,19 +91,18 @@ export class AddProductComponent implements OnInit, OnDestroy{
         //   this.router.navigate(['/inventory/view-products']);
         // });
         this.itemsService.addProduct(item);
-        
+
         Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Your work has been saved",
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your work has been saved',
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
-        
+
         this.router.navigate(['/inventory/view-products']);
       }
-    })
-
+    });
   }
 
   formatDateToLocale(date: string) {
@@ -116,7 +114,6 @@ export class AddProductComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.itemsService.getItemPhoto.update(() => '')
+    this.itemsService.getItemPhoto.update(() => '');
   }
-
 }

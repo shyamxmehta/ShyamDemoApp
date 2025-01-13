@@ -7,14 +7,13 @@ import { SearchService } from '../../shared/search.service';
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [AsyncPipe, DecimalPipe],
+  imports: [AsyncPipe, DecimalPipe, DatePipe],
   templateUrl: './table.component.html',
-  styleUrl: './table.component.scss'
+  styleUrl: './table.component.scss',
 })
 export class TableComponent {
-
   searchService = inject(SearchService);
-  products:  Product[] | undefined;
+  products: Product[] | undefined;
   filteredData$ = new Observable<Product[] | null>();
 
   page = 1;
@@ -34,15 +33,15 @@ export class TableComponent {
         } else {
           this.products = [];
         }
-      }
-    })
+      },
+    });
   }
 
   loadPage() {
     // debugger
     const startIndex = (this.page - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
-    let paginatedData: Product[] = []
+    let paginatedData: Product[] = [];
     if (this.products) {
       paginatedData = this.products.slice(startIndex, endIndex);
     }
@@ -51,7 +50,7 @@ export class TableComponent {
 
   nextPage() {
     // debugger
-    if((this.page * this.pageSize) < this.totalItems) {
+    if (this.page * this.pageSize < this.totalItems) {
       this.page++;
       this.loadPage();
     }
@@ -71,5 +70,4 @@ export class TableComponent {
   //     this.loadPage();
   //   }
   // }
-
 }

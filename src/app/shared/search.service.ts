@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { ItemsService } from './items.service';
+import { ItemsService } from './products.service';
 import { BehaviorSubject, from, Observable } from 'rxjs';
 import { Product } from './product.interface';
 
@@ -50,8 +50,7 @@ export class SearchService {
       console.log(product.Date);
       const prodDate = new Date(Date.parse(product.Date!));
       console.log(prodDate);
-
-      return product ? prodDate >= filterFrom && prodDate <= filterTo : null;
+      // return product ? prodDate >= filterFrom && prodDate <= filterTo : null;
     });
     console.log(this.dateFilteredProducts);
     this.getProducts.next(this.dateFilteredProducts);

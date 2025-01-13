@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { ItemsService } from '../../shared/items.service';
+import { ItemsService } from '../../shared/products.service';
 import { Observable } from 'rxjs';
 import { Product } from '../../shared/product.interface';
 import { AsyncPipe, DatePipe, DecimalPipe } from '@angular/common';
