@@ -2,8 +2,7 @@
 // @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 // @import 'system-font';
 
-$sidebar-width: 10rem;
-$header-height: 3.5rem;
+// $sidebar-width: 10rem;
 
 $main-bg: #e2e2e2;
 $light-main-bg: #f8f8f8;
@@ -18,28 +17,41 @@ $toggle-active: #2fda23;
 $white: #fff;
 $black: #000;
 
-// html {
-//     box-sizing: border-box;
-// }
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    // box-sizing: inherit;
-    box-sizing: border-box;
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  //   box-sizing: border-box;
+}
+
+:root {
+  --sidebar-width: 10rem;
+  --header-height: 3.5rem;
 }
 
 body {
-    // font-family: "Roboto", serif;
-    font-family:  system-ui, "Segoe UI", Tahoma; ;
-    background-color: $main-bg;
+  // font-family: "Roboto", serif;
+  font-family: system-ui, "Segoe UI", Tahoma;
+  background-color: $main-bg;
 }
 
 button {
-    font-size: 15px;
-    font-weight: 600;
-    color: $white;
-    background-color: $blue-button;
-    border: none;
-    padding: 5px 12px;
-    border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  color: $white;
+  background-color: $blue-button;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 700px) {
+  :root {
+    --sidebar-width: 0rem;
+  }
 }
