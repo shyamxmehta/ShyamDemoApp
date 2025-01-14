@@ -1,5 +1,4 @@
-@import '../../../styles.scss';
-
+@import "../../../styles.scss";
 
 $card1: #16ab97;
 $card2: #f9892e;
@@ -7,62 +6,75 @@ $card3: #1679ab;
 $card4: #e23a0f;
 $card5: #4a995f;
 
-
 .container {
-    padding: .7rem;
-    background-color: $white;
-    border-radius: 5px;
-    margin-bottom: .7rem;
+  padding: 0.7rem;
+  background-color: $white;
+  border-radius: 5px;
+  margin-bottom: 0.7rem;
 
-    .wrapper {
-        margin: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        gap: 15px;
+  .wrapper {
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 15px;
 
-        .card {
-            display: flex;
-            justify-content: space-between;  
-            padding: 7px 10px;
-            border-radius: 5px;
-            
-            .info {
-                display: flex;
-                flex-direction: column;
-                color: $white;
-                font-size: 8px;
-                font-weight: 300;
+    .card {
+      display: flex;
+      justify-content: space-between;
+      padding: 7px 10px;
+      border-radius: 5px;
 
-                p {
-                    font-size: 20px;
-                    font-weight: 600;
-                }
-            }
+      .info {
+        display: flex;
+        flex-direction: column;
+        color: $white;
+        font-size: 8px;
+        font-weight: 300;
 
-            .icon {
-                height: 40px;
-                align-self: center;
+        p {
+          font-size: 20px;
+          font-weight: 600;
+        }
+      }
 
-                img {
-                    height: 100%;
-                }
-            }
+      .icon {
+        height: 40px;
+        align-self: center;
 
+        img {
+          height: 100%;
         }
-        .card:nth-of-type(1) {
-            background-color: $card1;
-        }
-        .card:nth-of-type(2) {
-            background-color: $card2;
-        }
-        .card:nth-of-type(3) {
-            background-color: $card3;
-        }
-        .card:nth-of-type(4) {
-            background-color: $card4;
-        }
-        .card:nth-of-type(5) {
-            background-color: $card5;
-        }
+      }
     }
+    .card:nth-of-type(1) {
+      background-color: $card1;
+    }
+    .card:nth-of-type(2) {
+      background-color: $card2;
+    }
+    .card:nth-of-type(3) {
+      background-color: $card3;
+    }
+    .card:nth-of-type(4) {
+      background-color: $card4;
+    }
+    .card:nth-of-type(5) {
+      background-color: $card5;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    .wrapper {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+@media screen and (max-width: 700px) {
+  .container {
+    .wrapper {
+      grid-template-columns: auto;
+    }
+  }
 }
