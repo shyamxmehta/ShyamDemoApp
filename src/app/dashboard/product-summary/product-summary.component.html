@@ -23,6 +23,13 @@
               (change)="filterByDate()"
               type="date"
               name="opening.start"
+              #fromDate
+            />
+            <img
+              class="calendar-icon"
+              src="assets/calendar-icon.svg"
+              alt=""
+              (click)="fromDate.showPicker()"
             />
           </div>
           <div class="to">
@@ -33,6 +40,13 @@
               (change)="filterByDate()"
               type="date"
               name="opening.start"
+              #toDate
+            />
+            <img
+              class="calendar-icon"
+              src="assets/calendar-icon.svg"
+              alt=""
+              (click)="toDate.showPicker()"
             />
           </div>
         </div>
