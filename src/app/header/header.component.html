@@ -1,18 +1,16 @@
 <div class="container">
-    <div class="wrapper">
-        <p>Hi SHYAM, WELCOME!</p>
-        <div class="profile" #profile (click)="showDropdown = !showDropdown">
-            <img src="assets/profile-photo.png" alt="profile-photo">
-            <i class="ph-bold ph-caret-down"></i>
-            <div class="dropdown" [ngClass]="showDropdown ? '' : 'close'" #dropdown>
-                <a [routerLink]="['/home/profile']">My Profile</a>
-                <button (click)="signOut()">Sign Out</button>
-            </div>
-            
-            <!-- <dialog #profileDialog >
-                <a [routerLink]="['profile']" (click)="profileDialog.close()">My Profile</a>
-                <button>Sign Out</button>
-            </dialog> -->
-        </div>
+  <div class="wrapper">
+    <div class="hamburger">
+      <img src="assets/hamburger-icon.svg" alt="" />
     </div>
+    <p>Hi SHYAM, WELCOME!</p>
+    <div class="profile" #profile (click)="showDropdown = !showDropdown">
+      <img src="assets/profile-photo.png" alt="profile-photo" />
+      <i class="ph-bold ph-caret-down"></i>
+      <div class="dropdown" [ngClass]="showDropdown ? '' : 'close'" #dropdown>
+        <a [routerLink]="['/home/profile']">My Profile</a>
+        <button (click)="signOut()">Sign Out</button>
+      </div>
+    </div>
+  </div>
 </div>

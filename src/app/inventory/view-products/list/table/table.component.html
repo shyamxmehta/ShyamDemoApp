@@ -1,32 +1,42 @@
 <div class="table-container">
-    <table>
-        <thead>
-            <div class="header-bg"></div>
-            <tr>
-                <th>Image</th>
-                <th>Product Code</th>
-                <th>Product Description</th>
-                <th>Cost Price</th>
-                <th>Quantity</th>
-                <th>Unit</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (product of products | search: searchText; track $index) {
-                <tr>
-                    <td><div class="image"><img [src]="[product.Image]" alt="" priority></div></td>
-                    <td>{{ product.ProductCode }}</td>
-                    <td>{{ product.ProductDescription }}</td>
-                    <td>{{ product.CostPrice | number }}</td>
-                    <td>{{ product.Quantity | number }}</td>
-                    <td>{{ product.Unit }}</td>
-                    <td><div class="action-icons">
-                        <img src="assets/edit-icon.svg" alt="" (click)="edit(product)">
-                        <img src="assets/trash-icon.svg" alt="" (click)="delete(product.id)">
-                    </div></td>
-                </tr>
-            }
-        </tbody>
-    </table>
+  <table>
+    <thead>
+      <div class="header-bg"></div>
+      <tr>
+        <th>Image</th>
+        <th>Product Code</th>
+        <th>Product Description</th>
+        <th>Cost Price</th>
+        <th>Quantity</th>
+        <th>Unit</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products | search: searchText; track $index) {
+      <tr>
+        <td>
+          <div class="image">
+            <img [src]="[product.Image]" alt="" priority />
+          </div>
+        </td>
+        <td>{{ product.ProductCode }}</td>
+        <td>{{ product.ProductDescription }}</td>
+        <td>{{ product.CostPrice | number }}</td>
+        <td>{{ product.Quantity | number }}</td>
+        <td>{{ product.Unit }}</td>
+        <td>
+          <div class="action-icons">
+            <img src="assets/edit-icon.svg" alt="" (click)="edit(product)" />
+            <img
+              src="assets/trash-icon.svg"
+              alt=""
+              (click)="delete(product.id)"
+            />
+          </div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
 </div>

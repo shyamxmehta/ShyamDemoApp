@@ -14,14 +14,22 @@
     justify-content: space-between;
     height: var(--header-height);
     padding: 0 20px;
+    gap: 10px;
 
+    .hamburger {
+      display: none;
+      height: 30px;
+
+      img {
+        height: 100%;
+      }
+    }
     p {
       color: #0e2d4c;
       font-weight: 700;
     }
 
     .profile {
-      // anchor-name: --profile;
       position: relative;
       display: flex;
       align-items: center;
@@ -38,8 +46,6 @@
       }
 
       .dropdown {
-        // position-anchor: --profile;
-        // bottom: anchor(end);
         position: absolute;
         top: 38px;
         left: -57px;
@@ -70,6 +76,16 @@
 
       .dropdown.close {
         display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 753px) {
+  .container {
+    .wrapper {
+      .hamburger {
+        display: block;
       }
     }
   }

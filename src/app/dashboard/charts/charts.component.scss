@@ -32,6 +32,10 @@
 
     .divider {
       border: 1px solid #eeee;
+
+      &.bottom {
+        display: none;
+      }
     }
 
     .pie-chart {
@@ -54,6 +58,11 @@
   .container {
     .wrapper {
       display: block;
+
+      .divider.bottom {
+        display: block;
+        margin-top: 0.7rem;
+      }
     }
   }
 }

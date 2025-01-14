@@ -1,88 +1,90 @@
-@import '../../../../styles.scss';
+@import "../../../../styles.scss";
 
 .wrapper {
-    margin-top: 14px;
-    padding: 1rem;
-    background-color: $white;
-    border-radius: 10px 10px 0 0;
+  margin-top: 14px;
+  padding: 1rem;
+  background-color: $white;
+  border-radius: 10px 10px 0 0;
 
-    
-    .title {
-        display: flex;
-        justify-content: center;
-        padding: 10px;
-        font-size: 20px;
-        border-top: 3px solid #f6a707;
-        background-color: #fbf5f5;
-    }
-    
-    .content {
-        display: flex;
-        padding: 15px 25px;
-        gap: 30px;
-    
-        .product-image {
-            flex: .5;
-            display: flex;
-            height: 250px;
-            justify-content: center;
-            img {
-                height: 100%;
-            }
-        }
-    
-        .form-container {
-            flex: 1;
-            form {
-                width: 100%;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 0.8fr 0.8fr 0.8fr 1fr;
-                gap: 18px 30px;
-                
-                .form-control {
-                    
-                    label {
-                        display: block;
-                        font-size: 10px;
-                        color: #666666;
-                        margin-bottom: 5px;
-                    }
-    
-                    input {
-                        padding: 7px;
-                        width: 100%;
-                        border: 1px solid #e0e0e0;
-                        border-radius: 3px;
-                    }
-                }
-    
-                .form-control:first-of-type {
-                    grid-column: span 2;
-                }
-    
-                input::-webkit-outer-spin-button,
-                input::-webkit-inner-spin-button {
-                    -webkit-appearance: none;
-                    margin: 0;
-                }
-    
-                input[type=number] {
-                    //for firefox
-                    //-moz-appearance: textfield;
-                    direction: rtl;
-                }
-                
-                button {
-                    grid-column: span 2;
-                    border-radius: 3px;
-                    font-weight: 300;
-                    font-size: 20px;
-                    cursor: pointer;
-                }
-            }
-        }
-    }
- 
+  .title {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    font-size: 20px;
+    border-top: 3px solid #f6a707;
+    background-color: #fbf5f5;
+  }
 
+  .content {
+    display: flex;
+    padding: 15px 25px;
+    gap: 30px;
+
+    .product-image {
+      flex: 0.5;
+      display: flex;
+      height: 250px;
+      justify-content: center;
+      img {
+        height: 100%;
+      }
+    }
+
+    .form-container {
+      flex: 1;
+      form {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.8fr 0.8fr 0.8fr 1fr;
+        gap: 18px 30px;
+
+        .form-control {
+          label {
+            display: block;
+            font-size: 10px;
+            color: #666666;
+            margin-bottom: 5px;
+          }
+
+          input {
+            padding: 7px;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            border-radius: 3px;
+          }
+        }
+
+        .form-control:first-of-type {
+          grid-column: span 2;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        input[type="number"] {
+          //for firefox
+          //-moz-appearance: textfield;
+          direction: rtl;
+        }
+
+        button {
+          grid-column: span 2;
+          border-radius: 3px;
+          font-weight: 300;
+          font-size: 20px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 753px) {
+  .content {
+    flex-direction: column;
+  }
 }
