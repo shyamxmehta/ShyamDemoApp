@@ -136,7 +136,7 @@ export class ChartsComponent implements OnInit {
         },
       },
       //
-      responsive: false,
+      responsive: true,
       maintainAspectRatio: false,
       aspectRatio: 1.5,
       plugins: {
@@ -163,7 +163,6 @@ export class ChartsComponent implements OnInit {
       options: options,
       plugins: [ChartDataLabels],
     };
-
     const pieChart = new Chart('pie-chart', config);
   }
 }

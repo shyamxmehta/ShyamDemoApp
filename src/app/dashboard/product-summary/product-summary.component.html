@@ -5,88 +5,96 @@
         <p>PRODUCT SUMMARY</p>
       </div>
       <div class="search-bar">
-        <p>Search</p>
-        <div class="input">
-          <span><img src="assets/search-mag-icon.svg" alt="" /></span>
-          <input
-            type="text"
-            placeholder="Search Product"
-            [(ngModel)]="searchText"
-          />
+        <div class="text-search">
+          <p>Search</p>
+          <div class="input">
+            <span><img src="assets/search-mag-icon.svg" alt="" /></span>
+            <input
+              type="text"
+              placeholder="Search Product"
+              [(ngModel)]="searchText"
+            />
+          </div>
         </div>
         <div class="date-filter">
           <div class="from">
             <label for="from">From</label>
-            <input
-              [ngModel]="setDate.start"
-              (ngModelChange)="setDate.start = $event"
-              (change)="filterByDate()"
-              type="date"
-              name="opening.start"
-              #fromDate
-            />
-            <img
-              class="calendar-icon"
-              src="assets/calendar-icon.svg"
-              alt=""
-              (click)="fromDate.showPicker()"
-            />
+            <div class="input-wrapper">
+              <input
+                [ngModel]="setDate.start"
+                (ngModelChange)="setDate.start = $event"
+                (change)="filterByDate()"
+                type="date"
+                name="opening.start"
+                #fromDate
+              />
+              <img
+                class="calendar-icon"
+                src="assets/calendar-icon.svg"
+                alt=""
+                (click)="fromDate.showPicker()"
+              />
+            </div>
           </div>
           <div class="to">
             <label for="to">To</label>
-            <input
-              [ngModel]="setDate.end | date : 'yyyy-MM-dd'"
-              (ngModelChange)="setDate.end = $event"
-              (change)="filterByDate()"
-              type="date"
-              name="opening.start"
-              #toDate
-            />
-            <img
-              class="calendar-icon"
-              src="assets/calendar-icon.svg"
-              alt=""
-              (click)="toDate.showPicker()"
-            />
+            <div class="input-wrapper">
+              <input
+                [ngModel]="setDate.end | date : 'yyyy-MM-dd'"
+                (ngModelChange)="setDate.end = $event"
+                (change)="filterByDate()"
+                type="date"
+                name="opening.start"
+                #toDate
+              />
+              <img
+                class="calendar-icon"
+                src="assets/calendar-icon.svg"
+                alt=""
+                (click)="toDate.showPicker()"
+              />
+            </div>
           </div>
+          <button (click)="filterByDate()">
+            <img src="assets/reload-icon.svg" alt="" />
+          </button>
         </div>
-        <button (click)="filterByDate()">
-          <img src="assets/reload-icon.svg" alt="" />
-        </button>
       </div>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Product Code</th>
-          <th>Product Description</th>
-          <th class="number">Cost Price</th>
-          <th class="number">Selling Price</th>
-          <th>Unit</th>
-          <th class="number">Quantity</th>
-          <th class="number">Stock Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        @if(products$ | async; as products) { @for (product of products |
-        search: searchText; track $index) {
-        <tr>
-          <td>{{ product.Date }}</td>
-          <td>{{ product.ProductCode }}</td>
-          <td>{{ product.ProductDescription }}</td>
-          <td class="number">{{ product.CostPrice | number }}</td>
-          <td class="number">{{ product.SellingPrice | number }}</td>
-          <td>{{ product.Unit }}</td>
-          <td class="number">{{ product.Quantity | number }}</td>
-          <td class="number">{{ product.StockVal | number : "1.2-2" }}</td>
-        </tr>
-        } } @else {
-        <tr>
-          NO DATA
-        </tr>
-        }
-      </tbody>
-    </table>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Product Code</th>
+            <th>Product Description</th>
+            <th class="number">Cost Price</th>
+            <th class="number">Selling Price</th>
+            <th>Unit</th>
+            <th class="number">Quantity</th>
+            <th class="number">Stock Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if(products$ | async; as products) { @for (product of products |
+          search: searchText; track $index) {
+          <tr>
+            <td>{{ product.Date }}</td>
+            <td>{{ product.ProductCode }}</td>
+            <td>{{ product.ProductDescription }}</td>
+            <td class="number">{{ product.CostPrice | number }}</td>
+            <td class="number">{{ product.SellingPrice | number }}</td>
+            <td>{{ product.Unit }}</td>
+            <td class="number">{{ product.Quantity | number }}</td>
+            <td class="number">{{ product.StockVal | number : "1.2-2" }}</td>
+          </tr>
+          } } @else {
+          <tr>
+            NO DATA
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
