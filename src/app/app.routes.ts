@@ -134,8 +134,8 @@ export const routes: Routes = [
 ];
 
 // dashboard component date range should be from start of month to current date -- done
+// insert component input box for number fix -- done
 
-// insert component input box for number fix
-// make rights work
 // table alignment of all columns to match design
+// make rights work
 // responsiveness

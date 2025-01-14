@@ -7,10 +7,10 @@
         <th>Date</th>
         <th>Product Code</th>
         <th>Product Description</th>
-        <th>Cost Price</th>
-        <th>Selling Price</th>
+        <th class="number">Cost Price</th>
+        <th class="number">Selling Price</th>
         <th>Unit</th>
-        <th>Quantity</th>
+        <th class="number">Quantity</th>
       </tr>
     </thead>
     <tbody>
@@ -19,10 +19,10 @@
         <td>{{ product.Date | date : "dd/MM/yyyy" }}</td>
         <td style="font-weight: 600">{{ product.ProductCode }}</td>
         <td>{{ product.ProductDescription }}</td>
-        <td>{{ product.CostPrice | number }}</td>
-        <td>{{ product.SellingPrice | number }}</td>
+        <td class="number">{{ product.CostPrice | number }}</td>
+        <td class="number">{{ product.SellingPrice | number }}</td>
         <td>{{ product.Unit }}</td>
-        <td>{{ product.Quantity | number }}</td>
+        <td class="number">{{ product.Quantity | number }}</td>
       </tr>
       }
     </tbody>

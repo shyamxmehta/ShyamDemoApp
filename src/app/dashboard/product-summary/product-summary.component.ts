@@ -18,7 +18,6 @@ export class ProductSummaryComponent implements OnInit, OnDestroy {
   itemsService = inject(ItemsService);
   searchService = inject(SearchService);
   products$ = new Observable<Product[] | null>();
-  // date = new Date();
   searchText: string = '';
   setDate!: {
     start: string;
@@ -37,10 +36,11 @@ export class ProductSummaryComponent implements OnInit, OnDestroy {
   }
 
   filterByDate() {
-    const fromDate = this.formatDateToLocale(this.setDate.start);
-    const toDate = this.formatDateToLocale(this.setDate.end);
-
-    // this.searchService.filterProductsByDate(fromDate, toDate);
+    const startDate = new Date(Date.parse(this.setDate.start));
+    const endDate = new Date(Date.parse(this.setDate.end));
+    startDate.setHours(0);
+    endDate.setHours(0);
+    this.searchService.filterProductsByDate(startDate, endDate);
   }
 
   formatDateToLocale(date: string) {
