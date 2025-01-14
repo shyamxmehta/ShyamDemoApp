@@ -132,3 +132,10 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent, title: 'Login' },
   { path: '**', redirectTo: '' },
 ];
+
+// dashboard component date range should be from start of month to current date -- done
+
+// insert component input box for number fix
+// make rights work
+// table alignment of all columns to match design
+// responsiveness
