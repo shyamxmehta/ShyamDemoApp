@@ -1,6 +1,6 @@
 import { Component, effect, inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from '../../../shared/product.interface';
+import { Product } from '../../../shared/interfaces/product.interface';
 import { map } from 'rxjs';
 import {
   FormBuilder,
@@ -8,8 +8,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ItemsService } from '../../../shared/products.service';
 import Swal from 'sweetalert2';
+import { ItemsService } from '../../../shared/services/products.service';
 
 @Component({
   selector: 'app-view-single-product',

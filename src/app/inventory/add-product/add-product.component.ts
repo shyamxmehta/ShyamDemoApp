@@ -2,11 +2,11 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { BreadcrumbsComponent } from '../../breadcrumbs/breadcrumbs.component';
 import { DragDropComponent } from './drag-drop/drag-drop.component';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ApiService } from '../../shared/api.service';
-import { Product } from '../../shared/product.interface';
-import { ItemsService } from '../../shared/products.service';
+import { Product } from '../../shared/interfaces/product.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ApiService } from '../../shared/services/api.service';
+import { ItemsService } from '../../shared/services/products.service';
 @Component({
   selector: 'app-add-product',
   standalone: true,

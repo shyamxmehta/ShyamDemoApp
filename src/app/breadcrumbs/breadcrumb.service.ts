@@ -2,7 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Breadcrumb } from './breadcrumb.interface';
 import { map } from 'rxjs';
-import { Product } from '../shared/product.interface';
+import { Product } from '../shared/interfaces/product.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -43,9 +43,8 @@ export class BreadcrumbService {
                 }
               }
             },
-            error: (err) => console.log(err)
+            error: (err) => console.log(err),
           });
-          
         } else
           breadcrumbs.push({
             label: child.snapshot.data['breadcrumb'],

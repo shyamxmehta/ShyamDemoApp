@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ItemsService } from '../../shared/products.service';
+import { ItemsService } from '../../shared/services/products.service';
 
 @Component({
   selector: 'app-info-bars',

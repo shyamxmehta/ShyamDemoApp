@@ -1,10 +1,10 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { Product } from '../../../../shared/product.interface';
-import { ItemsService } from '../../../../shared/products.service';
+import { Product } from '../../../../shared/interfaces/product.interface';
 import { SearchPipe } from '../../../../shared/pipes/search.pipe';
 import { DecimalPipe, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ItemsService } from '../../../../shared/services/products.service';
 
 @Component({
   selector: 'app-table',

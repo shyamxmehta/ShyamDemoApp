@@ -1,9 +1,9 @@
 import { inject, Injectable, OnInit, signal } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
-import { Product } from './product.interface';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
-import { Products } from './products';
+import { Product } from '../interfaces/product.interface';
+import { Products } from '../products';
 
 @Injectable({
   providedIn: 'root',

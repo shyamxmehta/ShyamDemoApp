@@ -4,9 +4,9 @@ import Chart, {
   ChartData,
   ChartOptions,
 } from 'chart.js/auto';
-import { ItemsService } from '../../shared/products.service';
-import { Product } from '../../shared/product.interface';
+import { Product } from '../../shared/interfaces/product.interface';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { ItemsService } from '../../shared/services/products.service';
 
 @Component({
   selector: 'app-charts',

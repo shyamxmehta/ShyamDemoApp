@@ -6,7 +6,7 @@ import {
   inject,
   Renderer2,
 } from '@angular/core';
-import { ItemsService } from '../../../shared/products.service';
+import { ItemsService } from '../../../shared/services/products.service';
 
 @Directive({
   selector: '[appDropbox]',

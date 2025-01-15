@@ -1,11 +1,11 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { ItemsService } from '../../shared/products.service';
 import { Observable } from 'rxjs';
-import { Product } from '../../shared/product.interface';
+import { Product } from '../../shared/interfaces/product.interface';
 import { AsyncPipe, DatePipe, DecimalPipe } from '@angular/common';
 import { SearchPipe } from '../../shared/pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
-import { SearchService } from '../../shared/search.service';
+import { ItemsService } from '../../shared/services/products.service';
+import { SearchService } from '../../shared/services/search.service';
 
 @Component({
   selector: 'app-product-summary',
