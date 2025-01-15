@@ -3,7 +3,7 @@
 .table-container {
   min-height: 350px;
   background-color: $white;
-
+  overflow: auto;
   table {
     width: 100%;
     align-self: center;

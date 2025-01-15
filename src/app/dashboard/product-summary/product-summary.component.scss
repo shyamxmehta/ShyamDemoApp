@@ -125,28 +125,30 @@
         }
       }
     }
+    .table-container {
+      overflow: auto;
+      table {
+        width: 100%;
+        border-collapse: collapse;
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-
-      th,
-      td {
-        color: #0e3659;
-        text-align: left;
-        padding: 0 20px;
-        &.number {
-          text-align: right;
+        th,
+        td {
+          color: #0e3659;
+          text-align: left;
+          padding: 0 20px;
+          &.number {
+            text-align: right;
+          }
         }
-      }
 
-      td {
-        height: 30px;
-      }
+        td {
+          height: 30px;
+        }
 
-      tbody {
-        tr:nth-of-type(even) {
-          background-color: #f2f1f1;
+        tbody {
+          tr:nth-of-type(even) {
+            background-color: #f2f1f1;
+          }
         }
       }
     }
@@ -189,8 +191,5 @@
         }
       }
     }
-  }
-  .table-container {
-    overflow: auto;
   }
 }

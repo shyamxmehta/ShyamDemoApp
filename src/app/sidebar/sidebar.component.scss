@@ -8,6 +8,7 @@
   bottom: 0;
   background-color: $sidebar-bg;
   z-index: 100;
+  transition: all 0.5s ease;
 
   .logo {
     padding: 10px;
@@ -60,9 +61,10 @@
 }
 .close {
   left: -10rem;
+  transition: all 0.5s ease;
 }
 
-// @media screen and (max-width: 753px) {
+// @media screen and (max-width: 47rem) {
 //   .container {
 //     display: none;
 //   }
