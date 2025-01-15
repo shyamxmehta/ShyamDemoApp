@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { Product } from '../../../../shared/interfaces/product.type';
+import { Product } from '../../../../shared/objects/product';
 import { SearchPipe } from '../../../../shared/pipes/search.pipe';
 import { DecimalPipe, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';

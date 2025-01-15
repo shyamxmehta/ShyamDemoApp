@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../shared/services/users.service';
-import { demoUser } from '../shared/interfaces/user.type';
+import { demoUser } from '../shared/objects/user';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +21,8 @@ export class AuthService {
 
   login() {
     this.isLoggedIn.update(() => true);
-    this.usersService.setCurrentUser(demoUser);
+    this.usersService.setCurrentUser();
+    console.log(this.usersService.currentUser$.getValue());
     this.router.navigate(['']);
   }
 }

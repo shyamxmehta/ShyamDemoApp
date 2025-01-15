@@ -42,6 +42,7 @@ export const routes: Routes = [
             (m) => m.InventoryComponent
           ),
         title: 'inventory',
+        canActivate: [routeGuard],
       },
       {
         path: 'view-products',
@@ -96,6 +97,7 @@ export const routes: Routes = [
           ),
         title: 'End of day',
         data: { breadcrumb: 'End of Day' },
+        canActivate: [routeGuard],
       },
     ],
   },

@@ -1,14 +1,36 @@
 import { inject } from '@angular/core';
-import {
-  ActivatedRoute,
-  ActivatedRouteSnapshot,
-  CanActivateFn,
-} from '@angular/router';
-import { UserRightsService } from '../shared/services/user-rights.service';
+import { CanActivateFn } from '@angular/router';
+import { UsersService } from '../shared/services/users.service';
+import Swal from 'sweetalert2';
 
 export const routeGuard: CanActivateFn = (route, state) => {
-  const rightsService = inject(UserRightsService);
-  console.log(state);
+  const usersService = inject(UsersService);
 
-  return true;
+  const rights = usersService.currentUser$.getValue().rights;
+  console.log(rights);
+  console.log(state.url);
+
+  const path = pathCheck(state.url);
+  if (path === 'inventory' && (rights.productList || rights.addProduct)) {
+    return true;
+  } else if (path === 'add-product' && rights.addProduct) {
+    return true;
+  } else if (path === 'view-products' && rights.productList) {
+    return true;
+  } else if (path === 'end-of-day' && rights.endOfDate) {
+    return true;
+  } else
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'You do not have rights!',
+      confirmButtonColor: '#2d56b2',
+    });
+
+  return false;
 };
+
+function pathCheck(url: string) {
+  const pathArr = url.split('/');
+  return pathArr[pathArr.length - 1];
+}

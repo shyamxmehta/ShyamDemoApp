@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Product } from '../../shared/interfaces/product.type';
+import { Product } from '../../shared/objects/product';
 import { Observable, of } from 'rxjs';
 import { AsyncPipe, DatePipe, DecimalPipe } from '@angular/common';
 import { SearchService } from '../../shared/services/search.service';

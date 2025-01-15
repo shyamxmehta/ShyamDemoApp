@@ -2,7 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Breadcrumb } from './breadcrumb.interface';
 import { map } from 'rxjs';
-import { Product } from '../shared/interfaces/product.type';
+import { Product } from '../shared/objects/product';
 
 @Injectable({
   providedIn: 'root',

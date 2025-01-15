@@ -1,17 +1,37 @@
 import { Injectable } from '@angular/core';
-import { User } from '../interfaces/user.type';
+import { CurrentUser, demoUser, IUser, UserRights } from '../objects/user';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  private currentUser: User | null = null;
+  private currentUser: IUser = demoUser;
 
-  getCurrentUser = new BehaviorSubject<User | null>(this.currentUser);
+  currentUser$ = new BehaviorSubject<IUser>(this.currentUser);
   constructor() {}
 
-  setCurrentUser(user: User | null) {
-    this.getCurrentUser.next(user);
+  setCurrentUser() {
+    const newUser = new CurrentUser(
+      demoUser.name,
+      demoUser.company,
+      demoUser.phone,
+      demoUser.ID,
+      demoUser.KRApin,
+      demoUser.companyKRA,
+      demoUser.email,
+      demoUser.rights
+    );
+    this.currentUser = newUser;
+    this.currentUser$.next(this.currentUser);
+  }
+
+  getCurrentUser() {
+    this.currentUser$.next(this.currentUser);
+  }
+
+  updateCurrentUser(userRights: UserRights) {
+    this.currentUser.rights = userRights;
+    this.currentUser$.next(this.currentUser);
   }
 }
