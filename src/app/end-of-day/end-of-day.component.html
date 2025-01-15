@@ -3,8 +3,8 @@
   <div class="page-title">End of Day</div>
   <div class="page-info">View Product Summary</div>
   <div class="wrapper">
-    <div class="search-container">
-      <div class="search-bar">
+    <div class="search-filter">
+      <div class="text-search">
         <p>Search</p>
         <div class="input">
           <span><img src="assets/search-mag-icon.svg" alt="" /></span>
@@ -15,9 +15,11 @@
             #search
           />
         </div>
-        <div class="date-filter">
-          <div class="from">
-            <label for="from">From</label>
+      </div>
+      <div class="date-filter">
+        <div class="from">
+          <label for="from">From</label>
+          <div class="input-wrapper">
             <input
               [ngModel]="setDate.start | date : 'yyyy-MM-dd'"
               (ngModelChange)="setDate.start = $event"
@@ -33,8 +35,10 @@
               (click)="fromDate.showPicker()"
             />
           </div>
-          <div class="to">
-            <label for="to">To</label>
+        </div>
+        <div class="to">
+          <label for="to">To</label>
+          <div class="input-wrapper">
             <input
               [ngModel]="setDate.end | date : 'yyyy-MM-dd'"
               (ngModelChange)="setDate.end = $event"
