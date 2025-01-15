@@ -7,8 +7,6 @@ export const routeGuard: CanActivateFn = (route, state) => {
   const usersService = inject(UsersService);
 
   const rights = usersService.currentUser$.getValue().rights;
-  console.log(rights);
-  console.log(state.url);
 
   const path = pathCheck(state.url);
   if (path === 'inventory' && (rights.productList || rights.addProduct)) {
