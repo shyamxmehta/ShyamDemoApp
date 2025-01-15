@@ -15,6 +15,7 @@
 
       .bar-chart-wrapper {
         display: flex;
+        justify-content: center;
         min-height: 250px;
         canvas {
           margin-block: auto;
