@@ -1,17 +1,19 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersService } from '../shared/services/users.service';
+import { demoUser } from '../shared/interfaces/user.type';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   router = inject(Router);
+  usersService = inject(UsersService);
 
   isLoggedIn = signal(true);
 
-  constructor() { }
-  
+  constructor() {}
+
   logout() {
     this.isLoggedIn.update(() => false);
     this.router.navigate(['/login']);
@@ -19,6 +21,7 @@ export class AuthService {
 
   login() {
     this.isLoggedIn.update(() => true);
+    this.usersService.setCurrentUser(demoUser);
     this.router.navigate(['']);
   }
 }

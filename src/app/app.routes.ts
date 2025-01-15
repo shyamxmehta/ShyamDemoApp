@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { authGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { SystemComponent } from './system/system.component';
+import { routeGuard } from './auth/route.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -66,6 +67,7 @@ export const routes: Routes = [
               ).then((m) => m.ViewSingleProductComponent),
           },
         ],
+        canActivate: [routeGuard],
       },
       {
         path: 'add-product',
@@ -75,6 +77,7 @@ export const routes: Routes = [
           ),
         title: 'Add Product',
         data: { breadcrumb: 'Add Product' },
+        canActivate: [routeGuard],
       },
     ],
   },
