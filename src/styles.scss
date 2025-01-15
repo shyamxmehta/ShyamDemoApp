@@ -30,6 +30,7 @@ html {
 }
 
 :root {
+  --starting-position: 10rem;
   --sidebar-width: 10rem;
   --header-height: 3.5rem;
 }
@@ -50,8 +51,8 @@ button {
   border-radius: 5px;
 }
 
-@media screen and (max-width: 753px) {
+@media screen and (max-width: 47rem) {
   :root {
-    --sidebar-width: 0rem;
+    --starting-position: 0rem;
   }
 }

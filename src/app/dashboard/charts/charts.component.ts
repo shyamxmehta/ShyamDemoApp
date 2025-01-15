@@ -4,7 +4,7 @@ import Chart, {
   ChartData,
   ChartOptions,
 } from 'chart.js/auto';
-import { Product } from '../../shared/interfaces/product.interface';
+import { Product } from '../../shared/interfaces/product.type';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { ItemsService } from '../../shared/services/products.service';
 

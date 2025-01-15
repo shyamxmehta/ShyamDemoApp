@@ -58,9 +58,12 @@
     }
   }
 }
-
-@media screen and (max-width: 753px) {
-  .container {
-    display: none;
-  }
+.close {
+  left: -10rem;
 }
+
+// @media screen and (max-width: 753px) {
+//   .container {
+//     display: none;
+//   }
+// }

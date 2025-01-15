@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { BreadcrumbsComponent } from '../../breadcrumbs/breadcrumbs.component';
 import { DragDropComponent } from './drag-drop/drag-drop.component';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Product } from '../../shared/interfaces/product.interface';
+import { Product } from '../../shared/interfaces/product.type';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ApiService } from '../../shared/services/api.service';

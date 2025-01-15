@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   right: 0.7rem;
-  left: calc(var(--sidebar-width) + 0.7rem);
+  left: calc(var(--starting-position) + 0.7rem);
   background-color: $white;
   z-index: 100;
 

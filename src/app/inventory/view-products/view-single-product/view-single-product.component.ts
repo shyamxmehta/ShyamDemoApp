@@ -1,6 +1,6 @@
 import { Component, effect, inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from '../../../shared/interfaces/product.interface';
+import { Product } from '../../../shared/interfaces/product.type';
 import { map } from 'rxjs';
 import {
   FormBuilder,

@@ -2,7 +2,7 @@ import { inject, Injectable, OnInit, signal } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
-import { Product } from '../interfaces/product.interface';
+import { Product } from '../interfaces/product.type';
 import { Products } from '../products';
 
 @Injectable({

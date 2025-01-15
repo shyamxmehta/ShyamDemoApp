@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product } from '../../shared/interfaces/product.interface';
+import { Product } from '../../shared/interfaces/product.type';
 import { AsyncPipe, DatePipe, DecimalPipe } from '@angular/common';
 import { SearchPipe } from '../../shared/pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
