@@ -1,5 +1,5 @@
-import { inject, Injectable, OnDestroy, OnInit } from '@angular/core';
-import { IUser, UserRights } from '../objects/user';
+import { inject, Injectable, OnDestroy, OnInit, signal } from '@angular/core';
+import { IUser, UserRight, UserRights } from '../objects/user';
 import { BehaviorSubject, Subscription, take } from 'rxjs';
 import { UsersService } from './users.service';
 
@@ -7,23 +7,39 @@ import { UsersService } from './users.service';
   providedIn: 'root',
 })
 export class UserRightsService {
-  // currentUser$: any;
-  // private usersService = inject(UsersService);
-  // private userRights: UserRights = {
-  //   addProduct: false,
-  //   endOfDate: false,
-  //   productList: false,
-  // };
-  // userRightsSubject = new BehaviorSubject<UserRights>(this.userRights);
-  // constructor() {}
-  // getUserRights() {
-  //   this.usersService.getCurrentUser.pipe(take(1)).subscribe((user) => {
-  //     this.userRights = user.rights;
-  //   });
-  //   this.userRightsSubject.next(this.userRights);
-  //   return this.userRights;
-  // }
-  // setUserRights(rights: UserRights) {
-  //   this.usersService.updateCurrentUser(rights);
-  // }
+  userRights = signal<UserRights>([
+    {
+      category: 'inventory',
+      rights: ['view-products'],
+    },
+  ]);
+
+  updateRight(category: string, right: string) {
+    const rightObj: UserRight = { category: category, rights: [right] };
+    console.log(rightObj);
+
+    for (const key in this.userRights()) {
+      console.log(this.userRights()[key]);
+      if (this.userRights()[key].category === rightObj.category) {
+        const r = ;
+        console.log(r);
+      } else {
+        console.log('different');
+      }
+    }
+
+    // rightsObj.push(rightObj);
+
+    // console.log(rightsObj);
+
+    // if (this.userRights().includes(right)) {
+    //   this.userRights.update((rights) => rights.filter((r) => r != right));
+    // } else {
+    //   this.userRights.update((rights) => [
+    //     ...rights,
+    //     { category: category, right: [right] },
+    //   ]);
+    // }
+    console.log(this.userRights());
+  }
 }

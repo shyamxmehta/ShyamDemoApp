@@ -37,15 +37,14 @@ export class SidebarService implements OnInit, OnDestroy {
   }
 
   generateMenu() {
-    if (
-      this.currentUser.rights.addProduct ||
-      this.currentUser.rights.productList
-    ) {
-      this.menu.push({ title: 'Inventory', url: '/inventory' });
-    }
-
-    if (this.currentUser.rights.endOfDate) {
-      this.menu.push({ title: 'End of Day', url: '/end-of-day' });
-    }
+    // if (
+    //   this.currentUser.rights.addProduct ||
+    //   this.currentUser.rights.productList
+    // ) {
+    //   this.menu.push({ title: 'Inventory', url: '/inventory' });
+    // }
+    // if (this.currentUser.rights.endOfDate) {
+    //   this.menu.push({ title: 'End of Day', url: '/end-of-day' });
+    // }
   }
 }

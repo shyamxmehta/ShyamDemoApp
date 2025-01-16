@@ -4,28 +4,28 @@ import { UsersService } from '../shared/services/users.service';
 import Swal from 'sweetalert2';
 
 export const routeGuard: CanActivateFn = (route, state) => {
+  return true;
   const usersService = inject(UsersService);
 
   const rights = usersService.currentUser$.getValue().rights;
-
   const path = pathCheck(state.url);
-  if (path === 'inventory' && (rights.productList || rights.addProduct)) {
-    return true;
-  } else if (path === 'add-product' && rights.addProduct) {
-    return true;
-  } else if (path === 'view-products' && rights.productList) {
-    return true;
-  } else if (path === 'end-of-day' && rights.endOfDate) {
-    return true;
-  } else
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'You do not have rights!',
-      confirmButtonColor: '#2d56b2',
-    });
+  // if (path === 'inventory' && (rights.productList || rights.addProduct)) {
+  //   return true;
+  // } else if (path === 'add-product' && rights.addProduct) {
+  //   return true;
+  // } else if (path === 'view-products' && rights.productList) {
+  //   return true;
+  // } else if (path === 'end-of-day' && rights.endOfDate) {
+  //   return true;
+  // } else
+  //   Swal.fire({
+  //     icon: 'error',
+  //     title: 'Oops...',
+  //     text: 'You do not have rights!',
+  //     confirmButtonColor: '#2d56b2',
+  //   });
 
-  return false;
+  // return false;
 };
 
 function pathCheck(url: string) {

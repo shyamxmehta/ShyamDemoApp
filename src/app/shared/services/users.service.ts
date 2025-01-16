@@ -12,17 +12,7 @@ export class UsersService {
   constructor() {}
 
   setCurrentUser() {
-    const newUser = new CurrentUser(
-      demoUser.name,
-      demoUser.company,
-      demoUser.phone,
-      demoUser.ID,
-      demoUser.KRApin,
-      demoUser.companyKRA,
-      demoUser.email,
-      demoUser.rights
-    );
-    this.currentUser = newUser;
+    this.currentUser = demoUser;
     this.currentUser$.next(this.currentUser);
   }
 
@@ -30,8 +20,8 @@ export class UsersService {
     this.currentUser$.next(this.currentUser);
   }
 
-  updateCurrentUser(userRights: UserRights) {
-    this.currentUser.rights = userRights;
-    this.currentUser$.next(this.currentUser);
-  }
+  // updateCurrentUser(userRights: UserRights) {
+  //   this.currentUser.rights = userRights;
+  //   this.currentUser$.next(this.currentUser);
+  // }
 }
