@@ -13,29 +13,38 @@ import { UsersService } from '../shared/services/users.service';
   styleUrl: './profile.component.scss',
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-  // userService = inject(UsersService);
-  // userServiceSubscription = new Subscription();
+  userService = inject(UsersService);
+  userServiceSubscription = new Subscription();
 
   userRightsService = inject(UserRightsService);
 
-  // userRights: UserRights = {
-  //   addProduct: false,
-  //   endOfDate: false,
-  //   productList: false,
-  // };
+  rights = {
+    viewProducts: false,
+    addProducts: false,
+    endOfDay: false,
+  };
 
   ngOnInit(): void {
-    // this.userServiceSubscription = this.userService.currentUser$.subscribe({
-    //   next: (user: IUser) => {
-    //     this.userRights = user.rights;
-    //   },
-    // });
+    this.userServiceSubscription = this.userService.currentUser$.subscribe({
+      next: (user: IUser) => {
+        console.log(user);
+        // if (user.rights.includes('view-products')) {
+        //   this.rights.viewProducts = true;
+        // } else this.rights.viewProducts = false;
+        // if (user.rights.includes('add-product')) {
+        //   this.rights.addProducts = true;
+        // } else this.rights.addProducts = false;
+        // if (user.rights.includes('end-of-day')) {
+        //   this.rights.endOfDay = true;
+        // } else this.rights.endOfDay = false;
+      },
+    });
   }
   updateUserRights(right: string) {
     // this.userService.updateCurrentUser(this.userRights);
     const rightArr = this.getCategoryRight(right);
 
-    this.userRightsService.updateRight(rightArr[0], rightArr[1]);
+    this.userRightsService.updateRight(right);
   }
 
   getCategoryRight(fullRight: string) {

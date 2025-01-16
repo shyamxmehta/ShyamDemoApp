@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CurrentUser, demoUser, IUser, UserRights } from '../objects/user';
+import { demoUser, IUser, UserRights } from '../objects/user';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -20,8 +20,8 @@ export class UsersService {
     this.currentUser$.next(this.currentUser);
   }
 
-  // updateCurrentUser(userRights: UserRights) {
-  //   this.currentUser.rights = userRights;
-  //   this.currentUser$.next(this.currentUser);
-  // }
+  updateCurrentUser(userRights: UserRights) {
+    // this.currentUser.rights = userRights;
+    this.currentUser$.next(this.currentUser);
+  }
 }

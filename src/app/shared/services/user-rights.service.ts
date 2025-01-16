@@ -7,39 +7,19 @@ import { UsersService } from './users.service';
   providedIn: 'root',
 })
 export class UserRightsService {
-  userRights = signal<UserRights>([
-    {
-      category: 'inventory',
-      rights: ['view-products'],
-    },
-  ]);
+  usersService = inject(UsersService);
 
-  updateRight(category: string, right: string) {
-    const rightObj: UserRight = { category: category, rights: [right] };
-    console.log(rightObj);
+  userRights = signal<UserRights>(
+    []
+    // this.usersService.currentUser$.getValue().rights
+  );
 
-    for (const key in this.userRights()) {
-      console.log(this.userRights()[key]);
-      if (this.userRights()[key].category === rightObj.category) {
-        const r = ;
-        console.log(r);
-      } else {
-        console.log('different');
-      }
+  updateRight(right: string) {
+    if (this.userRights().includes(right)) {
+      this.userRights.update((rights) => rights.filter((r) => r != right));
+    } else {
+      this.userRights.update((rights) => [...rights, right]);
     }
-
-    // rightsObj.push(rightObj);
-
-    // console.log(rightsObj);
-
-    // if (this.userRights().includes(right)) {
-    //   this.userRights.update((rights) => rights.filter((r) => r != right));
-    // } else {
-    //   this.userRights.update((rights) => [
-    //     ...rights,
-    //     { category: category, right: [right] },
-    //   ]);
-    // }
-    console.log(this.userRights());
+    this.usersService.updateCurrentUser(this.userRights());
   }
 }

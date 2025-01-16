@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 // @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 // @import 'system-font';
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 // $sidebar-width: 10rem;
 
 $main-bg: #e2e2e2;
@@ -36,8 +36,8 @@ html {
 }
 
 body {
-  // font-family: "Roboto", serif;
-  font-family: system-ui, "Segoe UI", Tahoma;
+  font-family: "Roboto", serif;
+  // font-family: system-ui, "Segoe UI", Tahoma;
   background-color: $main-bg;
 }
 

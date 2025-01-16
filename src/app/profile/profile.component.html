@@ -50,8 +50,8 @@
         <label class="toggle-switch">
           <input
             type="checkbox"
-            (change)="updateUserRights('inventory/view-products')"
-            #checkbox1
+            [(ngModel)]="rights.viewProducts"
+            (change)="updateUserRights('view-products')"
           />
           <span class="slider"></span>
         </label>
@@ -61,8 +61,8 @@
         <label class="toggle-switch">
           <input
             type="checkbox"
-            (change)="updateUserRights('inventory/add-product')"
-            #checkbox
+            [(ngModel)]="rights.addProducts"
+            (change)="updateUserRights('add-product')"
           />
           <span class="slider"></span>
         </label>
@@ -72,8 +72,8 @@
         <label class="toggle-switch">
           <input
             type="checkbox"
-            (change)="updateUserRights('end-of-day/end-of-day')"
-            #checkbox
+            [(ngModel)]="rights.endOfDay"
+            (change)="updateUserRights('end-of-day')"
           />
           <span class="slider"></span>
         </label>

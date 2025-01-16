@@ -9,6 +9,16 @@ export const routeGuard: CanActivateFn = (route, state) => {
 
   const rights = usersService.currentUser$.getValue().rights;
   const path = pathCheck(state.url);
+  // if (rights.includes(path)) {
+  // } else
+  //   Swal.fire({
+  //     icon: 'error',
+  //     title: 'Oops...',
+  //     text: 'You do not have rights!',
+  //     confirmButtonColor: '#2d56b2',
+  //   });
+
+  return false;
   // if (path === 'inventory' && (rights.productList || rights.addProduct)) {
   //   return true;
   // } else if (path === 'add-product' && rights.addProduct) {
@@ -18,14 +28,7 @@ export const routeGuard: CanActivateFn = (route, state) => {
   // } else if (path === 'end-of-day' && rights.endOfDate) {
   //   return true;
   // } else
-  //   Swal.fire({
-  //     icon: 'error',
-  //     title: 'Oops...',
-  //     text: 'You do not have rights!',
-  //     confirmButtonColor: '#2d56b2',
-  //   });
-
-  // return false;
+  //
 };
 
 function pathCheck(url: string) {
