@@ -1,9 +1,20 @@
-import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  OnDestroy,
+  OnInit,
+  signal,
+  ViewChild,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserRightsService } from '../shared/services/user-rights.service';
 import { IUser, UserRights } from '../shared/objects/user';
 import { Observable, retry, Subscription, take } from 'rxjs';
 import { UsersService } from '../shared/services/users.service';
+import { allPermissions, permission } from '../shared/objects/user-rights';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
@@ -13,38 +24,26 @@ import { UsersService } from '../shared/services/users.service';
   styleUrl: './profile.component.scss',
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-  userService = inject(UsersService);
+  usersService = inject(UsersService);
   userServiceSubscription = new Subscription();
 
-  userRightsService = inject(UserRightsService);
+  // userRightsService = inject(UserRightsService);
 
-  rights = {
-    viewProducts: false,
-    addProducts: false,
-    endOfDay: false,
-  };
+  // allPermissions$ = signal(this.userService.getCurrentUser());
 
+  permissions!: allPermissions;
+
+  constructor() {}
   ngOnInit(): void {
-    this.userServiceSubscription = this.userService.currentUser$.subscribe({
+    this.userServiceSubscription = this.usersService.currentUser$.subscribe({
       next: (user: IUser) => {
-        console.log(user);
-        // if (user.rights.includes('view-products')) {
-        //   this.rights.viewProducts = true;
-        // } else this.rights.viewProducts = false;
-        // if (user.rights.includes('add-product')) {
-        //   this.rights.addProducts = true;
-        // } else this.rights.addProducts = false;
-        // if (user.rights.includes('end-of-day')) {
-        //   this.rights.endOfDay = true;
-        // } else this.rights.endOfDay = false;
+        this.permissions = user.rights;
       },
     });
   }
-  updateUserRights(right: string) {
+  updateUserRights(right: permission) {
     // this.userService.updateCurrentUser(this.userRights);
-    const rightArr = this.getCategoryRight(right);
-
-    this.userRightsService.updateRight(right);
+    this.usersService.updateRight(right);
   }
 
   getCategoryRight(fullRight: string) {

@@ -44,13 +44,29 @@
       </form>
     </div>
     <div class="profile-rights">
-      <p>User Rights</p>
+      @for (permissionGroup of permissions; track $index) {
+      <p>{{ permissionGroup.title }}</p>
+
+      @for (permission of permissionGroup.rights; track $index) {
+      <div class="rights-box">
+        <p>{{ permission.name }}</p>
+        <label class="toggle-switch">
+          <input
+            type="checkbox"
+            [(ngModel)]="permission.value"
+            (change)="updateUserRights(permission)"
+          />
+          <span class="slider"></span>
+        </label>
+      </div>
+      } }
+      <!-- 
       <div class="rights-box">
         <p>Product List</p>
         <label class="toggle-switch">
           <input
             type="checkbox"
-            [(ngModel)]="rights.viewProducts"
+            [(ngModel)]="userPermissions$"
             (change)="updateUserRights('view-products')"
           />
           <span class="slider"></span>
@@ -59,25 +75,17 @@
       <div class="rights-box">
         <p>Add Product</p>
         <label class="toggle-switch">
-          <input
-            type="checkbox"
-            [(ngModel)]="rights.addProducts"
-            (change)="updateUserRights('add-product')"
-          />
+          <input type="checkbox" (change)="updateUserRights('add-product')" />
           <span class="slider"></span>
         </label>
       </div>
       <div class="rights-box">
         <p>End of Day</p>
         <label class="toggle-switch">
-          <input
-            type="checkbox"
-            [(ngModel)]="rights.endOfDay"
-            (change)="updateUserRights('end-of-day')"
-          />
+          <input type="checkbox" (change)="updateUserRights('end-of-day')" />
           <span class="slider"></span>
         </label>
-      </div>
+      </div> -->
     </div>
     <div class="profile-warning">
       <div class="box">

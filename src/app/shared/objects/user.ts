@@ -1,5 +1,16 @@
-import { Rights } from './user-rights';
+const inventoryRights = {
+  title: 'inventory',
+  rights: [
+    { name: 'Product List', right: 'view-products', value: false },
+    { name: 'Add Product', right: 'add-product', value: false },
+  ],
+};
+const endOfDayRights = {
+  title: 'endofday',
+  rights: [{ name: 'End of Day', right: 'end-of-day', value: false }],
+};
 
+const allPermissions = [inventoryRights, endOfDayRights];
 export const demoUser = {
   name: 'Shyam Mehta',
   company: '',
@@ -8,7 +19,7 @@ export const demoUser = {
   KRApin: 'A1023549135P',
   companyKRA: '',
   email: '',
-  rights: Rights,
+  rights: allPermissions,
 };
 
 // export type IUser = {
