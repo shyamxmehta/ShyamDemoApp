@@ -20,12 +20,14 @@ export class UsersService {
 
   getCurrentUser() {}
 
-  updateRight(right: permission) {
-    // const updatedUser = this.currentUser$.getValue();
-    // for (const group of updatedUser.rights) {
-    //   console.log(group);
-    // }
-    // this.currentUser.rights = userRights;
-    // this.currentUser$.next(this.currentUser);
+  updateRights(right: string) {
+    let usr = this.currentUser$.getValue();
+
+    if (usr.rights.includes(right)) {
+      usr.rights = usr.rights.filter((r) => r !== right);
+    } else usr.rights.push(right);
+
+    console.log(usr);
+    this.currentUser$.next(usr);
   }
 }

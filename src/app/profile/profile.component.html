@@ -44,7 +44,7 @@
       </form>
     </div>
     <div class="profile-rights">
-      @for (permissionGroup of permissions; track $index) {
+      <!-- @for (permissionGroup of permissions; track $index) {
       <p>{{ permissionGroup.title }}</p>
 
       @for (permission of permissionGroup.rights; track $index) {
@@ -59,16 +59,12 @@
           <span class="slider"></span>
         </label>
       </div>
-      } }
-      <!-- 
+      } } -->
+
       <div class="rights-box">
         <p>Product List</p>
         <label class="toggle-switch">
-          <input
-            type="checkbox"
-            [(ngModel)]="userPermissions$"
-            (change)="updateUserRights('view-products')"
-          />
+          <input type="checkbox" (change)="updateUserRights('view-products')" />
           <span class="slider"></span>
         </label>
       </div>
@@ -85,7 +81,7 @@
           <input type="checkbox" (change)="updateUserRights('end-of-day')" />
           <span class="slider"></span>
         </label>
-      </div> -->
+      </div>
     </div>
     <div class="profile-warning">
       <div class="box">

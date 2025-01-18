@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   // allPermissions$ = signal(this.userService.getCurrentUser());
 
-  permissions!: allPermissions;
+  permissions!: string[];
 
   constructor() {}
   ngOnInit(): void {
@@ -41,9 +41,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
       },
     });
   }
-  updateUserRights(right: permission) {
+  updateUserRights(right: string) {
     // this.userService.updateCurrentUser(this.userRights);
-    this.usersService.updateRight(right);
+    this.usersService.updateRights(right);
   }
 
   getCategoryRight(fullRight: string) {

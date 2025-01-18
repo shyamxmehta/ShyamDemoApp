@@ -11,6 +11,7 @@ const endOfDayRights = {
 };
 
 const allPermissions = [inventoryRights, endOfDayRights];
+
 export const demoUser = {
   name: 'Shyam Mehta',
   company: '',
@@ -19,7 +20,7 @@ export const demoUser = {
   KRApin: 'A1023549135P',
   companyKRA: '',
   email: '',
-  rights: allPermissions,
+  rights: [],
 };
 
 // export type IUser = {
@@ -32,7 +33,17 @@ export const demoUser = {
 //   email: string;
 //   rights: UserRights;
 // };
-export type IUser = typeof demoUser;
+// export type IUser = typeof demoUser;
+export type IUser = {
+  name: string;
+  company: string;
+  phone: string;
+  ID: string;
+  KRApin: string;
+  companyKRA: string;
+  email: string;
+  rights: string[];
+};
 export type UserRights = UserRight[];
 export type UserRight = string;
 
