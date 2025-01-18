@@ -60,8 +60,9 @@
         </label>
       </div>
       } } -->
+      @for (right of permissions; track $index) {}
 
-      <div class="rights-box">
+      <!-- <div class="rights-box">
         <p>Product List</p>
         <label class="toggle-switch">
           <input type="checkbox" (change)="updateUserRights('view-products')" />
@@ -81,7 +82,7 @@
           <input type="checkbox" (change)="updateUserRights('end-of-day')" />
           <span class="slider"></span>
         </label>
-      </div>
+      </div> -->
     </div>
     <div class="profile-warning">
       <div class="box">

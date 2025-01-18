@@ -21,13 +21,12 @@ export class UsersService {
   getCurrentUser() {}
 
   updateRights(right: string) {
-    let usr = this.currentUser$.getValue();
+    const usr = this.currentUser$.getValue();
 
     if (usr.rights.includes(right)) {
       usr.rights = usr.rights.filter((r) => r !== right);
     } else usr.rights.push(right);
 
-    console.log(usr);
     this.currentUser$.next(usr);
   }
 }

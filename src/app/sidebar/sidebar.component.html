@@ -8,13 +8,13 @@
       <span><img src="assets/home-icon.svg" alt="" /></span>
       <a [routerLink]="['/home']">Home</a>
     </li>
+
+    @if (menuItems | async; as menuItems) { @for (item of menuItems; track
+    $index) {
     <li [routerLinkActive]="['active']">
-      <span><img src="assets/inventory-icon.svg" alt="" /></span>
-      <a [routerLink]="['/inventory']">Inventory</a>
+      <span><img [src]="[item.icon]" alt="" /></span>
+      <a [routerLink]="[item.url]">{{ item.title }}</a>
     </li>
-    <li [routerLinkActive]="['active']">
-      <span><img src="assets/eod-icon.svg" alt="" /></span>
-      <a [routerLink]="['/end-of-day']">End of Day</a>
-    </li>
+    } }
   </ul>
 </div>

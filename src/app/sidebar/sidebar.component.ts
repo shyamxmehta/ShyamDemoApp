@@ -9,26 +9,49 @@ import {
   signal,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { SidebarService } from '../shared/services/sidebar.service';
-import { Subscription } from 'rxjs';
+import { distinctUntilChanged, Observable, of, Subscription, tap } from 'rxjs';
+import { MenuItem } from '../shared/objects/sidebar-menu';
+import { UsersService } from '../shared/services/users.service';
+import { IUser } from '../shared/objects/user';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, CommonModule],
+  imports: [RouterLink, RouterLinkActive, CommonModule, AsyncPipe],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   sidebarService = inject(SidebarService);
-  sidebarSubscription = new Subscription();
+  sbServSubscription = new Subscription();
+  usersService = inject(UsersService);
+  usrServiceSubscription = new Subscription();
   collapseSidebar: boolean = false;
+
+  menuItems = new Observable<MenuItem[]>();
+
   ngOnInit(): void {
-    this.sidebarSubscription =
+    this.sbServSubscription =
       this.sidebarService.manualCollapseSidebar.subscribe({
         next: (value) => (this.collapseSidebar = value),
       });
+
+    this.usrServiceSubscription = this.usersService.currentUser$
+      .pipe(
+        distinctUntilChanged(
+          (usera, userb) =>
+            JSON.stringify(usera.rights) !== JSON.stringify(userb.rights)
+        )
+      )
+      .subscribe({
+        next: (user: IUser) => {
+          this.menuItems = of(this.sidebarService.generateMenu(user));
+        },
+      });
+
+    //should be last
     this.onResize(window.innerWidth);
   }
 
@@ -40,6 +63,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sidebarSubscription.unsubscribe();
+    this.sbServSubscription.unsubscribe();
+    this.usrServiceSubscription.unsubscribe();
   }
 }

@@ -42,6 +42,7 @@ export const routes: Routes = [
             (m) => m.InventoryComponent
           ),
         title: 'inventory',
+        canActivate: [routeGuard],
       },
       {
         path: 'view-products',

@@ -22,7 +22,6 @@ export class AuthService {
   login() {
     this.isLoggedIn.update(() => true);
     this.usersService.setCurrentUser();
-    console.log(this.usersService.currentUser$.getValue());
     this.router.navigate(['']);
   }
 }
