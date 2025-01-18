@@ -1,5 +1,5 @@
 import { inject, Injectable, OnDestroy, OnInit, signal } from '@angular/core';
-import { IUser, UserRight, UserRights } from '../objects/user';
+import { IUser } from '../objects/user';
 import { BehaviorSubject, Subscription, take } from 'rxjs';
 import { UsersService } from './users.service';
 import { allPermissions, permission } from '../objects/user-rights';

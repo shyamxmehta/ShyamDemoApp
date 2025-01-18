@@ -1,14 +1,16 @@
 const inventoryRights = {
-  title: 'inventory',
-  rights: [
+  module: 'inventory',
+  moduleRights: [
     { name: 'Product List', right: 'view-products', value: false },
     { name: 'Add Product', right: 'add-product', value: false },
   ],
 };
 const endOfDayRights = {
-  title: 'endofday',
-  rights: [{ name: 'End of Day', right: 'end-of-day', value: false }],
+  module: 'endofday',
+  moduleRights: [{ name: 'End of Day', right: 'end-of-day', value: false }],
 };
+const right = { name: 'End of Day', right: 'end-of-day', value: false };
+export type Right = typeof right;
 
 const allPermissions = [inventoryRights, endOfDayRights];
 
@@ -20,8 +22,28 @@ export const demoUser = {
   KRApin: 'A1023549135P',
   companyKRA: '',
   email: '',
-  rights: [],
+  rights: allPermissions,
 };
+
+export type IUser = typeof demoUser;
+
+// const modules = [
+//   {
+//     module: 'Inventory',
+//     url: '/inventory',
+//     permissions: [
+//       { name: 'Product List', right: 'view-products', value: false },
+//       { name: 'Add Product', right: 'add-product', value: false },
+//     ],
+//   },
+//   {
+//     module: 'End of Day',
+//     url: '/end-of-day',
+//     permissions: [{ name: 'End of Day', right: 'end-of-day', value: false }],
+//   },
+// ];
+
+// type modules = typeof modules;
 
 // export type IUser = {
 //   name: string;
@@ -34,18 +56,8 @@ export const demoUser = {
 //   rights: UserRights;
 // };
 // export type IUser = typeof demoUser;
-export type IUser = {
-  name: string;
-  company: string;
-  phone: string;
-  ID: string;
-  KRApin: string;
-  companyKRA: string;
-  email: string;
-  rights: string[];
-};
-export type UserRights = UserRight[];
-export type UserRight = string;
+// export type UserRights = UserRight[];
+// export type UserRight = string;
 
 // export class CurrentUser {
 //   name: string;

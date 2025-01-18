@@ -31,17 +31,8 @@ export class SidebarService {
   manualCollapseSidebar = new BehaviorSubject<boolean>(true);
 
   constructor() {}
-  generateMenu(user: IUser): MenuItem[] {
-    let menu: MenuItem[] = [];
-    for (const module of this.modules) {
-      for (const right of user.rights) {
-        if (module.rights.includes(right) && !menu.includes(module)) {
-          menu.push(module);
-        }
-      }
-    }
-
-    return menu;
+  generateMenu(user: IUser) {
+    
     // if (
     //   this.currentUser.rights.addProduct ||
     //   this.currentUser.rights.productList

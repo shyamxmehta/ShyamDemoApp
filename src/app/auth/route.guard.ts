@@ -6,27 +6,7 @@ import { SidebarService } from '../shared/services/sidebar.service';
 import { MenuItem } from '../shared/objects/sidebar-menu';
 
 export const routeGuard: CanActivateFn = (route, state) => {
-  const router = inject(Router);
-  const usersService = inject(UsersService);
-  const sidebarService = inject(SidebarService);
-  const rights = usersService.currentUser$.getValue().rights;
-  const path = pathCheck(state.url);
-
-  const modules = sidebarService.modulesObs.getValue();
-  const moduleRights = checkModuleRights(modules, rights);
-  console.log(moduleRights);
-  if (rights.includes(path) || moduleRights) {
-    return true;
-  } else {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'You do not have rights!',
-      confirmButtonColor: '#2d56b2',
-    });
-    router.navigate(['']);
-    return false;
-  }
+return false
 };
 
 function pathCheck(url: string) {

@@ -44,28 +44,24 @@
       </form>
     </div>
     <div class="profile-rights">
-      <!-- @for (permissionGroup of permissions; track $index) {
-      <p>{{ permissionGroup.title }}</p>
-
-      @for (permission of permissionGroup.rights; track $index) {
+      <p>User Rights</p>
+      @for (moduleRight of userRights; track $index) {
       <div class="rights-box">
-        <p>{{ permission.name }}</p>
+        <p>{{ moduleRight.name }}</p>
         <label class="toggle-switch">
           <input
             type="checkbox"
-            [(ngModel)]="permission.value"
-            (change)="updateUserRights(permission)"
+            [(ngModel)]="moduleRight.value"
+            (change)="updateUserRights(moduleRight)"
           />
           <span class="slider"></span>
         </label>
       </div>
-      } } -->
-      @for (right of permissions; track $index) {}
-
+      }
       <!-- <div class="rights-box">
         <p>Product List</p>
         <label class="toggle-switch">
-          <input type="checkbox" (change)="updateUserRights('view-products')" />
+          <input type="checkbox" (ngModelChange)="getPermission('view-products')" (change)="updateUserRights('view-products')" />
           <span class="slider"></span>
         </label>
       </div>

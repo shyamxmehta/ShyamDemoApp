@@ -38,18 +38,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
         next: (value) => (this.collapseSidebar = value),
       });
 
-    this.usrServiceSubscription = this.usersService.currentUser$
-      .pipe(
-        distinctUntilChanged(
-          (usera, userb) =>
-            JSON.stringify(usera.rights) !== JSON.stringify(userb.rights)
-        )
-      )
-      .subscribe({
-        next: (user: IUser) => {
-          this.menuItems = of(this.sidebarService.generateMenu(user));
-        },
-      });
+    this.usrServiceSubscription = this.usersService.currentUser$.subscribe({
+      next: (user) => console.log(user),
+    });
 
     //should be last
     this.onResize(window.innerWidth);

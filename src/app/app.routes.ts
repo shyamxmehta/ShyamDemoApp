@@ -33,7 +33,7 @@ export const routes: Routes = [
     path: 'inventory',
     component: SystemComponent,
     data: { breadcrumb: 'Inventory' },
-    canActivate: [authGuard],
+    canActivate: [authGuard,routeGuard],
     children: [
       {
         path: '',
@@ -42,7 +42,6 @@ export const routes: Routes = [
             (m) => m.InventoryComponent
           ),
         title: 'inventory',
-        canActivate: [routeGuard],
       },
       {
         path: 'view-products',
