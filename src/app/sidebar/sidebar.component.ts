@@ -19,7 +19,7 @@ import { IUser } from '../shared/objects/user';
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, CommonModule, AsyncPipe],
+  imports: [RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
@@ -30,7 +30,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   usrServiceSubscription = new Subscription();
   collapseSidebar: boolean = false;
 
-  menuItems = new Observable<MenuItem[]>();
+  menuItems: MenuItem[] = [];
 
   ngOnInit(): void {
     this.sbServSubscription =
@@ -39,7 +39,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
       });
 
     this.usrServiceSubscription = this.usersService.currentUser$.subscribe({
-      next: (user) => console.log(user),
+      next: (user) => {
+        this.menuItems = this.sidebarService.generateMenu(user);
+        console.log(this.menuItems);
+      },
     });
 
     //should be last

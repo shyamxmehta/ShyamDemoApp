@@ -1,4 +1,5 @@
 const menuItem = {
+  id: '',
   icon: '',
   title: 'Dashboard',
   url: '/home',

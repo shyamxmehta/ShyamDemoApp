@@ -15,12 +15,14 @@ import { IUser } from '../objects/user';
 })
 export class SidebarService {
   private inventory: MenuItem = {
+    id: 'inventory',
     icon: 'assets/inventory-icon.svg',
     title: 'Inventory',
     url: '/inventory',
     rights: ['add-product', 'view-products'],
   };
   private endOfDay: MenuItem = {
+    id: 'endofday',
     icon: 'assets/eod-icon.svg',
     title: 'End of Day',
     url: '/end-of-day',
@@ -32,15 +34,28 @@ export class SidebarService {
 
   constructor() {}
   generateMenu(user: IUser) {
-    
-    // if (
-    //   this.currentUser.rights.addProduct ||
-    //   this.currentUser.rights.productList
-    // ) {
-    //   this.menu.push({ title: 'Inventory', url: '/inventory' });
-    // }
-    // if (this.currentUser.rights.endOfDate) {
-    //   this.menu.push({ title: 'End of Day', url: '/end-of-day' });
-    // }
+    const menu: string[] = [];
+    for (const mkey in user.rights) {
+      const moduleRights = user.rights[mkey].moduleRights;
+      for (const key in moduleRights) {
+        if (
+          moduleRights[key].value &&
+          !menu.includes(user.rights[mkey].module)
+        ) {
+          menu.push(user.rights[mkey].module);
+        }
+      }
+    }
+    return this.constructMenu(menu);
+  }
+
+  constructMenu(menu: string[]) {
+    const modules: MenuItem[] = [];
+    for (const key in this.modules) {
+      if (menu.includes(this.modules[key].id)) {
+        modules.push(this.modules[key]);
+      }
+    }
+    return modules;
   }
 }

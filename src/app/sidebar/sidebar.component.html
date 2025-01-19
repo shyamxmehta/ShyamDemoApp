@@ -9,12 +9,11 @@
       <a [routerLink]="['/home']">Home</a>
     </li>
 
-    @if (menuItems | async; as menuItems) { @for (item of menuItems; track
-    $index) {
+    @for (item of menuItems; track $index) {
     <li [routerLinkActive]="['active']">
       <span><img [src]="[item.icon]" alt="" /></span>
       <a [routerLink]="[item.url]">{{ item.title }}</a>
     </li>
-    } }
+    }
   </ul>
 </div>

@@ -6,7 +6,8 @@ import { SidebarService } from '../shared/services/sidebar.service';
 import { MenuItem } from '../shared/objects/sidebar-menu';
 
 export const routeGuard: CanActivateFn = (route, state) => {
-return false
+  // usersService = inject
+  return true;
 };
 
 function pathCheck(url: string) {
