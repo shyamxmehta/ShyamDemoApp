@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Subscription, take } from 'rxjs';
+import { from, Observable, of, Subscription, take } from 'rxjs';
 import { Right } from '../shared/objects/user';
 import { UsersService } from '../shared/services/users.service';
 
@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   userServiceSubscription = new Subscription();
 
   userRights: Right[] = [];
+  userRights$ = new Observable();
 
   constructor() {}
   ngOnInit(): void {
@@ -24,12 +25,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe({
         next: (user) => {
-          if (user)
+          if (user) {
             user.rights.forEach((module) => {
               for (const key in module.moduleRights) {
                 this.userRights.push(module.moduleRights[key]);
               }
             });
+            // const rights = user.rights.map((rights) => rights.moduleRights);
+
+            // this.userRights$ = of(rights);
+            // console.log(this.userRights);
+            // console.log(user.rights);
+            // this.userRights$ = from(user.rights);
+          }
         },
       });
   }

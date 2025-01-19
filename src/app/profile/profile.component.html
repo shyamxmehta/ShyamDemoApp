@@ -45,6 +45,9 @@
     </div>
     <div class="profile-rights">
       <p>User Rights</p>
+      <!-- @if (this.userRights$ | async; as userRights) {
+        @for (modRights of userRights; track $index) {}
+       }  -->
       @for (moduleRight of userRights; track $index) {
       <div class="rights-box">
         <p>{{ moduleRight.name }}</p>

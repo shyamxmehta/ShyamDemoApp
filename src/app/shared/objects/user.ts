@@ -6,7 +6,7 @@ const inventoryRights = {
   ],
 };
 const endOfDayRights = {
-  module: 'endofday',
+  module: 'end-of-day',
   moduleRights: [{ name: 'End of Day', right: 'end-of-day', value: false }],
 };
 const right = { name: 'End of Day', right: 'end-of-day', value: false };

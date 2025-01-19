@@ -36,7 +36,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
     this.usrServiceSubscription = this.usersService.currentUser$.subscribe({
       next: (user) => {
-        if (user) this.menuItems = this.sidebarService.generateMenu(user);
+        if (user) this.menuItems = this.sidebarService.getMenuById(user);
       },
     });
 

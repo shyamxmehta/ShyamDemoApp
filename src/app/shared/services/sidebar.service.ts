@@ -15,7 +15,7 @@ export class SidebarService {
     rights: ['add-product', 'view-products'],
   };
   private endOfDay: MenuItem = {
-    id: 'endofday',
+    id: 'end-of-day',
     icon: 'assets/eod-icon.svg',
     title: 'End of Day',
     url: '/end-of-day',
@@ -26,7 +26,7 @@ export class SidebarService {
   manualCollapseSidebar = new BehaviorSubject<boolean>(true);
 
   constructor() {}
-  generateMenu(user: IUser) {
+  getMenuById(user: IUser) {
     const menu: string[] = [];
     for (const mkey in user.rights) {
       const moduleRights = user.rights[mkey].moduleRights;
@@ -39,6 +39,7 @@ export class SidebarService {
         }
       }
     }
+
     return this.constructMenu(menu);
   }
 
