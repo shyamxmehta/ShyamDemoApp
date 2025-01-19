@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
 import { Product } from '../objects/product';
 
 @Injectable({

@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { ItemsService } from './products.service';
-import { BehaviorSubject, from, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Product } from '../objects/product';
+import { ItemsService } from './products.service';
 
 @Injectable({
   providedIn: 'root',

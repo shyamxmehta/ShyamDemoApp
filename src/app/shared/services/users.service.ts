@@ -1,7 +1,6 @@
-import { Injectable, signal } from '@angular/core';
-import { demoUser, IUser, Right } from '../objects/user';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { permission } from '../objects/user-rights';
+import { demoUser, IUser } from '../objects/user';
 
 @Injectable({
   providedIn: 'root',
@@ -9,14 +8,16 @@ import { permission } from '../objects/user-rights';
 export class UsersService {
   private currentUser: IUser = demoUser;
 
-  currentUser$ = new BehaviorSubject<IUser>(this.currentUser);
+  currentUser$ = new BehaviorSubject<IUser | null>(this.currentUser);
   constructor() {}
 
-  setCurrentUser() {}
+  setCurrentUser() {
+    this.currentUser$.next(this.currentUser);
+  }
 
   getCurrentUser() {}
 
-  updateRights(right: Right) {
+  updateRights() {
     this.currentUser$.next(this.currentUser);
   }
 }

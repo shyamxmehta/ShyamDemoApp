@@ -3,7 +3,7 @@ const menuItem = {
   icon: '',
   title: 'Dashboard',
   url: '/home',
-  rights: ['s'],
+  rights: [''],
 };
 
 export type MenuItem = typeof menuItem;

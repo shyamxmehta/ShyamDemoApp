@@ -1,17 +1,17 @@
-import { Component, effect, inject, OnInit } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { DOCUMENT } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import {
   ActivatedRoute,
   NavigationEnd,
   Router,
   RouterOutlet,
 } from '@angular/router';
+import { filter } from 'rxjs';
 import { Breadcrumb } from '../breadcrumbs/breadcrumb.interface';
 import { BreadcrumbService } from '../breadcrumbs/breadcrumb.service';
-import { filter } from 'rxjs';
+import { HeaderComponent } from '../header/header.component';
 import { SidebarService } from '../shared/services/sidebar.service';
-import { DOCUMENT } from '@angular/common';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-system',

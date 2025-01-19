@@ -1,20 +1,9 @@
-import {
-  Component,
-  computed,
-  effect,
-  inject,
-  OnDestroy,
-  OnInit,
-  signal,
-  ViewChild,
-} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { UserRightsService } from '../shared/services/user-rights.service';
-import { IUser, Right } from '../shared/objects/user';
-import { map, Observable, retry, Subscription, take } from 'rxjs';
+import { Subscription, take } from 'rxjs';
+import { Right } from '../shared/objects/user';
 import { UsersService } from '../shared/services/users.service';
-import { allPermissions, permission } from '../shared/objects/user-rights';
-import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
@@ -35,29 +24,28 @@ export class ProfileComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe({
         next: (user) => {
-          user.rights.forEach((module) => {
-            for (const key in module.moduleRights) {
-              this.userRights.push(module.moduleRights[key]);
-            }
-          });
-          // console.log(this.rights);
+          if (user)
+            user.rights.forEach((module) => {
+              for (const key in module.moduleRights) {
+                this.userRights.push(module.moduleRights[key]);
+              }
+            });
         },
       });
   }
 
-  updateUserRights(right: Right) {
-    // this.userService.updateCurrentUser(this.userRights);
-    this.usersService.updateRights(right);
+  updateUserRights() {
+    this.usersService.updateRights();
   }
 
-  getCategoryRight(fullRight: string) {
-    const rightArr = fullRight.split('/');
-    return rightArr;
-  }
+  // getCategoryRight(fullRight: string) {
+  //   const rightArr = fullRight.split('/');
+  //   return rightArr;
+  // }
 
-  getPermission(right: string): boolean {
-    return true;
-  }
+  // getPermission(right: string): boolean {
+  //   return true;
+  // }
   ngOnDestroy(): void {
     this.userServiceSubscription.unsubscribe();
   }

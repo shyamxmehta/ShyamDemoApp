@@ -1,12 +1,5 @@
-import {
-  HostListener,
-  inject,
-  Injectable,
-  OnDestroy,
-  OnInit,
-  signal,
-} from '@angular/core';
-import { BehaviorSubject, Observable, Subject, Subscription, take } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { MenuItem } from '../objects/sidebar-menu';
 import { IUser } from '../objects/user';
 

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { BreadcrumbsComponent } from '../breadcrumbs/breadcrumbs.component';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { BreadcrumbsComponent } from '../breadcrumbs/breadcrumbs.component';
 
 @Component({
   selector: 'app-inventory',
