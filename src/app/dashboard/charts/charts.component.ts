@@ -137,7 +137,7 @@ export class ChartsComponent implements OnInit {
       },
       //
       responsive: true,
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
       aspectRatio: 1.5,
       plugins: {
         legend: {

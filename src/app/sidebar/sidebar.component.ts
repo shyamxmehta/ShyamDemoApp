@@ -7,7 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { Observable, Subscription, take } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MenuItem } from '../shared/objects/sidebar-menu';
 import { SidebarService } from '../shared/services/sidebar.service';
 import { UsersService } from '../shared/services/users.service';

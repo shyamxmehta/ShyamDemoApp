@@ -1,10 +1,9 @@
-import { CanActivateFn, Router } from '@angular/router';
-import { MenuItem } from '../shared/objects/sidebar-menu';
 import { inject } from '@angular/core';
-import { UsersService } from '../shared/services/users.service';
-import { allPermissions, IUser, Right } from '../shared/objects/user';
-import Swal from 'sweetalert2';
+import { CanActivateFn, Router } from '@angular/router';
 import { take } from 'rxjs';
+import Swal from 'sweetalert2';
+import { IUser, Right } from '../shared/objects/user';
+import { UsersService } from '../shared/services/users.service';
 
 export const routeGuard: CanActivateFn = (route, state) => {
   const usersService = inject(UsersService);
