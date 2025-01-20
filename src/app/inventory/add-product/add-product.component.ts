@@ -1,10 +1,10 @@
-import {Component, inject, OnDestroy, OnInit} from '@angular/core';
-import {BreadcrumbsComponent} from '../../breadcrumbs/breadcrumbs.component';
-import {DragDropComponent} from './drag-drop/drag-drop.component';
-import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { BreadcrumbsComponent } from '../../breadcrumbs/breadcrumbs.component';
+import { DragDropComponent } from './drag-drop/drag-drop.component';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import {ItemsService} from '../../shared/services/products.service';
+import { ItemsService } from '../../shared/services/products.service';
 
 @Component({
   selector: 'app-add-product',
@@ -57,18 +57,18 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
   getProductId() {
     const productList = this.itemsService.getProducts.getValue();
-    productList.sort((a,b) => {
+    productList.sort((a, b) => {
       if (a.id! > b.id!) {
-        return -1
-      } else return 1
-    })
+        return -1;
+      } else return 1;
+    });
 
     const lastItem = productList.slice(0, 1);
     let newId: number = 0;
     for (const key in lastItem) {
       newId = +lastItem[key].id!;
     }
-    newId++
+    newId++;
     return 's';
   }
   onSubmit() {
@@ -111,9 +111,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
           title: 'Your work has been saved',
           showConfirmButton: false,
           timer: 1500,
-        }).then(_ => this.router.navigate(['/inventory/view-products']));
-
-
+        }).then((_) => this.router.navigate(['/inventory/view-products']));
       }
     });
   }
