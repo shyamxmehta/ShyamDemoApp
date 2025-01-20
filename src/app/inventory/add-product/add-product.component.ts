@@ -111,7 +111,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
           title: 'Your work has been saved',
           showConfirmButton: false,
           timer: 1500,
-        }).then(item => this.router.navigate(['/inventory/view-products']));
+        }).then(_ => this.router.navigate(['/inventory/view-products']));
 
 
       }
