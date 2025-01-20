@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import {
   Component,
   HostListener,
@@ -7,7 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { Subscription, take } from 'rxjs';
+import { Observable, Subscription, take } from 'rxjs';
 import { MenuItem } from '../shared/objects/sidebar-menu';
 import { SidebarService } from '../shared/services/sidebar.service';
 import { UsersService } from '../shared/services/users.service';
@@ -15,7 +15,7 @@ import { UsersService } from '../shared/services/users.service';
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, CommonModule],
+  imports: [RouterLink, RouterLinkActive, CommonModule, AsyncPipe],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
@@ -27,8 +27,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   collapseSidebar: boolean = false;
   menuItems: MenuItem[] = [];
+  menuItems$ = new Observable<MenuItem[]>();
 
   ngOnInit(): void {
+    this.menuItems$ = this.sidebarService.modulesObs;
+
     this.sbServSubscription =
       this.sidebarService.manualCollapseSidebar.subscribe({
         next: (value) => (this.collapseSidebar = value),
@@ -36,7 +39,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
     this.usrServiceSubscription = this.usersService.currentUser$.subscribe({
       next: (user) => {
-        if (user) this.menuItems = this.sidebarService.getMenuById(user);
+        if (user) this.sidebarService.getModulesById(user);
       },
     });
 

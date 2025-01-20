@@ -21,35 +21,35 @@ export class SidebarService {
     url: '/end-of-day',
     rights: ['end-of-day'],
   };
-  modules: MenuItem[] = [this.inventory, this.endOfDay];
-  modulesObs = new BehaviorSubject(this.modules);
+  private modules: MenuItem[] = [this.inventory, this.endOfDay];
+  modulesObs = new BehaviorSubject<MenuItem[]>([]);
   manualCollapseSidebar = new BehaviorSubject<boolean>(true);
 
   constructor() {}
-  getMenuById(user: IUser) {
-    const menu: string[] = [];
+  getModulesById(user: IUser) {
+    const moduleList: string[] = [];
     for (const mkey in user.rights) {
       const moduleRights = user.rights[mkey].moduleRights;
       for (const key in moduleRights) {
         if (
           moduleRights[key].value &&
-          !menu.includes(user.rights[mkey].module)
+          !moduleList.includes(user.rights[mkey].module)
         ) {
-          menu.push(user.rights[mkey].module);
+          moduleList.push(user.rights[mkey].module);
         }
       }
     }
 
-    return this.constructMenu(menu);
+    this.constructMenu(moduleList);
   }
 
-  constructMenu(menu: string[]) {
-    const modules: MenuItem[] = [];
+  constructMenu(moduleList: string[]) {
+    const modulesObj: MenuItem[] = [];
     for (const key in this.modules) {
-      if (menu.includes(this.modules[key].id)) {
-        modules.push(this.modules[key]);
+      if (moduleList.includes(this.modules[key].id)) {
+        modulesObj.push(this.modules[key]);
       }
     }
-    return modules;
+    this.modulesObs.next(modulesObj);
   }
 }
