@@ -26,7 +26,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
   usrServiceSubscription = new Subscription();
 
   collapseSidebar: boolean = false;
-  menuItems: MenuItem[] = [];
   menuItems$ = new Observable<MenuItem[]>();
 
   ngOnInit(): void {

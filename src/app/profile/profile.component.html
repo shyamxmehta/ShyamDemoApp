@@ -38,7 +38,7 @@
           <input type="text" disabled />
         </div>
         <div class="form-control">
-          <label for="email">email</label>
+          <label for="email">Email</label>
           <input type="text" value="shyam@gmail.com" disabled />
         </div>
       </form>
@@ -48,6 +48,21 @@
       <!-- @if (this.userRights$ | async; as userRights) {
         @for (modRights of userRights; track $index) {}
        }  -->
+
+      <!-- @if(moduleRights$ | async; as rights) { @for (right of rights; track
+      $index) {
+      <div class="rights-box">
+        <p>{{ right.name }}</p>
+        <label class="toggle-switch">
+          <input
+            type="checkbox"
+            [(ngModel)]="right.value"
+            (change)="updateUserRights()"
+          />
+          <span class="slider"></span>
+        </label>
+      </div>
+      } } -->
       @for (moduleRight of userRights; track $index) {
       <div class="rights-box">
         <p>{{ moduleRight.name }}</p>

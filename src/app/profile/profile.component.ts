@@ -1,8 +1,8 @@
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { from, Observable, of, Subscription, take } from 'rxjs';
-import { Right } from '../shared/objects/user';
+import { from, map, Observable, of, Subscription, take, tap } from 'rxjs';
+import { allPermissions, Right } from '../shared/objects/user';
 import { UsersService } from '../shared/services/users.service';
 
 @Component({
@@ -17,12 +17,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
   userServiceSubscription = new Subscription();
 
   userRights: Right[] = [];
-  userRights$ = new Observable();
+  moduleRights$ = new Observable<Right[]>();
 
   constructor() {}
   ngOnInit(): void {
+    // this.moduleRights$ = this.usersService.getUserRights();
+    // this.moduleRights$.subscribe((r) => console.log(r));
     this.userServiceSubscription = this.usersService.currentUser$
-      .pipe(take(1))
+      .pipe(
+        take(1),
+        tap((user) => console.log(user))
+      )
       .subscribe({
         next: (user) => {
           if (user) {
