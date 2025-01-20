@@ -135,7 +135,7 @@ export class ChartsComponent implements OnInit {
           borderWidth: 0,
         },
       },
-      //
+      //test commit comment
       responsive: true,
       maintainAspectRatio: false,
       aspectRatio: 1.5,
