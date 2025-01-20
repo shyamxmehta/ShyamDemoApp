@@ -29,11 +29,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
             user.rights.forEach((module) => {
               for (const key in module.moduleRights) {
                 this.userRights.push(module.moduleRights[key]);
+                // this.userRights = [...module.moduleRights[key]];
               }
             });
             // const rights = user.rights.map((rights) => rights.moduleRights);
 
-            // this.userRights$ = of(rights);
+            // this.userRights$ = of(user.rights);
             // console.log(this.userRights);
             // console.log(user.rights);
             // this.userRights$ = from(user.rights);

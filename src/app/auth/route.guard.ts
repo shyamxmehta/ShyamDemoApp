@@ -2,57 +2,56 @@ import { CanActivateFn, Router } from '@angular/router';
 import { MenuItem } from '../shared/objects/sidebar-menu';
 import { inject } from '@angular/core';
 import { UsersService } from '../shared/services/users.service';
-import { IUser } from '../shared/objects/user';
+import { allPermissions, IUser, Right } from '../shared/objects/user';
 import Swal from 'sweetalert2';
+import { take } from 'rxjs';
 
 export const routeGuard: CanActivateFn = (route, state) => {
   const usersService = inject(UsersService);
   const router = inject(Router);
-  const path = pathCheck(state.url);
-
-  const availableModules = getMenuById(usersService.currentUser$.getValue()!);
-
-  if (availableModules.length < 1) {
-    router.navigate(['']);
-    return false;
+  let allowNavigation: boolean = false;
+  usersService.currentUser$.pipe(take(1)).subscribe({
+    next: (user) => {
+      if (user) {
+        const path = pathCheck(state.url);
+        const right = checkRights(user, path);
+        if (right && right.value) allowNavigation = true;
+        console.log(right);
+      } else {
+        router.navigate(['']);
+      }
+    },
+  });
+  if (allowNavigation) {
+    return true;
   }
 
-  if (availableModules.includes(path)) return true;
-  else
+  if (!allowNavigation) {
     Swal.fire({
-      title: 'Insufficient Rights!',
-      text: 'Go to profile and give yourself some rights :)',
+      icon: 'error',
+      title: 'Oops...',
+      text: 'You do not have rights!',
+      confirmButtonColor: '#2d56b2',
     });
-  return false;
+    return false;
+  }
+  return true;
 };
 
 function pathCheck(url: string) {
   const pathArr = url.split('/');
   return pathArr[pathArr.length - 1];
 }
-function getMenuById(user: IUser) {
-  const menu: string[] = [];
-  for (const mkey in user.rights) {
-    const moduleRights = user.rights[mkey].moduleRights;
-    for (const key in moduleRights) {
-      if (moduleRights[key].value && !menu.includes(user.rights[mkey].module)) {
-        menu.push(user.rights[mkey].module);
-      }
-    }
-  }
-  return menu;
-}
 
-function checkModuleRights(modules: MenuItem[], rights: string[]): boolean {
-  let value: boolean = false;
-  while (!value) {
-    modules.forEach((m) => {
-      rights.forEach((r) => {
-        if (m.rights.includes(r)) {
-          value = true;
-        }
-      });
-    });
-  }
-  return value;
+function checkRights(user: IUser, path: string): Right | null {
+  let right: Right | null = null;
+  const modules = user.rights.map((m) => m.moduleRights);
+  modules.forEach((m) =>
+    m.forEach((r) => {
+      if (r.right === path) {
+        right = r;
+      }
+    })
+  );
+  return right;
 }

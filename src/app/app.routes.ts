@@ -3,6 +3,7 @@ import { authGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { SystemComponent } from './system/system.component';
 import { routeGuard } from './auth/route.guard';
+import { moduleGuard } from './auth/module.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -33,7 +34,7 @@ export const routes: Routes = [
     path: 'inventory',
     component: SystemComponent,
     data: { breadcrumb: 'Inventory' },
-    canActivate: [authGuard,routeGuard],
+    canActivate: [authGuard, moduleGuard],
     children: [
       {
         path: '',
@@ -86,7 +87,7 @@ export const routes: Routes = [
     path: 'end-of-day',
     component: SystemComponent,
     data: { breadcrumb: 'End of Day' },
-    canActivate: [authGuard],
+    canActivate: [authGuard, moduleGuard],
     children: [
       {
         path: '',
@@ -96,7 +97,6 @@ export const routes: Routes = [
           ),
         title: 'End of day',
         data: { breadcrumb: 'End of Day' },
-        canActivate: [routeGuard],
       },
     ],
   },
