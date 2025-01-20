@@ -1,15 +1,15 @@
 const inventoryRights = {
   module: 'inventory',
   moduleRights: [
-    { name: 'Product List', right: 'view-products', value: false },
-    { name: 'Add Product', right: 'add-product', value: false },
+    { name: 'Product List', right: 'view-products', value: true },
+    { name: 'Add Product', right: 'add-product', value: true },
   ],
 };
 const endOfDayRights = {
   module: 'end-of-day',
-  moduleRights: [{ name: 'End of Day', right: 'end-of-day', value: false }],
+  moduleRights: [{ name: 'End of Day', right: 'end-of-day', value: true }],
 };
-const right = { name: 'End of Day', right: 'end-of-day', value: false };
+const right = { name: 'End of Day', right: 'end-of-day', value: true };
 export type Right = typeof right;
 
 const allPermissions = [inventoryRights, endOfDayRights];

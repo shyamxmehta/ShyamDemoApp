@@ -1,12 +1,11 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { BreadcrumbsComponent } from '../../breadcrumbs/breadcrumbs.component';
-import { DragDropComponent } from './drag-drop/drag-drop.component';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Product } from '../../shared/objects/product';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {BreadcrumbsComponent} from '../../breadcrumbs/breadcrumbs.component';
+import {DragDropComponent} from './drag-drop/drag-drop.component';
+import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
-import { ApiService } from '../../shared/services/api.service';
-import { ItemsService } from '../../shared/services/products.service';
+import {ItemsService} from '../../shared/services/products.service';
+
 @Component({
   selector: 'app-add-product',
   standalone: true,
@@ -16,10 +15,8 @@ import { ItemsService } from '../../shared/services/products.service';
 })
 export class AddProductComponent implements OnInit, OnDestroy {
   fb = inject(FormBuilder);
-  apiService = inject(ApiService);
   itemsService = inject(ItemsService);
   router = inject(Router);
-  activatedRoute = inject(ActivatedRoute);
 
   itemForm = this.fb.group({
     Date: [
@@ -58,6 +55,22 @@ export class AddProductComponent implements OnInit, OnDestroy {
     return newCode;
   }
 
+  getProductId() {
+    const productList = this.itemsService.getProducts.getValue();
+    productList.sort((a,b) => {
+      if (a.id! > b.id!) {
+        return -1
+      } else return 1
+    })
+
+    const lastItem = productList.slice(0, 1);
+    let newId: number = 0;
+    for (const key in lastItem) {
+      newId = +lastItem[key].id!;
+    }
+    newId++
+    return 's';
+  }
   onSubmit() {
     this.itemForm.patchValue({
       Date: this.formatDateToLocale(this.itemForm.value.Date!),
@@ -84,13 +97,13 @@ export class AddProductComponent implements OnInit, OnDestroy {
       confirmButtonText: 'Yes, add it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        const itemData: Product = this.itemForm.value;
-        const item: Product = itemData;
+        // const itemData: Product =
+        // const item: Product = this.itemForm.value;
         // this.itemsService.addProduct(item).subscribe(res => {
         //   this.itemsService.getProductsFromApi();
         //   this.router.navigate(['/inventory/view-products']);
         // });
-        this.itemsService.addProduct(item);
+        this.itemsService.addProduct(this.itemForm.value);
 
         Swal.fire({
           position: 'top-end',
@@ -98,9 +111,9 @@ export class AddProductComponent implements OnInit, OnDestroy {
           title: 'Your work has been saved',
           showConfirmButton: false,
           timer: 1500,
-        });
+        }).then(item => this.router.navigate(['/inventory/view-products']));
 
-        this.router.navigate(['/inventory/view-products']);
+
       }
     });
   }
@@ -108,8 +121,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
   formatDateToLocale(date: string) {
     const dateArr = date.split('-');
     if (dateArr[2]) {
-      const newDate = dateArr[2] + '/' + dateArr[1] + '/' + dateArr[0];
-      return newDate;
+      return dateArr[0] + '/' + dateArr[1] + '/' + dateArr[2];
     } else return date;
   }
 

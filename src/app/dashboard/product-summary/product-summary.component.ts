@@ -1,11 +1,10 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Product } from '../../shared/objects/product';
-import { AsyncPipe, DatePipe, DecimalPipe } from '@angular/common';
-import { SearchPipe } from '../../shared/pipes/search.pipe';
-import { FormsModule } from '@angular/forms';
-import { ItemsService } from '../../shared/services/products.service';
-import { SearchService } from '../../shared/services/search.service';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Product} from '../../shared/objects/product';
+import {AsyncPipe, DatePipe, DecimalPipe} from '@angular/common';
+import {SearchPipe} from '../../shared/pipes/search.pipe';
+import {FormsModule} from '@angular/forms';
+import {SearchService} from '../../shared/services/search.service';
 
 @Component({
   selector: 'app-product-summary',
@@ -15,8 +14,8 @@ import { SearchService } from '../../shared/services/search.service';
   styleUrl: './product-summary.component.scss',
 })
 export class ProductSummaryComponent implements OnInit, OnDestroy {
-  itemsService = inject(ItemsService);
   searchService = inject(SearchService);
+
   products$ = new Observable<Product[] | null>();
   searchText: string = '';
   setDate!: {
@@ -31,7 +30,10 @@ export class ProductSummaryComponent implements OnInit, OnDestroy {
       start: new Date(y, m, 1).toLocaleDateString('en-CA'),
       end: new Date(y, m + 1, 0).toLocaleDateString('en-CA'),
     };
+    this.searchService.getProducts.subscribe(products => {console.log(products);});
     this.products$ = this.searchService.getProducts;
+
+    //should be last
     this.filterByDate();
   }
 
@@ -46,8 +48,7 @@ export class ProductSummaryComponent implements OnInit, OnDestroy {
   formatDateToLocale(date: string) {
     const dateArr = date.split('-');
     if (dateArr[2]) {
-      const newDate = dateArr[2] + '/' + dateArr[1] + '/' + dateArr[0];
-      return newDate;
+      return dateArr[2] + '/' + dateArr[1] + '/' + dateArr[0];
     } else return date;
   }
 

@@ -1,8 +1,8 @@
-import { inject, Injectable, signal } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Product } from '../objects/product';
-import { Products } from '../products';
-import { ApiService } from './api.service';
+import {inject, Injectable, signal} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
+import {Product} from '../objects/product';
+import {Products} from '../products';
+import {ApiService} from './api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +21,7 @@ export class ItemsService {
       return product;
     });
     this.getProducts.next(this.products);
+    console.log(this.products);
     // this.getProductsFromApi();
   }
 
@@ -30,7 +31,9 @@ export class ItemsService {
 
   addProduct(product: Product) {
     this.products.push(product);
+    console.log(product);
     this.getProducts.next(this.products);
+    // this.getProducts.next(this.products);
   }
 
   deleteProduct(id: string) {
@@ -40,20 +43,18 @@ export class ItemsService {
   }
 
   updateProduct(product: Product) {
-    const newProducts = this.products.map((prod) => {
+    this.products = this.products.map((prod) => {
       if (prod.ProductCode == product.ProductCode) {
         return product;
       } else return prod;
     });
-    this.products = newProducts;
     this.getProducts.next(this.products);
   }
 
   private formatToLocaleString(date: string) {
     const dateArr = date.split('-');
     if (dateArr[2]) {
-      const newDate = dateArr[2] + '/' + dateArr[1] + '/' + dateArr[0];
-      return newDate;
+      return dateArr[2] + '/' + dateArr[1] + '/' + dateArr[0];
     } else return date;
   }
   // getProductsFromApi() {

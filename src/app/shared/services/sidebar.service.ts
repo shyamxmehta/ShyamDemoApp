@@ -1,26 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { MenuItem } from '../objects/sidebar-menu';
+import { endOfDay, inventory, MenuItem } from '../objects/sidebar-menu';
 import { IUser } from '../objects/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SidebarService {
-  private inventory: MenuItem = {
-    id: 'inventory',
-    icon: 'assets/inventory-icon.svg',
-    title: 'Inventory',
-    url: '/inventory',
-    rights: ['add-product', 'view-products'],
-  };
-  private endOfDay: MenuItem = {
-    id: 'end-of-day',
-    icon: 'assets/eod-icon.svg',
-    title: 'End of Day',
-    url: '/end-of-day',
-    rights: ['end-of-day'],
-  };
+  private inventory: MenuItem = inventory;
+  private endOfDay: MenuItem = endOfDay;
   private modules: MenuItem[] = [this.inventory, this.endOfDay];
   modulesObs = new BehaviorSubject<MenuItem[]>([]);
   manualCollapseSidebar = new BehaviorSubject<boolean>(true);

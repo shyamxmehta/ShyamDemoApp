@@ -19,6 +19,7 @@ export class SearchService {
 
   private getAllProducts() {
     this.itemsService.getProducts.subscribe((products) => {
+      console.log(products);
       this.allProducts = products;
       this.getProducts.next(this.allProducts);
     });
