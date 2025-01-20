@@ -1,13 +1,13 @@
 const inventoryRights = {
-  module: 'inventory',
+  moduleId: 'inventory',
   moduleRights: [
-    { name: 'Product List', right: 'view-products', value: true },
-    { name: 'Add Product', right: 'add-product', value: true },
+    { name: 'Product List', right: 'view-products', value: false },
+    { name: 'Add Product', right: 'add-product', value: false },
   ],
 };
 const endOfDayRights = {
-  module: 'end-of-day',
-  moduleRights: [{ name: 'End of Day', right: 'end-of-day', value: true }],
+  moduleId: 'end-of-day',
+  moduleRights: [{ name: 'End of Day', right: 'end-of-day', value: false }],
 };
 const right = { name: 'End of Day', right: 'end-of-day', value: true };
 export type Right = typeof right;
