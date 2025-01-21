@@ -60,9 +60,12 @@ export class ChartsComponent implements OnInit {
           {
             data: valueData,
             backgroundColor: '#2c4e80',
-            barThickness: 25,
+            barThickness: 30,
             borderRadius: 3,
+            borderSkipped: false,
+            // clip: { bottom: 100 },
             label: 'Cost',
+            base: 70,
           },
         ],
       },
