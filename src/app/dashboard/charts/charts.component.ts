@@ -78,11 +78,19 @@ export class ChartsComponent implements OnInit {
             ticks: {
               align: 'center',
               maxRotation: 0,
+              font: {
+                weight: 600,
+              },
             },
           },
           y: {
             grid: {
               display: false,
+            },
+            ticks: {
+              font: {
+                weight: 600,
+              },
             },
           },
         },
