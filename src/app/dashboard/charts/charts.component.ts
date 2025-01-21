@@ -120,7 +120,7 @@ export class ChartsComponent implements OnInit {
       ],
       datasets: [
         {
-          label: 'My First Dataset',
+          label: `Stock '%'`,
           data: [30, 25, 25, 15, 8],
           datalabels: {
             color: '#fff',
