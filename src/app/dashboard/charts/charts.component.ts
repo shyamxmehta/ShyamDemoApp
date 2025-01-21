@@ -144,6 +144,10 @@ export class ChartsComponent implements OnInit {
       aspectRatio: 1.5,
       plugins: {
         legend: {
+          labels: {
+            boxWidth: 14,
+            boxHeight: 14,
+          },
           position: 'right',
         },
         //moidify labels
