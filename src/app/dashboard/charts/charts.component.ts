@@ -67,6 +67,9 @@ export class ChartsComponent implements OnInit {
         ],
       },
       options: {
+        responsive: true,
+        // maintainAspectRatio: true,
+        // aspectRatio: 1.5,
         scales: {
           x: {
             grid: {
