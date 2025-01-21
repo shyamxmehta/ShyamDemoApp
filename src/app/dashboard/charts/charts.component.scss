@@ -17,9 +17,8 @@
         display: flex;
         align-items: center;
         padding-top: 10px;
-        height: 85%;
         canvas {
-          height: 100%;
+          width: 100%;
         }
       }
     }
@@ -74,4 +73,3 @@
     }
   }
 }
-
