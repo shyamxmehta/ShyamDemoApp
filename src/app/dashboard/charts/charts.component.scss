@@ -15,11 +15,10 @@
 
       .bar-chart-wrapper {
         display: flex;
-        justify-content: center;
-        min-height: 250px;
+        align-items: center;
+        padding-top: 10px;
         canvas {
-          margin-block: auto;
-          padding: 10px 0;
+          width: 100%;
         }
       }
     }
@@ -41,14 +40,17 @@
 
     .pie-chart {
       flex: 0.8;
-
       .pie-chart-wrapper {
         display: flex;
+        align-items: start;
+        height: 82%;
         canvas {
+          height: 100%;
+          width: 100%;
           margin: auto;
-          height: 225px;
-          align-items: center;
-          justify-self: center;
+          // margin-bottom: auto;
+          // align-items: center;
+          // justify-self: center;
         }
       }
     }
@@ -59,7 +61,11 @@
   .container {
     .wrapper {
       display: block;
-
+      .bar-chart-wrapper {
+        canvas {
+          padding: 10px 0;
+        }
+      }
       .divider.bottom {
         display: block;
         margin-top: 0.7rem;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { endOfDay, inventory, MenuItem } from '../objects/sidebar-menu';
-import { IUser } from '../objects/user';
+import {IUser, Right} from '../objects/user';
 
 @Injectable({
   providedIn: 'root',
@@ -16,14 +16,14 @@ export class SidebarService {
   constructor() {}
   getModulesById(user: IUser) {
     const moduleList: string[] = [];
-    for (const mkey in user.rights) {
-      const moduleRights = user.rights[mkey].moduleRights;
-      for (const key in moduleRights) {
+    for (const rightsKey in user.rights) {
+      const moduleRights: Right[] = user.rights[rightsKey].moduleRights;
+      for (const rights in moduleRights) {
         if (
-          moduleRights[key].value &&
-          !moduleList.includes(user.rights[mkey].module)
+          moduleRights[rights].value &&
+          !moduleList.includes(user.rights[rightsKey].moduleId)
         ) {
-          moduleList.push(user.rights[mkey].module);
+          moduleList.push(user.rights[rightsKey].moduleId);
         }
       }
     }

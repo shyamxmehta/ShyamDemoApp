@@ -7,8 +7,8 @@ import { allPermissions, demoUser, IUser, Right } from '../objects/user';
 })
 export class UsersService {
   private currentUser: IUser = demoUser;
-  private moduleRights: Right[] = [];
-  currentUser$ = new BehaviorSubject<IUser | null>(this.currentUser);
+  // private moduleRights: Right[] = [];
+  currentUser$ = new BehaviorSubject<IUser | null>(null);
   // currentUserRights$ = new BehaviorSubject<allPermissions>(
   //   this.currentUser.rights
   // );

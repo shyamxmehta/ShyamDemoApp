@@ -35,8 +35,8 @@ function getMenuById(user: IUser) {
   for (const mkey in user.rights) {
     const moduleRights = user.rights[mkey].moduleRights;
     for (const key in moduleRights) {
-      if (moduleRights[key].value && !menu.includes(user.rights[mkey].module)) {
-        menu.push(user.rights[mkey].module);
+      if (moduleRights[key].value && !menu.includes(user.rights[mkey].moduleId)) {
+        menu.push(user.rights[mkey].moduleId);
       }
     }
   }

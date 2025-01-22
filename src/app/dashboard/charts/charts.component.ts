@@ -60,13 +60,19 @@ export class ChartsComponent implements OnInit {
           {
             data: valueData,
             backgroundColor: '#2c4e80',
-            barThickness: 25,
+            barThickness: 30,
             borderRadius: 3,
+            borderSkipped: false,
+            // clip: { bottom: 100 },
             label: 'Cost',
+            base: 70,
           },
         ],
       },
       options: {
+        responsive: true,
+        // maintainAspectRatio: true,
+        // aspectRatio: 1.5,
         scales: {
           x: {
             grid: {
@@ -75,11 +81,19 @@ export class ChartsComponent implements OnInit {
             ticks: {
               align: 'center',
               maxRotation: 0,
+              font: {
+                weight: 600,
+              },
             },
           },
           y: {
             grid: {
               display: false,
+            },
+            ticks: {
+              font: {
+                weight: 600,
+              },
             },
           },
         },
@@ -106,7 +120,7 @@ export class ChartsComponent implements OnInit {
       ],
       datasets: [
         {
-          label: 'My First Dataset',
+          label: `Stock '%'`,
           data: [30, 25, 25, 15, 8],
           datalabels: {
             color: '#fff',
@@ -137,10 +151,14 @@ export class ChartsComponent implements OnInit {
       },
       //test commit comment
       responsive: true,
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
       aspectRatio: 1.5,
       plugins: {
         legend: {
+          labels: {
+            boxWidth: 14,
+            boxHeight: 14,
+          },
           position: 'right',
         },
         //moidify labels
