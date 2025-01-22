@@ -1,7 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../shared/services/users.service';
-import { demoUser } from '../shared/objects/user';
 
 @Injectable({
   providedIn: 'root',

@@ -21,15 +21,23 @@
           </div>
           <div class="form-control">
             <label for="Quantity">Quantity</label>
-            <input type="number" formControlName="Quantity" />
+            <input type="number" pattern="\d{1,5}" formControlName="Quantity" />
           </div>
           <div class="form-control">
             <label for="CostPrice">Cost Price</label>
-            <input type="number" formControlName="CostPrice" />
+            <input
+              type="number"
+              pattern="\d{1,5}"
+              formControlName="CostPrice"
+            />
           </div>
           <div class="form-control">
             <label for="selling-SellingPrice">Selling Price</label>
-            <input type="number" formControlName="SellingPrice" />
+            <input
+              type="number"
+              pattern="\d{1,5}"
+              formControlName="SellingPrice"
+            />
           </div>
           <button type="submit">Add Product</button>
         </form>
